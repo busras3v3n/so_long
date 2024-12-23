@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/23 19:32:45 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/23 21:07:39 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef	struct s_map
 	int		end_cnt;
 	int		width;
 	int		height;
+	int		start_x;
+	int		start_y;
 }	t_map;
 
 typedef	struct s_game
