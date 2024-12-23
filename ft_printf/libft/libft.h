@@ -6,12 +6,15 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:52:21 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/23 10:38:04 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/23 12:52:02 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 # include <stdlib.h>
 

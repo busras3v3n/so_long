@@ -6,9 +6,12 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:09:26 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/23 12:46:28 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/23 13:49:38 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "so_long.h"
+#include	<stdio.h>
 
 static char	**ft_freeall(char **arr)
 {
@@ -23,10 +26,12 @@ static char	**ft_freeall(char **arr)
 	free(arr);
 	return (NULL);
 }
-void	free_map(t_map	*map)
+void	free_map_exit(t_map	*map)
 {
-	ft_freeall(map->map_arr);
-	ft_freeall(map->map_arr_copy);
+	if(map->map_arr)
+		ft_freeall(map->map_arr);
+	if(map->map_arr_copy)
+		ft_freeall(map->map_arr_copy);
 	exit(1);
 }
 
@@ -53,6 +58,7 @@ char	*make_map_string(char	*path)
 	int		fd;
 
 	fd = open(path, O_RDWR, 0777);
+	ret = ft_calloc(1, 1);
 
 	while(1)
 	{
@@ -71,6 +77,7 @@ void	handle_map(char	*path, t_game	*game)
 	t_map	*map;
 	char	*map_string;
 	
+	map = ft_calloc(1, sizeof(t_map));
 	map_string = make_map_string(path);
 	map->map_arr = ft_split(map_string, '\n');
 	map->map_arr_copy = ft_split(map_string, '\n');

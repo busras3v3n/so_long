@@ -6,9 +6,11 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 11:59:47 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/23 12:44:39 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/23 13:45:37 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include	"so_long.h"
 
 void	count_chars(char c, t_map *map)
 {
@@ -18,7 +20,7 @@ void	count_chars(char c, t_map *map)
 		map->end_cnt++;
 	else if(c == 'P')
 		map->start_cnt++;
-	else if(c != '1' & c != '0')
+	else if(c != '1' && c != '0')
 	{
 		write(1, "invalid elements in .ber file", 29);
 		free_map_exit(map);
@@ -46,6 +48,7 @@ void	check_rectangular(char **map_arr, t_map	*map)
 	y++;
 	while(map_arr[y])
 	{
+		k = 0;
 		while(map_arr[y][k])
 		{
 			count_chars(map_arr[y][k], map);
@@ -59,13 +62,13 @@ void	check_rectangular(char **map_arr, t_map	*map)
 	map->height = y;
 }
 
-int	check_edges(int	*x, int	*y)
+int	check_edges(int	*x, int	*y, char **map_arr)
 {
-	if(map_arr[y])
+	if(map_arr[*y])
 	{
-		while(map_arr[y][x])
+		while(map_arr[*y][*x])
 		{
-			if(map_arr[y][x] != '1')
+			if(map_arr[*y][*x] != '1')
 				return(0);
 			x++;
 		}
@@ -81,16 +84,16 @@ int	check_walls(char	**map_arr)
 	x = 0;
 	y = 0;
 
-	if(!check_edges(&x, &y));
+	if(!check_edges(&x, &y, map_arr))
 		return(0);
-	while(map_arr[y + 1] != '\0')
+	while(map_arr[y + 1] && map_arr[y])
 	{
-		if(map_arr[y][0] != '1' || map_arr[y][x - 1] != 'W')
+		if(map_arr[y][0] != '1' || map_arr[y][x - 1] != '1')
 			return(0);
-		y++
+		y++;
 	}
 	x = 0;
-	if(!check_edges(&x, &y));
+	if(!check_edges(&x, &y, map_arr))
 		return(0);
 	return(1);
 }

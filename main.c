@@ -1,4 +1,5 @@
 #include "so_long.h"
+#include "stdio.h"
 
 void	check_xpm()
 {
@@ -18,6 +19,7 @@ int	main(int argc, char **argv)
 {
 	t_game	*game;
 
+	game = ft_calloc(1, sizeof(t_game));
 	if(argc == 2)
 	{
 		check_xpm();
@@ -25,5 +27,5 @@ int	main(int argc, char **argv)
 		handle_map(argv[1], game);
 	}
 	else
-		write(1, "incorrect number of arguments", 29);
+		write(1, "incorrect number of arguments\n", 30);
 }
