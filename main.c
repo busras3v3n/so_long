@@ -1,19 +1,6 @@
 #include "so_long.h"
 #include "stdio.h"
 
-void	check_xpm()
-{
-	check_img();
-	check_img2();
-	check_img3();
-}
-
-void	ber_file_check(char *path)
-{
-	extension_check(path);
-	open_check(path);
-}
-
 
 int	main(int argc, char **argv)
 {

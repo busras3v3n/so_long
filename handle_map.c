@@ -6,21 +6,12 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:09:26 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/23 19:06:05 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/23 19:18:29 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include	<stdio.h>
-
-void	error_msg(int	*error_displayed)
-{
-	if((*error_displayed) == 0)
-	{
-		write(1, "Error\n", 6);
-		(*error_displayed)++;
-	}	
-}
 
 static char	**ft_freeall(char **arr)
 {
@@ -71,6 +62,7 @@ void	check_map_validity(t_map	*map)
 	items = check_items(map, &error_displayed);
 	if(!rectangular || !wall || !items)
 		free_map_exit(map);
+	check_valid_path(map, map_arr_copy, &error_displayed);
 }
 
 char	*make_map_string(char	*path)

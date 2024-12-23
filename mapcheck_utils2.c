@@ -6,11 +6,20 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:06:54 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/23 19:04:17 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/23 19:16:03 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	error_msg(int	*error_displayed)
+{
+	if((*error_displayed) == 0)
+	{
+		write(1, "Error\n", 6);
+		(*error_displayed)++;
+	}	
+}
 
 void		check_items_help(t_map *map, int	*error_displayed)
 {
