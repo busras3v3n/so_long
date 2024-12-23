@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 10:27:47 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/23 19:23:11 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/23 19:57:27 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	open_check(char *path)
 	fd = open(path, O_RDWR, 0777);
 	if(fd <= 0)
 	{
-		write(1, "Error\nFile does not exist\n", 20);
+		write(1, "Error\nFile does not exist\n", 27);
 		close(fd);
 		exit(1);
 	}
