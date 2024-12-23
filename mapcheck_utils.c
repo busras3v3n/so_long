@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 11:59:47 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/23 14:06:18 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/23 19:09:53 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,29 @@ void	count_chars(char c, t_map *map)
 		map->start_cnt++;
 	else if(c != '1' && c != '0')
 	{
-		write(1, "invalid elements in .ber file", 29);
+		write(1, "Error\nInvalid characters in .ber file\n", 38);
 		free_map_exit(map);
 	}
 }
 
-void	rectangular_error(t_map *map)
+int	check_rectangular_help(int	*k, int	*y, int *x, char **map_arr, t_map *map)
 {
-	write(1, "the map isn't rectangular.", 26);
-	free_map_exit(map);
+	while(map_arr[*y])
+	{
+		*k = 0;
+		while(map_arr[*y][*k])
+		{
+			count_chars(map_arr[*y][*k], map);
+			(*k)++;
+		}
+		if(*k != *x)
+			return(0);
+		(*y)++;
+	}
+	return(1);
 }
 
-void	check_rectangular(char **map_arr, t_map	*map)
+int	check_rectangular(char **map_arr, t_map	*map)
 {
 	int	x;
 	int	y;
@@ -46,20 +57,11 @@ void	check_rectangular(char **map_arr, t_map	*map)
 		while(map_arr[y][x])
 			x++;
 	y++;
-	while(map_arr[y])
-	{
-		k = 0;
-		while(map_arr[y][k])
-		{
-			count_chars(map_arr[y][k], map);
-			k++;
-		}
-		if(k != x)
-			rectangular_error(map);
-		y++;
-	}
+	if(!check_rectangular_help(&k, &y, &x, map_arr, map))
+		return(0);
 	map->width = x;
 	map->height = y;
+	return(1);
 }
 
 int	check_edges(int	*x, int	*y, char **map_arr)

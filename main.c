@@ -27,5 +27,5 @@ int	main(int argc, char **argv)
 		handle_map(argv[1], game);
 	}
 	else
-		write(1, "incorrect number of arguments\n", 30);
+		write(1, "Incorrect number of arguments\n", 30);
 }

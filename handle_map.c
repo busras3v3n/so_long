@@ -6,12 +6,21 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:09:26 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/23 13:49:38 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/23 19:06:05 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include	<stdio.h>
+
+void	error_msg(int	*error_displayed)
+{
+	if((*error_displayed) == 0)
+	{
+		write(1, "Error\n", 6);
+		(*error_displayed)++;
+	}	
+}
 
 static char	**ft_freeall(char **arr)
 {
@@ -32,6 +41,8 @@ void	free_map_exit(t_map	*map)
 		ft_freeall(map->map_arr);
 	if(map->map_arr_copy)
 		ft_freeall(map->map_arr_copy);
+	if(map)
+		free(map);
 	exit(1);
 }
 
@@ -39,16 +50,27 @@ void	check_map_validity(t_map	*map)
 {
 	char	**map_cp;
 	int		wall;
+	int		items;
+	int		rectangular;
+	int		error_displayed;
 
+	error_displayed = 0;
 	map_cp = map->map_arr_copy;
-
-	check_rectangular(map_cp, map);
+	rectangular = check_rectangular(map_cp, map);
 	wall = check_walls(map_cp);
+	if(!rectangular)
+	{
+		error_msg(&error_displayed);
+		write(1, "The map isn't rectangular\n", 26);
+	}
 	if(!wall)
 	{
-		write(1, "the map isn't surrounded by walls.", 34);
-		free_map_exit(map);
+		error_msg(&error_displayed);
+		write(1, "The map isn't surrounded by walls\n", 34);
 	}
+	items = check_items(map, &error_displayed);
+	if(!rectangular || !wall || !items)
+		free_map_exit(map);
 }
 
 char	*make_map_string(char	*path)
