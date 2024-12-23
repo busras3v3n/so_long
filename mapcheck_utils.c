@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 11:59:47 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/23 19:09:53 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/23 19:50:05 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ int	check_rectangular(char **map_arr, t_map	*map)
 	k = 0;
 	if(map_arr[y])
 		while(map_arr[y][x])
+		{
+			count_chars(map_arr[y][x], map);
 			x++;
+		}
 	y++;
 	if(!check_rectangular_help(&k, &y, &x, map_arr, map))
 		return(0);

@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 10:03:26 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/23 13:31:43 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/23 19:30:24 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	check_img()
 
 	if(fd_bw <= 0 || fd_car <= 0 || fd_fg <= 0 || fd_hou <= 0)
 	{
-		write(1, "Missing xpm file\n", 17);
+		write(1, "Error\nMissing xpm file\n", 23);
 		close(fd_bw);
 		close(fd_car);
 		close(fd_fg);
@@ -53,7 +53,7 @@ void	check_img2()
 
 	if(fd_pg <= 0 || fd_rl <= 0 || fd_rr <= 0 || fd_rs <= 0)
 	{
-		write(1, "Missing xpm file\n", 17);
+		write(1, "Error\nMissing xpm file\n", 23);
 		close(fd_pg);
 		close(fd_rl);
 		close(fd_rr);
@@ -74,7 +74,7 @@ void	check_img3()
 
 	if(fd_ru <= 0)
 	{
-		write(1, "Missing xpm file\n", 17);
+		write(1, "Error\nMissing xpm file\n", 23);
 		close(fd_ru);
 		exit(1);
 	}

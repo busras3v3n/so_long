@@ -6,11 +6,8 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 19:19:08 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/23 19:19:57 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/23 19:43:24 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	check_valid_path(t_map *map, char **arr, int *error_displayed)
-{
-	
-}
+#include	"so_long.h"

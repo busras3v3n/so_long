@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:09:26 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/23 19:28:34 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/23 19:44:34 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	check_map_validity(t_map	*map)
 	items = check_items(map, &error_displayed);
 	if(!rectangular || !wall || !items)
 		free_map_exit(map);
-	check_valid_path(map, map_cp, &error_displayed);
 }
 
 char	*make_map_string(char	*path)
