@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/28 15:21:43 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/28 17:17:17 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	extension_check(char *path);
 void	open_check(char *path);
 void	check_xpm();
 void	ber_file_check(char *path);
-void	handle_map(char	*path, t_game	*game);
+void	handle_map(char	*path);
 int		check_rectangular(char **map_arr, t_map	*map);
 int		check_walls(char	**map_arr);
 void	free_map_exit(t_map	*map);

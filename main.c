@@ -4,9 +4,6 @@
 
 int	main(int argc, char **argv)
 {
-	t_game	*game;
-
-	game = ft_calloc(1, sizeof(t_game));
 	if(argc == 2)
 	{
 		check_xpm();
