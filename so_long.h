@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/23 21:07:39 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/28 15:21:43 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef	struct s_map
 	int		height;
 	int		start_x;
 	int		start_y;
+	int		acc_end;
+	int		acc_car;
 }	t_map;
 
 typedef	struct s_game
@@ -54,7 +56,7 @@ int		check_walls(char	**map_arr);
 void	free_map_exit(t_map	*map);
 int		check_items(t_map	*map, int	*error_displayed);
 void	error_msg(int	*error_displayed);
-void	check_valid_path(t_map *map, char **arr, int *error_displayed);
+void	check_valid_path(t_map *map);
 
 
 #endif

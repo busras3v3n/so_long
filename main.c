@@ -12,6 +12,7 @@ int	main(int argc, char **argv)
 		check_xpm();
 		ber_file_check(argv[1]);
 		handle_map(argv[1], game);
+		printf("%d", game->map->start_x);
 	}
 	else
 		write(1, "Error\nIncorrect number of arguments\n", 36);
