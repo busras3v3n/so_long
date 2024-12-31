@@ -6,14 +6,14 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:09:26 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/31 15:55:54 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/31 17:14:16 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include	<stdio.h>
 
-static char	**ft_freeall(char **arr)
+char	**ft_freeall(char **arr)
 {
 	int	i;
 
