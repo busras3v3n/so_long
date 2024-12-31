@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:09:26 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/31 11:31:12 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/31 15:55:54 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,9 @@ char	*make_map_string(char	*path)
 	return (ret);
 }
 
-void	handle_map(char	*path)
+void	handle_map(char	*path, t_map *map)
 {
-	t_map	*map;
 	char	*map_string;
-
-	map = ft_calloc(1, sizeof(t_map));
 	map_string = make_map_string(path);
 	map->map_arr = ft_split(map_string, '\n');
 	map->map_arr_copy = ft_split(map_string, '\n');

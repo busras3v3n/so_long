@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/31 11:30:20 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/31 16:12:08 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,6 @@ typedef	struct s_map
 	int		end_check;
 }	t_map;
 
-typedef	struct s_char
-{
-	
-}
-
 typedef	struct s_game
 {
 	void	*mlx;
@@ -55,13 +50,14 @@ void	extension_check(char *path);
 void	open_check(char *path);
 void	check_xpm();
 void	ber_file_check(char *path);
-void	handle_map(char	*path);
+void	handle_map(char	*path, t_map *map);
 int		check_rectangular(char **map_arr, t_map	*map);
 int		check_walls(char	**map_arr);
 void	free_map_exit(t_map	*map);
 int		check_items(t_map	*map, int	*error_displayed);
 void	error_msg(int	*error_displayed);
 void	check_valid_path(t_map *map);
+void	handle_window(t_map	*map);
 
 
 #endif

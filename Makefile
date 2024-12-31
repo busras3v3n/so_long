@@ -6,14 +6,14 @@
 #    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 12:46:54 by busseven          #+#    #+#              #
-#    Updated: 2024/12/23 19:33:31 by busseven         ###   ########.fr        #
+#    Updated: 2024/12/31 16:14:36 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC 		= check_ber_file.c check_img.c handle_map.c mapcheck_utils.c mapcheck_utils2.c check_valid_path.c
+SRC 		= check_ber_file.c check_img.c handle_map.c mapcheck_utils.c mapcheck_utils2.c check_valid_path.c handle_window.c
 OBJS 		= $(SRC:.c=.o)
 
-NAME 		= solong.a
+NAME 		= so_long.a
 LIBFTPRINTF	= ./ft_printf/libftprintf.a
 
 all: $(LIBFTPRINTF) $(NAME)
@@ -37,5 +37,8 @@ clean:
 	make -C ./ft_printf clean
 
 re: fclean all
+
+compile:
+	cc -Wall -Wextra -Werror so_long.c so_long.a -L./minilibx-linux -lmlx -lX11 -lXext -lm -o a.out
 
 .PHONY: all clean fclean re
