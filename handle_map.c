@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:09:26 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/28 17:16:58 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/31 09:45:23 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ static char	**ft_freeall(char **arr)
 	free(arr);
 	return (NULL);
 }
+
 void	free_map_exit(t_map	*map)
 {
-	if(map->map_arr)
+	if (map->map_arr)
 		ft_freeall(map->map_arr);
-	if(map->map_arr_copy)
+	if (map->map_arr_copy)
 		ft_freeall(map->map_arr_copy);
-	if(map)
+	if (map)
 		free(map);
 	exit(1);
 }
@@ -49,18 +50,18 @@ void	check_map_validity(t_map	*map)
 	map_cp = map->map_arr_copy;
 	rectangular = check_rectangular(map_cp, map);
 	wall = check_walls(map_cp);
-	if(!rectangular)
+	if (!rectangular)
 	{
 		error_msg(&error_displayed);
 		write(1, "The map isn't rectangular\n", 26);
 	}
-	if(!wall)
+	if (!wall)
 	{
 		error_msg(&error_displayed);
 		write(1, "The map isn't surrounded by walls\n", 34);
 	}
 	items = check_items(map, &error_displayed);
-	if(!rectangular || !wall || !items)
+	if (!rectangular || !wall || !items)
 		free_map_exit(map);
 }
 
@@ -72,24 +73,23 @@ char	*make_map_string(char	*path)
 
 	fd = open(path, O_RDWR, 0777);
 	ret = ft_calloc(1, 1);
-
-	while(1)
+	while (1)
 	{
 		line = get_next_line(fd);
-		if(!line)
-			break;
+		if (!line)
+			break ;
 		ret = ft_join(ret, line);
 		free(line);
 	}
 	close(fd);
-	return(ret);
+	return (ret);
 }
 
 void	handle_map(char	*path)
 {
 	t_map	*map;
 	char	*map_string;
-	
+
 	map = ft_calloc(1, sizeof(t_map));
 	map_string = make_map_string(path);
 	map->map_arr = ft_split(map_string, '\n');
