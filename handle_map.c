@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:09:26 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/31 09:45:23 by busseven         ###   ########.fr       */
+/*   Updated: 2024/12/31 11:31:12 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,5 @@ void	handle_map(char	*path)
 	free(map_string);
 	check_map_validity(map);
 	check_valid_path(map);
+	ft_freeall(map->map_arr_copy);
 }
