@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/31 19:00:30 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 11:12:00 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef	struct s_map
 	
 	void	*wall;
 	void	*grass;
-	void	*fgrass;
 	void	*house;
 	void	*carrot;
 }	t_map;
@@ -48,6 +47,8 @@ typedef struct s_cha
 	void	*down;
 	void	*left;
 	void	*right;
+	void	*current;
+
 	int		moves;
 	int		carrots;
 }	t_cha;

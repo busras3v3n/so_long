@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 10:03:26 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/31 09:53:08 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 10:59:41 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,21 @@ void	check_img(void)
 {
 	int	fd_bw;
 	int	fd_car;
-	int	fd_fg;
 	int	fd_hou;
 
 	fd_bw = open("./img/brickwall.xpm", O_RDONLY);
 	fd_car = open("./img/carrot.xpm", O_RDONLY);
-	fd_fg = open("./img/flowergrass.xpm", O_RDONLY);
 	fd_hou = open("./img/house.xpm", O_RDONLY);
-	if (fd_bw <= 0 || fd_car <= 0 || fd_fg <= 0 || fd_hou <= 0)
+	if (fd_bw <= 0 || fd_car <= 0 || fd_hou <= 0)
 	{
 		write(1, "Error\nMissing xpm file\n", 23);
 		close(fd_bw);
 		close(fd_car);
-		close(fd_fg);
 		close(fd_hou);
 		exit(1);
 	}
 	close(fd_bw);
 	close(fd_car);
-	close(fd_fg);
 	close(fd_hou);
 }
 
