@@ -6,11 +6,11 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:14:07 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 17:02:55 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 17:28:23 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	you_win(t_game *game)
 {
@@ -68,7 +68,7 @@ void	move_player(t_game *game, int keycode)
 		game->cha->carrots++;
 	if(map[game->cha->y][game->cha->x] != 'E')
 		map[game->cha->y][game->cha->x] = 'P';
-	draw_on_window(game);
+	draw_map(game);
 	if(map[game->cha->y][game->cha->x] == 'E')
 	{
 		if(game->map->carrot_cnt == game->cha->carrots)

@@ -6,31 +6,32 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 17:05:59 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 18:04:51 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	destroy_img(t_game	*game)
 {
-	mlx_destroy_image(game->map->wall);
-	mlx_destroy_image(game->map->house);
-	mlx_destroy_image(game->map->grass);
-	mlx_destroy_image(game->map->carrot);
-	mlx_destroy_image(game->cha->up);
-	mlx_destroy_image(game->cha->down);
-	mlx_destroy_image(game->cha->left);
-	mlx_destroy_image(game->cha->right);
-	mlx_destroy_image(game->cha->cur);
+	mlx_destroy_image(game->mlx, game->map->wall);
+	mlx_destroy_image(game->mlx, game->map->house);
+	mlx_destroy_image(game->mlx, game->map->grass);
+	mlx_destroy_image(game->mlx, game->map->carrot);
+	mlx_destroy_image(game->mlx, game->cha->up);
+	mlx_destroy_image(game->mlx, game->cha->down);
+	mlx_destroy_image(game->mlx, game->cha->left);
+	mlx_destroy_image(game->mlx, game->cha->right);
 }
 void	free_everything_exit(t_game	*game)
 {
-	mlx_destroy_window(game->mlx, game->window);
-	mlx_destroy_display(game->mlx);
 	ft_freeall(game->map->map_arr);
+	destroy_img(game);
 	free(game->map);
 	free(game->cha);
+	mlx_destroy_window(game->mlx, game->window);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
 	free(game);
 	exit (0);
 }
@@ -67,7 +68,8 @@ void	handle_window(t_map	*map)
 	game->map = map;
 	game->mlx = mlx_init();
 	game->window = mlx_new_window(game->mlx, (w * 64), (h * 64), "so_long");
-	draw_on_window(game);
+	xpm_to_ptr(game);
+	draw_map(game);
 	mlx_hook(game->window, 17, 0, close_window, game);
 	mlx_key_hook(game->window, key_hook, game);
 	mlx_loop(game->mlx);

@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 16:21:38 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 17:37:54 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,7 @@ void	draw_on_window(t_game *game);
 void	draw_map(t_game *game);
 void	move_player(t_game *game, int keycode);
 char	*make_map_string(char	*path);
+void	destroy_img(t_game	*game);
+void	xpm_to_ptr(t_game *game);
 
 #endif

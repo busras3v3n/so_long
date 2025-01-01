@@ -6,11 +6,11 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:15:39 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 17:00:56 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 17:37:04 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	put_img(char **map, t_game *game, int x, int y)
 {
@@ -76,11 +76,4 @@ void	xpm_to_ptr(t_game *game)
 	cha->left = mlx_xpm_file_to_image(game->mlx, "./img/rl.xpm", &w, &h);
 	cha->right = mlx_xpm_file_to_image(game->mlx, "./img/rr.xpm", &w, &h);
 	cha->cur = game->cha->down;
-}
-
-void	draw_on_window(t_game *game)
-{
-	xpm_to_ptr(game);
-	draw_map(game);
-	destroy_img(game);
 }
