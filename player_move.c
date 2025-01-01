@@ -6,11 +6,23 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:14:07 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 14:22:40 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 16:13:20 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	you_win(t_game *game)
+{
+	char	*msg;
+
+	msg = make_map_string("./youwon.txt");
+	
+	write(1, "\n", 1);
+	write(1, msg, ft_strlen(msg));
+	write(1, "\n", 1);
+	write(1, "You moved ", 9);
+}
 
 void	move_count(char	**map, t_game *game, int keycode)
 {
@@ -60,6 +72,9 @@ void	move_player(t_game *game, int keycode)
 	if(map[game->cha->y][game->cha->x] != 'E')
 		map[game->cha->y][game->cha->x] = 'P';
 	draw_map(game);
-	if(game->cha->carrots == game->map->carrot_cnt)
-		you_win(game);
+	if(map[game->cha->y][game->cha->x] == 'E')
+	{
+		if(game->map->carrot_cnt == game->cha->carrots)
+			you_win(game);
+	}
 }

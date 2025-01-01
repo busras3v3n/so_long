@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 10:03:26 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 14:33:41 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 14:41:09 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	check_img3(void)
 {
 	int	fd_ru;
 
-	fd_ru = open("./img/rabbitup.xpm", O_RDONLY);
+	fd_ru = open("./img/ru.xpm", O_RDONLY);
 	if (fd_ru <= 0)
 	{
 		write(1, "Error\nMissing xpm file\n", 23);
