@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/31 19:37:16 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 10:02:55 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	xpm_to_ptr(t_game *game)
 	int	h;
 	int	w;
 
-	h = 32;
-	w = 32;
+	h = 64;
+	w = 64;
 
 	game->map->grass = mlx_xpm_file_to_image(game->mlx, "./img/plaingrass.xpm", &w, &h);
 	game->map->fgrass = mlx_xpm_file_to_image(game->mlx, "./img/flowergrass.xpm", &w, &h);
@@ -69,11 +69,11 @@ void	draw_map(t_game *game)
 		while(map[y][x])
 		{
 			if(map[y][x] == '1')
-				mlx_put_image_to_window(game->mlx, game->window, game->map->wall, 32, 32);
+				mlx_put_image_to_window(game->mlx, game->window, game->map->wall, 64, 64);
 			else if(map[y][x] == 'P')
-				mlx_put_image_to_window(game->mlx, game->window, game->map->fgrass, 32, 32);
+				mlx_put_image_to_window(game->mlx, game->window, game->map->fgrass, 64, 64);
 			else if(map[y][x] == 'C')
-				mlx_put_image_to_window(game->mlx, game->window, game->map->carrot, 32, 32);
+				mlx_put_image_to_window(game->mlx, game->window, game->map->carrot, 64, 64);
 			x++;
 		}
 		y++;
