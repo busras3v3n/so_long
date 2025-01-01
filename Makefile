@@ -6,11 +6,11 @@
 #    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 12:46:54 by busseven          #+#    #+#              #
-#    Updated: 2024/12/31 16:14:36 by busseven         ###   ########.fr        #
+#    Updated: 2025/01/01 13:24:15 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC 		= check_ber_file.c check_img.c handle_map.c mapcheck_utils.c mapcheck_utils2.c check_valid_path.c handle_window.c
+SRC 		= check_ber_file.c check_img.c handle_map.c mapcheck_utils.c mapcheck_utils2.c check_valid_path.c handle_window.c player_move.c drawing.c
 OBJS 		= $(SRC:.c=.o)
 
 NAME 		= so_long.a

@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 11:16:53 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 13:26:02 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ typedef struct s_cha
 	void	*cur;
 
 	int		moves;
+	char	*moves_str;
 	int		carrots;
+	int		x;
+	int		y;
 }	t_cha;
 
 typedef	struct s_game
@@ -77,6 +80,9 @@ int		check_items(t_map	*map, int	*error_displayed);
 void	error_msg(int	*error_displayed);
 void	check_valid_path(t_map *map);
 void	handle_window(t_map	*map);
+void	draw_on_window(t_game *game);
+void	draw_map(t_game *game);
+void	move_player(t_game *game, int keycode);
 
 
 #endif
