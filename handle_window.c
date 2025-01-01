@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 11:14:44 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 11:23:51 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	xpm_to_ptr(t_game *game)
 	game->cha->down = mlx_xpm_file_to_image(game->mlx, "./img/rabbitstand.xpm", &w, &h);
 	game->cha->left = mlx_xpm_file_to_image(game->mlx, "./img/rabbitleft.xpm", &w, &h);
 	game->cha->right = mlx_xpm_file_to_image(game->mlx, "./img/rabbitright.xpm", &w, &h);
+	game->cha->cur = game->cha->down;
 }
 
 void	draw_map(t_game *game)
@@ -74,7 +75,7 @@ void	draw_map(t_game *game)
 			else if(map[y][x] == 'E')
 				mlx_put_image_to_window(game->mlx, game->window, game->map->house, x * 64, y * 64);
 			else if(map[y][x] == 'P')
-				mlx_put_image_to_window(game->mlx, game->window, game->cha->up, x * 64, y * 64);
+				mlx_put_image_to_window(game->mlx, game->window, game->cha->cur, x * 64, y * 64);
 			x++;
 		}
 		y++;
