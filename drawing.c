@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:15:39 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 13:36:00 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 14:36:32 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,24 @@
 
 void	put_img(char **map, t_game *game, int x, int y)
 {
-	if(map[y][x] == '1')
-		mlx_put_image_to_window(game->mlx, game->window, game->map->wall, x * 64, y * 64);
-	else if(map[y][x] == '0')
-		mlx_put_image_to_window(game->mlx, game->window, game->map->grass, x * 64, y * 64);
-	else if(map[y][x] == 'C')
-		mlx_put_image_to_window(game->mlx, game->window, game->map->carrot, x * 64, y * 64);
-	else if(map[y][x] == 'E')
-		mlx_put_image_to_window(game->mlx, game->window, game->map->house, x * 64, y * 64);
-	else if(map[y][x] == 'P')
+	void	*m;
+	void	*w;
+
+	m = game->mlx;
+	w = game->window;
+	if (map[y][x] == '1')
+		mlx_put_image_to_window(m, w, game->map->wall, x * 64, y * 64);
+	else if (map[y][x] == '0')
+		mlx_put_image_to_window(m, w, game->map->grass, x * 64, y * 64);
+	else if (map[y][x] == 'C')
+		mlx_put_image_to_window(m, w, game->map->carrot, x * 64, y * 64);
+	else if (map[y][x] == 'E')
+		mlx_put_image_to_window(m, w, game->map->house, x * 64, y * 64);
+	else if (map[y][x] == 'P')
 	{
-		mlx_put_image_to_window(game->mlx, game->window, game->cha->cur, x * 64, y * 64);
-			game->cha->x = x;
-			game->cha->y = y;
+		mlx_put_image_to_window(m, w, game->cha->cur, x * 64, y * 64);
+		game->cha->x = x;
+		game->cha->y = y;
 	}
 }
 
@@ -38,10 +43,10 @@ void	draw_map(t_game *game)
 
 	map = game->map->map_arr;
 	y = 0;
-	while(map[y])
+	while (map[y])
 	{
 		x = 0;
-		while(map[y][x])
+		while (map[y][x])
 		{
 			put_img(map, game, x, y);
 			x++;
@@ -55,22 +60,26 @@ void	draw_map(t_game *game)
 
 void	xpm_to_ptr(t_game *game)
 {
-	int	h;
-	int	w;
+	int		h;
+	int		w;
+	t_map	*map;
+	t_cha	*cha;
 
 	h = 64;
 	w = 64;
-
-	game->map->grass = mlx_xpm_file_to_image(game->mlx, "./img/plaingrass.xpm", &w, &h);
-	game->map->house = mlx_xpm_file_to_image(game->mlx, "./img/house.xpm", &w, &h);
-	game->map->wall = mlx_xpm_file_to_image(game->mlx, "./img/brickwall.xpm", &w, &h);
-	game->map->carrot = mlx_xpm_file_to_image(game->mlx, "./img/carrot.xpm", &w, &h);
-	game->cha->up = mlx_xpm_file_to_image(game->mlx, "./img/rabbitup.xpm", &w, &h);
-	game->cha->down = mlx_xpm_file_to_image(game->mlx, "./img/rabbitstand.xpm", &w, &h);
-	game->cha->left = mlx_xpm_file_to_image(game->mlx, "./img/rabbitleft.xpm", &w, &h);
-	game->cha->right = mlx_xpm_file_to_image(game->mlx, "./img/rabbitright.xpm", &w, &h);
-	game->cha->cur = game->cha->down;
+	cha = game->cha;
+	map = game->map;
+	map->grass = mlx_xpm_file_to_image(game->mlx, "./img/pg.xpm", &w, &h);
+	map->house = mlx_xpm_file_to_image(game->mlx, "./img/exi.xpm", &w, &h);
+	map->wall = mlx_xpm_file_to_image(game->mlx, "./img/bw.xpm", &w, &h);
+	map->carrot = mlx_xpm_file_to_image(game->mlx, "./img/car.xpm", &w, &h);
+	cha->up = mlx_xpm_file_to_image(game->mlx, "./img/ru.xpm", &w, &h);
+	cha->down = mlx_xpm_file_to_image(game->mlx, "./img/rs.xpm", &w, &h);
+	cha->left = mlx_xpm_file_to_image(game->mlx, "./img/rl.xpm", &w, &h);
+	cha->right = mlx_xpm_file_to_image(game->mlx, "./img/rr.xpm", &w, &h);
+	cha->cur = game->cha->down;
 }
+
 void	draw_on_window(t_game *game)
 {
 	xpm_to_ptr(game);

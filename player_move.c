@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:14:07 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 13:42:11 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 14:22:40 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,6 @@ void	move_player(t_game *game, int keycode)
 	if(map[game->cha->y][game->cha->x] != 'E')
 		map[game->cha->y][game->cha->x] = 'P';
 	draw_map(game);
+	if(game->cha->carrots == game->map->carrot_cnt)
+		you_win(game);
 }

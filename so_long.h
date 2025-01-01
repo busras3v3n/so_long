@@ -6,22 +6,22 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 13:26:02 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 14:26:47 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
-# define    SO_LONG_H
+# define SO_LONG_H
 
-#include "./minilibx-linux/mlx.h"
-#include "./ft_printf/libft/libft.h"
-#include "./ft_printf/ft_printf.h"
-#include "./minilibx-linux/mlx.h"
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
+# include "./minilibx-linux/mlx.h"
+# include "./ft_printf/libft/libft.h"
+# include "./ft_printf/ft_printf.h"
+# include "./minilibx-linux/mlx.h"
+# include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-typedef	struct s_map
+typedef struct s_map
 {
 	char	**map_arr;
 	char	**map_arr_copy;
@@ -34,7 +34,6 @@ typedef	struct s_map
 	int		start_y;
 	int		carrot_check;
 	int		end_check;
-	
 	void	*wall;
 	void	*grass;
 	void	*house;
@@ -48,7 +47,6 @@ typedef struct s_cha
 	void	*left;
 	void	*right;
 	void	*cur;
-
 	int		moves;
 	char	*moves_str;
 	int		carrots;
@@ -56,7 +54,7 @@ typedef struct s_cha
 	int		y;
 }	t_cha;
 
-typedef	struct s_game
+typedef struct s_game
 {
 	void	*mlx;
 	void	*window;
@@ -64,12 +62,12 @@ typedef	struct s_game
 	t_cha	*cha;
 }	t_game;
 
-void	check_img();
-void	check_img2();
-void	check_img3();
+void	check_img(void);
+void	check_img2(void);
+void	check_img3(void);
 void	extension_check(char *path);
 void	open_check(char *path);
-void	check_xpm();
+void	check_xpm(void);
 void	ber_file_check(char *path);
 char	**ft_freeall(char **arr);
 void	handle_map(char	*path, t_map *map);
@@ -83,6 +81,5 @@ void	handle_window(t_map	*map);
 void	draw_on_window(t_game *game);
 void	draw_map(t_game *game);
 void	move_player(t_game *game, int keycode);
-
 
 #endif
