@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 15:48:00 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 16:21:38 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef struct s_cha
 	void	*right;
 	void	*cur;
 	int		moves;
-	char	*moves_str;
 	int		carrots;
 	int		x;
 	int		y;

@@ -6,11 +6,11 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 11:59:47 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/31 10:29:02 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 16:40:10 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"so_long.h"
+#include	"../so_long.h"
 
 void	count_chars(char c, t_map *map)
 {

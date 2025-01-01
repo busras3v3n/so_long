@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 09:41:43 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 14:23:56 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 16:20:05 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	main(int argc, char **argv)
 		ber_file_check(argv[1]);
 		map = ft_calloc(1, sizeof(t_map));
 		handle_map(argv[1], map);
-		printf("%d", map->width);
 		handle_window(map);
 	}
 	else

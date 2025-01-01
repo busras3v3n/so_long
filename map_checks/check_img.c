@@ -6,11 +6,11 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 10:03:26 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 14:41:09 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 16:40:06 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	check_img(void)
 {

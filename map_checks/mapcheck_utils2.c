@@ -6,11 +6,11 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:06:54 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/31 09:51:56 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/01 16:40:11 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	error_msg(int	*error_displayed)
 {
