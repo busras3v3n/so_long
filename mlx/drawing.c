@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:15:39 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 10:36:39 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 16:28:05 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	draw_map(t_game *game)
 		y++;
 	}
 	ft_printf("\r%d", game->cha->moves);
-	display_moves(game->window, game->cha->moves);
+	display_moves(game, game->cha->moves);
 }
 
 void	xpm_to_ptr(t_game *game)

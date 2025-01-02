@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 09:55:42 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 16:29:57 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	handle_window(t_map	*map)
 	game->map = map;
 	game->mlx = mlx_init();
 	game->window = mlx_new_window(game->mlx, (w * 64), (h * 64), "so_long");
+	game->digit_img = ft_calloc(10, sizeof(void *));
+	make_digit_arr(game->digit_img, game);
 	xpm_to_ptr(game);
 	draw_map(game);
 	mlx_hook(game->window, 17, 0, close_window, game);

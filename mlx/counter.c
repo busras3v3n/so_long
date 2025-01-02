@@ -6,27 +6,42 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:36:30 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 10:40:23 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 16:34:21 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-void	make_digit_arr(void	**arr)
+void	make_digit_arr(void	**arr, t_game *game)
 {
-	arr = ft_calloc(10, sizeof(void *));
-	arr[0] = mlx_xpm_file_to_image();
-	arr[0] = mlx_xpm_file_to_image();
-	arr[0] = mlx_xpm_file_to_image();
-	arr[0] = mlx_xpm_file_to_image();
-	arr[0] = mlx_xpm_file_to_image();
-	arr[0] = mlx_xpm_file_to_image();
-	arr[0] = mlx_xpm_file_to_image();
-	arr[0] = mlx_xpm_file_to_image();
-	arr[0] = mlx_xpm_file_to_image();
-	arr[0] = mlx_xpm_file_to_image();
+	int	h;
+	int	w;
+
+	h = 64;
+	w = 44;	
+	arr[0] = mlx_xpm_file_to_image(game->mlx, "./counter_img/z.xpm", &w, &h);
+	arr[1] = mlx_xpm_file_to_image(game->mlx, "./counter_img/o.xpm", &w, &h);
+	arr[2] = mlx_xpm_file_to_image(game->mlx, "./counter_img/t.xpm", &w, &h);
+	arr[3] = mlx_xpm_file_to_image(game->mlx, "./counter_img/th.xpm", &w, &h);
+	arr[4] = mlx_xpm_file_to_image(game->mlx, "./counter_img/fo.xpm", &w, &h);
+	arr[5] = mlx_xpm_file_to_image(game->mlx, "./counter_img/fi.xpm", &w, &h);
+	arr[6] = mlx_xpm_file_to_image(game->mlx, "./counter_img/si.xpm", &w, &h);
+	arr[7] = mlx_xpm_file_to_image(game->mlx, "./counter_img/se.xpm", &w, &h);
+	arr[8] = mlx_xpm_file_to_image(game->mlx, "./counter_img/ei.xpm", &w, &h);
+	arr[9] = mlx_xpm_file_to_image(game->mlx, "./counter_img/ni.xpm", &w, &h);
 }
-void	display_moves(void	*win, int	n)
+void	display_moves(t_game *game, int	n)
 {
-	char *num = ft_itoa(n);
+	char	*num;
+	int		len;
+	int		i;
+
+	i = 0;
+	num = ft_itoa(n);
+	len = ft_strlen(num);
+	while(i < len)
+	{
+		mlx_put_image_to_window(game->mlx, game->window, game->digit_img[num[i] - 48], i * 64, 0);
+		i++;
+	}
 }

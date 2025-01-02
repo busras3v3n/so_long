@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 19:19:08 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 16:40:08 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 16:41:41 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,11 @@ void	find_path(int x, int y, char **map_cp, t_map *map)
 		if (map_cp[y][x] == 'C')
 			map->carrot_check++;
 		else if (map_cp[y][x] == 'E')
+		{
 			map->end_check++;
+			map->exit_x = x;
+			map->exit_y = y;
+		}
 		map_cp[y][x] = '1';
 		find_path(x + 1, y, map_cp, map);
 		find_path(x - 1, y, map_cp, map);

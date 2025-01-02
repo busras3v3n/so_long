@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:14:07 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 10:12:56 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 16:44:42 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	move_player(t_game *game, int keycode)
 	map = game->map->map_arr;
 	if(map[game->cha->y][game->cha->x] != 'E')
 		map[game->cha->y][game->cha->x] = '0';
+	if((game->cha->y == game->map->exit_y) && (game->cha->x) == game->map->exit_x)
 	move_count(map, game, keycode);
 	if(keycode == 119 && map[game->cha->y - 1][game->cha->x] != '1')
 		game->cha->y--;

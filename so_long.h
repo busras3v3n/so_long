@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 10:36:12 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 16:40:57 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_map
 	int		height;
 	int		start_x;
 	int		start_y;
+	int		exit_x;
+	int		exit_y;
 	int		carrot_check;
 	int		end_check;
 	void	*wall;
@@ -61,6 +63,7 @@ typedef struct s_game
 	t_map	*map;
 	t_cha	*cha;
 	void	*win_img;
+	void	**digit_img;
 }	t_game;
 
 void	check_img(void);
@@ -89,6 +92,7 @@ char	**ft_free_td(char **arr);
 void	free_wl(t_game	*game);
 void	free_everything_exit(t_game	*game);
 void	draw_end_screen(t_game *game, int res);
-
+void	display_moves(t_game *game, int	n);
+void	make_digit_arr(void	**arr, t_game *game);
 
 #endif
