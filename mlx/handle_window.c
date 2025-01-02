@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 16:55:02 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 18:34:14 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,23 @@ int	close_window(t_game	*game)
 
 int	key_hook(int keycode, t_game *game)
 {
+	ft_printf("%d", keycode);
 	if (keycode == 65307)
 		free_everything_exit(game);
 	if (keycode == 119 || keycode == 97 || keycode == 115 || keycode == 100)
 	{
-		ft_printf("%d", keycode);
 		move_player(game, keycode);
+	}
+	if (keycode == 114)
+	{
+		game->map->exit_x = game->map->exit_xs;
+		game->map->exit_y = game->map->exit_ys;
+		game->map->map_arr = ft_split(game->map->map_str, '\n');
+		game->win_condition = 0;
+		game->cha->moves = 0;
+		game->cha->cur = game->cha->down;
+		game->cha->carrots = 0;
+		draw_map(game);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 16:40:57 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 18:28:30 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_map
 {
 	char	**map_arr;
 	char	**map_arr_copy;
+	char	*map_str;
 	int		carrot_cnt;
 	int		start_cnt;
 	int		end_cnt;
@@ -34,6 +35,8 @@ typedef struct s_map
 	int		start_y;
 	int		exit_x;
 	int		exit_y;
+	int		exit_xs;
+	int		exit_ys;
 	int		carrot_check;
 	int		end_check;
 	void	*wall;
@@ -64,6 +67,7 @@ typedef struct s_game
 	t_cha	*cha;
 	void	*win_img;
 	void	**digit_img;
+	int		win_condition;
 }	t_game;
 
 void	check_img(void);

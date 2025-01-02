@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:14:07 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 16:59:10 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 18:41:29 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	you_win(t_game *game)
 {
 	char	*msg;
 
+	game->win_condition = 1;
 	msg = make_map_string("./txt/youwon.txt");
 	ft_printf("\n%s\nYou moved %d times!\n", msg, game->cha->moves);
 	free(msg);
@@ -71,7 +72,7 @@ void	move_player(t_game *game, int keycode)
 		game->cha->carrots++;
 	map[game->cha->y][game->cha->x] = 'P';
 	draw_map(game);
-	if(map[game->cha->y][game->cha->x] == 'E')
+	if(game->cha->y == game->map->exit_y && game->cha->x == game->map->exit_x)
 	{
 		if(game->map->carrot_cnt == game->cha->carrots)
 			you_win(game);

@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:09:26 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 10:12:29 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 18:29:10 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ void	handle_map(char	*path, t_map *map)
 {
 	char	*map_string;
 
-	map_string = make_map_string(path);
+	map->map_str = make_map_string(path);
+	map_string = map->map_str;
 	map->map_arr = ft_split(map_string, '\n');
 	map->map_arr_copy = ft_split(map_string, '\n');
-	free(map_string);
 	check_map_validity(map);
 	check_valid_path(map);
 	ft_free_td(map->map_arr_copy);
