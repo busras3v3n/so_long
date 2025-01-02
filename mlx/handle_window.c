@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 18:45:13 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 19:04:24 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	close_window(t_game	*game)
 
 int	key_hook(int keycode, t_game *game)
 {
-	ft_printf("%d", keycode);
 	if (keycode == 65307)
 		free_everything_exit(game);
 	if (keycode == 119 || keycode == 97 || keycode == 115 || keycode == 100)
