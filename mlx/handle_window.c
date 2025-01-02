@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 19:04:24 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 20:24:29 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	key_hook(int keycode, t_game *game)
 		game->cha->cur = game->cha->down;
 		game->cha->carrots = 0;
 		draw_map(game);
+		mlx
 	}
 	return (0);
 }
