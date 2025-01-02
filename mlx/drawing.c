@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:15:39 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 18:17:12 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 18:44:44 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	put_img(char **map, t_game *game, int x, int y)
 
 void	draw_map(t_game *game)
 {
-	if(game->win_condition == 1)
-		return ;
 	char	**map;
 	int		y;
 	int		x;
 
+	if (game->win_condition == 1)
+		return ;
 	map = game->map->map_arr;
 	y = 0;
 	while (map[y])
@@ -92,9 +92,8 @@ void	draw_end_screen(t_game *game, int res)
 	mlx = game->mlx;
 	h = 192;
 	w = 192;
-	
 	mlx_clear_window(game->mlx, game->window);
-	if(res == 1)
+	if (res == 1)
 	{
 		game->map->exit_x = -1;
 		game->map->exit_y = -1;

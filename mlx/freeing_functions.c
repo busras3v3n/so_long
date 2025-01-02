@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 09:52:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 10:16:49 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 18:50:11 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char	**ft_free_td(char **arr)
 	free(arr);
 	return (NULL);
 }
+
 void	destroy_img(t_game	*game)
 {
 	mlx_destroy_image(game->mlx, game->map->wall);
@@ -43,6 +44,7 @@ void	free_wl(t_game	*game)
 	destroy_img(game);
 	free(game->cha);
 }
+
 void	free_everything_exit(t_game	*game)
 {
 	free_wl(game);

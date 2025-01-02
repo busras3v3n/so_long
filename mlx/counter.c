@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:36:30 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 16:34:21 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 18:57:00 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	make_digit_arr(void	**arr, t_game *game)
 	int	w;
 
 	h = 64;
-	w = 44;	
+	w = 44;
 	arr[0] = mlx_xpm_file_to_image(game->mlx, "./counter_img/z.xpm", &w, &h);
 	arr[1] = mlx_xpm_file_to_image(game->mlx, "./counter_img/o.xpm", &w, &h);
 	arr[2] = mlx_xpm_file_to_image(game->mlx, "./counter_img/t.xpm", &w, &h);
@@ -30,18 +30,21 @@ void	make_digit_arr(void	**arr, t_game *game)
 	arr[8] = mlx_xpm_file_to_image(game->mlx, "./counter_img/ei.xpm", &w, &h);
 	arr[9] = mlx_xpm_file_to_image(game->mlx, "./counter_img/ni.xpm", &w, &h);
 }
-void	display_moves(t_game *game, int	n)
+
+void	display_moves(t_game *game, int n)
 {
 	char	*num;
-	int		len;
-	int		i;
+	size_t	i;
+	void	**arr;
+	void	*win;
 
 	i = 0;
 	num = ft_itoa(n);
-	len = ft_strlen(num);
-	while(i < len)
+	arr = game->digit_img;
+	win = game->window;
+	while (i < ft_strlen(num))
 	{
-		mlx_put_image_to_window(game->mlx, game->window, game->digit_img[num[i] - 48], i * 64, 0);
+		mlx_put_image_to_window(game->mlx, win, arr[num[i] - 48], i * 64, 0);
 		i++;
 	}
 }
