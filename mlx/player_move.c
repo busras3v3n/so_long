@@ -6,18 +6,12 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:14:07 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 09:48:48 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 10:12:56 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	win_screen(t_game *game)
-{
-	void	*w;
-	void	*mlx;
-	
-}
 void	you_win(t_game *game)
 {
 	char	*msg;
@@ -25,7 +19,7 @@ void	you_win(t_game *game)
 	msg = make_map_string("./txt/youwon.txt");
 	ft_printf("\n%s\nYou moved %d times!\n", msg, game->cha->moves);
 	free(msg);
-	win_screen(game);
+	draw_end_screen(game, 1);
 }
 
 void	move_count(char	**map, t_game *game, int keycode)

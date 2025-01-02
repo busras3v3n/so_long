@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 09:46:14 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 10:13:17 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	extension_check(char *path);
 void	open_check(char *path);
 void	check_xpm(void);
 void	ber_file_check(char *path);
-char	**ft_freeall(char **arr);
+char	**ft_free_td(char **arr);
 void	handle_map(char	*path, t_map *map);
 int		check_rectangular(char **map_arr, t_map	*map);
 int		check_walls(char	**map_arr);
@@ -84,5 +84,10 @@ void	move_player(t_game *game, int keycode);
 char	*make_map_string(char	*path);
 void	destroy_img(t_game	*game);
 void	xpm_to_ptr(t_game *game);
+char	**ft_free_td(char **arr);
+void	free_wl(t_game	*game);
+void	free_everything_exit(t_game	*game);
+void	draw_end_screen(t_game *game, int res);
+
 
 #endif

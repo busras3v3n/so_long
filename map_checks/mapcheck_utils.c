@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 11:59:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 16:40:10 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 09:53:18 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	check_rectangular(char **map_arr, t_map	*map)
 	return (1);
 }
 
-int	check_edges(int	*x, int	*y, char **map_arr)
+int	check_walls_help(int	*x, int	*y, char **map_arr)
 {
 	if (map_arr[*y])
 	{
@@ -94,7 +94,7 @@ int	check_walls(char	**map_arr)
 
 	x = 0;
 	y = 0;
-	if (!check_edges(&x, &y, map_arr))
+	if (!check_walls_help(&x, &y, map_arr))
 		return (0);
 	while (map_arr[y + 1])
 	{
@@ -103,7 +103,7 @@ int	check_walls(char	**map_arr)
 		y++;
 	}
 	x = 0;
-	if (!check_edges(&x, &y, map_arr))
+	if (!check_walls_help(&x, &y, map_arr))
 		return (0);
 	return (1);
 }

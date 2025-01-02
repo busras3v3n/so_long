@@ -6,33 +6,19 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:09:26 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 16:50:01 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 10:12:29 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 #include	<stdio.h>
 
-char	**ft_freeall(char **arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-	return (NULL);
-}
-
 void	free_map_exit(t_map	*map)
 {
 	if (map->map_arr)
-		ft_freeall(map->map_arr);
+		ft_free_td(map->map_arr);
 	if (map->map_arr_copy)
-		ft_freeall(map->map_arr_copy);
+		ft_free_td(map->map_arr_copy);
 	if (map)
 		free(map);
 	exit(1);
@@ -95,5 +81,5 @@ void	handle_map(char	*path, t_map *map)
 	free(map_string);
 	check_map_validity(map);
 	check_valid_path(map);
-	ft_freeall(map->map_arr_copy);
+	ft_free_td(map->map_arr_copy);
 }

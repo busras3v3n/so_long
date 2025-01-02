@@ -6,35 +6,13 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 18:04:51 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 09:55:42 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	destroy_img(t_game	*game)
-{
-	mlx_destroy_image(game->mlx, game->map->wall);
-	mlx_destroy_image(game->mlx, game->map->house);
-	mlx_destroy_image(game->mlx, game->map->grass);
-	mlx_destroy_image(game->mlx, game->map->carrot);
-	mlx_destroy_image(game->mlx, game->cha->up);
-	mlx_destroy_image(game->mlx, game->cha->down);
-	mlx_destroy_image(game->mlx, game->cha->left);
-	mlx_destroy_image(game->mlx, game->cha->right);
-}
-void	free_everything_exit(t_game	*game)
-{
-	ft_freeall(game->map->map_arr);
-	destroy_img(game);
-	free(game->map);
-	free(game->cha);
-	mlx_destroy_window(game->mlx, game->window);
-	mlx_destroy_display(game->mlx);
-	free(game->mlx);
-	free(game);
-	exit (0);
-}
+
 
 int	close_window(t_game	*game)
 {

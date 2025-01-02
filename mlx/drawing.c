@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:15:39 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 18:18:15 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 10:29:58 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,23 @@ void	xpm_to_ptr(t_game *game)
 	cha->left = mlx_xpm_file_to_image(game->mlx, "./img/rl.xpm", &w, &h);
 	cha->right = mlx_xpm_file_to_image(game->mlx, "./img/rr.xpm", &w, &h);
 	cha->cur = game->cha->down;
+}
+void	draw_end_screen(t_game *game, int res)
+{
+	void	*win;
+	void	*mlx;
+	int		h;
+	int		w;
+
+	win = game->window;
+	mlx = game->mlx;
+	h = 192;
+	w = 192;
+	
+	mlx_clear_window(game->mlx, game->window);
+	if(res == 1)
+	{
+		game->win_img = mlx_xpm_file_to_image(mlx, "./img/ywr.xpm", &w, &h);
+		mlx_put_image_to_window(mlx, win, game->win_img, 0, 0);
+	}
 }
