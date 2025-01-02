@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 17:37:54 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 09:46:14 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_game
 	void	*window;
 	t_map	*map;
 	t_cha	*cha;
+	void	*win_img;
 }	t_game;
 
 void	check_img(void);
