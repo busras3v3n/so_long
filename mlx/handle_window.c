@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 16:29:57 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/02 16:55:02 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	key_hook(int keycode, t_game *game)
 		free_everything_exit(game);
 	if (keycode == 119 || keycode == 97 || keycode == 115 || keycode == 100)
 	{
+		ft_printf("%d", keycode);
 		move_player(game, keycode);
 	}
 	return (0);
