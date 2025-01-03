@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 20:28:37 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/03 12:36:59 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,25 @@ typedef struct s_game
 	void	*win_img;
 	void	**digit_img;
 	int		win_condition;
+	int		enemy_count;
+	t_enemy	**cat_arr;
+	
 }	t_game;
+
+typedef struct s_enemy
+{
+	int		direction;
+	int		p_len;
+	int		speed;
+	void	*up;
+	void	*down;
+	void	*left;
+	void	*right;
+	void	*cur;
+	int		cur_frame;
+	int		x;
+	int		y;
+}	t_enemy;
 
 void	check_img(void);
 void	check_img2(void);

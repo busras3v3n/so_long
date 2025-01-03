@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 20:34:08 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/03 13:31:13 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,7 @@ void	handle_window(t_map	*map)
 	draw_map(game);
 	mlx_hook(game->window, 17, 0, close_window, game);
 	mlx_key_hook(game->window, key_hook, game);
+	if(enemy_count(game))
+		handle_enemies(game);
 	mlx_loop(game->mlx);
 }

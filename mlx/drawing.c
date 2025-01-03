@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:15:39 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 18:44:44 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/03 13:24:06 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	put_img(char **map, t_game *game, int x, int y)
 	w = game->window;
 	if (map[y][x] == '1')
 		mlx_put_image_to_window(m, w, game->map->wall, x * 64, y * 64);
-	else if (map[y][x] == '0')
+	else if (map[y][x] == '0' || map[y][x] == 'X')
 		mlx_put_image_to_window(m, w, game->map->grass, x * 64, y * 64);
 	else if (map[y][x] == 'C')
 		mlx_put_image_to_window(m, w, game->map->carrot, x * 64, y * 64);
