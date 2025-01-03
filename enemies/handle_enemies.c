@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:23:14 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/03 13:32:35 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/03 18:52:23 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,9 @@ void	enemy_init(t_game *game)
 		i++;
 	}
 }
-void	handle_enemies(t_game *game)
+int	handle_enemies(game)
 {
-	enemy_init(game);
-	mlx_loop_hook()
+	draw_enemy(game);
+	move_enemy(game);
 }
+

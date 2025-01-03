@@ -6,11 +6,11 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 13:20:55 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/03 13:21:04 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/03 18:48:09 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	draw_enemy()
+int	enemy_move(game)
 {
 	
 }
