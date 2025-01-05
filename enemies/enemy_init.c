@@ -6,11 +6,12 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:51:46 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/05 15:44:42 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/05 18:17:56 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+#include <time.h>
 
 void	check_begin_pos(t_enemy *cat, char **map, int k)
 {
@@ -32,7 +33,7 @@ void	check_begin_pos(t_enemy *cat, char **map, int k)
 					(cat)->x = x * 64;
 					(cat)->y = y * 64;
 					return;
-				}	
+				}
 				k--;
 			}
 			x++;
@@ -51,12 +52,7 @@ void	set_enemy_prop(t_enemy *cat, t_game *game)
 
 	w = 64;
 	h = 64;
-	cat->direction = rand_range(0, 3);
-	if(cat->direction == 0 || cat->direction == 2)
-		cat->p_len = rand_range(2, game->map->height - 2) * 64;
-	else if(cat->direction == 1 || cat->direction == 3)
-		cat->p_len = rand_range(2, game->map->width - 2) * 64;
-	cat->step = cat->p_len;
+
 	cat->speed = 20;
 	cat->cur = mlx_xpm_file_to_image(game->mlx, "./enemy_img/placeholder.xpm", &w, &h);
 }
@@ -75,48 +71,6 @@ void	enemy_init(t_game *game)
 		k++;
 	}
 }
-void	set_to_opposite_direction(t_enemy *cat, char **map)
-{
-	if(cat->direction == 0 && (map[cat->y/64 - 1][cat->x/64] == '1' || cat->step == 0))
-		cat->direction = 2;
-	else if(cat->direction == 1 && (map[cat->y/64][cat->x/64 - 1] == '1' || cat->step == 0))
-		cat->direction = 3;
-	else if(cat->direction == 2 && (map[cat->y/64 + 1][cat->x/64] == '1' || cat->step == 0))
-		cat->direction = 0;
-	else if(cat->direction == 3 && (map[cat->y/64][cat->x/64 + 1] == '1' || cat->step == 0))
-		cat->direction = 1;
-	else
-		return ;
-	cat->step = cat->p_len;
-}
-
-void	enemy_move(t_enemy *cat, t_game *game, int speed)
-{
-	set_to_opposite_direction(cat, game->map->map_arr);
-	if(cat->direction == 0)
-		cat->y-= speed;
-	else if(cat->direction == 1)
-		cat->x-= speed;
-	else if(cat->direction == 2)
-		cat->y+= speed;
-	else if(cat->direction == 3)
-		cat->x+= speed;
-	cat->step-= speed;
-}
-void	move_all_enemies(t_game *game)
-{
-	t_enemy	**arr;
-	int		i;
-
-	i = 0;
-	arr = game->cat_arr;
-
-	while(arr[i])
-	{
-		enemy_move(arr[i], game, arr[i]->speed);
-		i++;
-	}
-}
 void	check_enemy_bump(t_game *game)
 {
 	t_enemy **arr;
@@ -129,6 +83,20 @@ void	check_enemy_bump(t_game *game)
 	{
 		if (game->map->map_arr[arr[i]->y/64][arr[i]->x/64] == 'P')
 			reset_game(game);
+		i++;
+	}
+}
+void	move_enemy()
+{
+}
+void	move_all_enemies(t_game *game)
+{
+	int i;
+
+	i = 0;
+	while(game->cat_arr[i])
+	{
+		move_enemy();
 		i++;
 	}
 }

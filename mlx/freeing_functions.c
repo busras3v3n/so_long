@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 09:52:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/05 14:18:09 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/05 16:06:40 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	free_wl(t_game	*game)
 	ft_free_td(game->map->map_arr);
 	destroy_img(game);
 	free(game->cha);
+	ft_free_td((char **)game->cat_arr);
 }
 
 void	free_everything_exit(t_game	*game)
