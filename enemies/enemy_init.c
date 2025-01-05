@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:51:46 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/05 18:17:56 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/05 21:50:15 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ void	set_enemy_prop(t_enemy *cat, t_game *game)
 	w = 64;
 	h = 64;
 
-	cat->speed = 20;
+	cat->direction = rand_range(0, 3);
+	cat->speed = 5;
+	cat->counter = 0;
 	cat->cur = mlx_xpm_file_to_image(game->mlx, "./enemy_img/placeholder.xpm", &w, &h);
 }
 void	enemy_init(t_game *game)
@@ -86,8 +88,45 @@ void	check_enemy_bump(t_game *game)
 		i++;
 	}
 }
-void	move_enemy()
+void	set_enemy_direction(t_enemy *cat, t_game *game)
 {
+	char **map_cp;
+
+	map_cp = ft_split(game->map->map_str, '\n');
+	if ((cat->direction == 3 && map_cp[cat->y / 64][(cat->x / 64) + 1] == '1'))
+	{
+		cat->direction = 1;
+		return ;
+	}
+	else if((cat->direction == 1 && map_cp[cat->y / 64][(cat->x / 64)] == '1'))
+	{
+		cat->direction = 3;
+		return ;
+	}
+	else if(cat->direction == 0 && map_cp[(cat->y / 64)][cat->x / 64] == '1')
+	{
+		cat->direction = 2;
+		return ;
+	}
+	else if(cat->direction == 2 && map_cp[(cat->y / 64 + 1)][(cat->x / 64)] == '1')
+	{
+		cat->direction = 0;
+		return ;
+	}
+}
+
+void	move_enemy(t_enemy *cat, t_game *game)
+{
+	set_enemy_direction(cat, game);
+	if(cat->direction == 0)
+		cat->y-=cat->speed;
+	if(cat->direction == 1)
+		cat->x-=cat->speed;
+	if(cat->direction == 2)
+		cat->y+=cat->speed;
+	if(cat->direction == 3)
+		cat->x+=cat->speed;
+	cat->counter-= cat->speed;
 }
 void	move_all_enemies(t_game *game)
 {
@@ -96,7 +135,7 @@ void	move_all_enemies(t_game *game)
 	i = 0;
 	while(game->cat_arr[i])
 	{
-		move_enemy();
+		move_enemy(game->cat_arr[i], game);
 		i++;
 	}
 }
