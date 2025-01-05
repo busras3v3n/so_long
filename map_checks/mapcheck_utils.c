@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 11:59:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/03 13:24:38 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/05 11:55:20 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	count_chars(char c, t_map *map)
 		map->end_cnt++;
 	else if (c == 'P')
 		map->start_cnt++;
+	else if (c == 'X')
+		map->enemy_cnt++;
 	else if (c != '1' && c != '0' && c != 'X')
 	{
 		write(1, "Error\nInvalid characters in .ber file\n", 38);

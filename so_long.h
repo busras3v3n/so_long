@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/03 12:36:59 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:49:33 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_map
 	void	*grass;
 	void	*house;
 	void	*carrot;
+	int		enemy_cnt;
 }	t_map;
 
 typedef struct s_cha
@@ -58,6 +59,16 @@ typedef struct s_cha
 	int		y;
 }	t_cha;
 
+typedef struct s_enemy
+{
+	int		direction;
+	int		p_len;
+	int		speed;
+	void	*cur;
+	int		x;
+	int		y;
+}	t_enemy;
+
 typedef struct s_game
 {
 	void	*mlx;
@@ -67,25 +78,11 @@ typedef struct s_game
 	void	*win_img;
 	void	**digit_img;
 	int		win_condition;
-	int		enemy_count;
 	t_enemy	**cat_arr;
-	
+	int		endian;
+	int		bpp;
+	int		sl;
 }	t_game;
-
-typedef struct s_enemy
-{
-	int		direction;
-	int		p_len;
-	int		speed;
-	void	*up;
-	void	*down;
-	void	*left;
-	void	*right;
-	void	*cur;
-	int		cur_frame;
-	int		x;
-	int		y;
-}	t_enemy;
 
 void	check_img(void);
 void	check_img2(void);
@@ -115,5 +112,6 @@ void	free_everything_exit(t_game	*game);
 void	draw_end_screen(t_game *game, int res);
 void	display_moves(t_game *game, int	n);
 void	make_digit_arr(void	**arr, t_game *game);
+void	enemy_init(t_game *game);
 
 #endif

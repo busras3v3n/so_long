@@ -6,13 +6,13 @@
 #    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 12:46:54 by busseven          #+#    #+#              #
-#    Updated: 2025/01/02 16:30:39 by busseven         ###   ########.fr        #
+#    Updated: 2025/01/05 12:48:01 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC 		= 	./map_checks/check_ber_file.c ./map_checks/check_img.c ./map_checks/handle_map.c ./map_checks/mapcheck_utils.c \
 				./map_checks/mapcheck_utils2.c ./map_checks/check_valid_path.c ./mlx/handle_window.c ./mlx/player_move.c ./mlx/drawing.c \
-				./mlx/freeing_functions.c ./mlx/counter.c
+				./mlx/freeing_functions.c ./mlx/counter.c ./enemies/enemy_init.c
 OBJS 		= $(SRC:.c=.o)
 
 NAME 		= so_long.a
