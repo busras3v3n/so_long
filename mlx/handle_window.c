@@ -6,12 +6,31 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/05 13:52:07 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/05 15:18:28 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+void	reset_game(t_game *game)
+{
+	game->map->exit_x = game->map->exit_xs;
+	game->map->exit_y = game->map->exit_ys;
+	game->map->map_arr = ft_split(game->map->map_str, '\n');
+	game->win_condition = 0;
+	game->cha->moves = 0;
+	game->cha->cur = game->cha->down;
+	game->cha->carrots = 0;
+	int k;
+	k = 0;
+	
+	while(k < game->map->enemy_cnt)
+	{
+		check_begin_pos(game->cat_arr[k], game->map->map_arr, k);
+		k++;
+	}
+	draw_map(game);
+}
 int	close_window(t_game	*game)
 {
 	free_everything_exit(game);
@@ -28,14 +47,7 @@ int	key_hook(int keycode, t_game *game)
 	}
 	if (keycode == 114)
 	{
-		game->map->exit_x = game->map->exit_xs;
-		game->map->exit_y = game->map->exit_ys;
-		game->map->map_arr = ft_split(game->map->map_str, '\n');
-		game->win_condition = 0;
-		game->cha->moves = 0;
-		game->cha->cur = game->cha->down;
-		game->cha->carrots = 0;
-		draw_map(game);
+		reset_game(game);
 	}
 	return (0);
 }
@@ -59,14 +71,14 @@ void	handle_window(t_map	*map)
 	game->endian = 0;
 	game->bpp = 8;
 	game->sl = 256;
+	game->delay = 20;
 	make_digit_arr(game->digit_img, game);
 	xpm_to_ptr(game);
 	if(game->map->enemy_cnt != 0)
-	{
 		enemy_init(game);
+	draw_map(game);
+	if(game->map->enemy_cnt != 0)
 		mlx_loop_hook(game->mlx, update_game, game);
-	}
-	draw_map(game);	
 	mlx_hook(game->window, 17, 0, close_window, game);
 	mlx_key_hook(game->window, key_hook, game);
 	mlx_loop(game->mlx);

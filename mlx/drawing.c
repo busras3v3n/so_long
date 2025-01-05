@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:15:39 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/05 12:59:41 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/05 15:30:57 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	put_img(char **map, t_game *game, int x, int y)
 	{
 		while(game->cat_arr[i])
 		{
-			mlx_put_image_to_window(m, w, game->cat_arr[i]->cur, game->cat_arr[i]->x * 64, game->cat_arr[i]->y * 64);
+			mlx_put_image_to_window(m, w, game->cat_arr[i]->cur, game->cat_arr[i]->x, game->cat_arr[i]->y);
 			i++;
 		}
 	}

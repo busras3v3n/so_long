@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/05 13:53:24 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/05 15:15:01 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <sys/time.h>
 
 typedef struct s_map
 {
@@ -83,6 +84,9 @@ typedef struct s_game
 	int		endian;
 	int		bpp;
 	int		sl;
+	int 	delay;
+	int		init;
+	struct timeval last_time;
 }	t_game;
 
 void	check_img(void);
@@ -115,6 +119,10 @@ void	display_moves(t_game *game, int	n);
 void	make_digit_arr(void	**arr, t_game *game);
 void	enemy_init(t_game *game);
 void	move_all_enemies(t_game *game);
-int	update_game(t_game *game);
+int		update_game(t_game *game);
+void	you_win(t_game *game);
+void	check_enemy_bump(t_game *game);
+void	reset_game(t_game *game);
+void	check_begin_pos(t_enemy *cat, char **map, int k);
 
 #endif
