@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/05 12:49:33 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/05 13:53:24 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_enemy
 {
 	int		direction;
 	int		p_len;
+	int		step;
 	int		speed;
 	void	*cur;
 	int		x;
@@ -113,5 +114,7 @@ void	draw_end_screen(t_game *game, int res);
 void	display_moves(t_game *game, int	n);
 void	make_digit_arr(void	**arr, t_game *game);
 void	enemy_init(t_game *game);
+void	move_all_enemies(t_game *game);
+int	update_game(t_game *game);
 
 #endif
