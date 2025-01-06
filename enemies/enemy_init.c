@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:51:46 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 09:40:31 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/06 10:47:57 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,11 +115,8 @@ int check_direction_for_wall(t_enemy *cat, char **map_cp)
 		return (1);
 	return(0);
 }
-void	set_enemy_direction(t_enemy *cat, t_game *game)
+void	set_enemy_direction(t_enemy *cat, t_game *game, char **map_cp)
 {
-	char **map_cp;
-
-	map_cp = ft_split(game->map->map_str, '\n');
 	if ((cat->direction == 3 && map_cp[cat->y / 64][(cat->x / 64) + 1] == '1'))
 	{
 		cat->direction = rand_range_exclude(0, 3, 3);
@@ -137,21 +134,20 @@ void	set_enemy_direction(t_enemy *cat, t_game *game)
 		cat->direction = rand_range_exclude(0, 3, 2);
 	}
 	if(check_direction_for_wall(cat, map_cp))
-		set_enemy_direction(cat, game);
+		set_enemy_direction(cat, game, map_cp);
 }
 
 void	move_enemy(t_enemy *cat, t_game *game)
 {
-	set_enemy_direction(cat, game);
-	if(cat->direction == 0)
+	set_enemy_direction(cat, game, game->map->map_arr);
+	if(cat->direction == 0 && !check_direction_for_wall(cat, game->map->map_arr))
 		cat->y-=cat->speed;
-	if(cat->direction == 1)
+	if(cat->direction == 1 && !check_direction_for_wall(cat, game->map->map_arr))
 		cat->x-=cat->speed;
-	if(cat->direction == 2)
+	if(cat->direction == 2 && !check_direction_for_wall(cat, game->map->map_arr))
 		cat->y+=cat->speed;
-	if(cat->direction == 3)
+	if(cat->direction == 3 && !check_direction_for_wall(cat, game->map->map_arr))
 		cat->x+=cat->speed;
-	cat->counter-= cat->speed;
 }
 void	move_all_enemies(t_game *game)
 {
@@ -168,7 +164,6 @@ int	update_game(t_game *game)
 {
 	if (++game->delay % 5000 == 0)
     {
-		ft_printf("%d", rand_range_exclude(0, 3, 3));
 		move_all_enemies(game);
 		draw_map(game);
 		if(game->win_condition == 0)
