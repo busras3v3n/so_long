@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:14:07 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/05 15:03:49 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/06 20:59:07 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,6 @@ void	move_player(t_game *game, int keycode)
 		if (game->map->carrot_cnt == game->cha->carrots)
 			you_win(game);
 	}
-	if(game->win_condition == 0 && game->map->enemy_cnt != 0)
+	if (game->win_condition == 0 && game->map->enemy_cnt != 0)
 		check_enemy_bump(game);
 }

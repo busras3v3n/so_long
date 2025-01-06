@@ -6,11 +6,26 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:15:39 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 20:25:02 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/06 20:58:49 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	put_img_enemies(char **map, t_game *game, int x, int y)
+{
+	cat	**t_enemy;
+
+	cat = game->cat_arr;
+	if (game->map->enemy_cnt != 0)
+	{
+		while (game->cat_arr[i])
+		{
+			mlx_put_image_to_window(m, w, cat[i]->cur, cat[i]->x, cat[i]->y);
+			i++;
+		}
+	}
+}
 
 void	put_img(char **map, t_game *game, int x, int y)
 {
@@ -29,14 +44,7 @@ void	put_img(char **map, t_game *game, int x, int y)
 		mlx_put_image_to_window(m, w, game->map->carrot, x * 64, y * 64);
 	else if (map[y][x] == 'E')
 		mlx_put_image_to_window(m, w, game->map->house, x * 64, y * 64);
-	if(game->map->enemy_cnt != 0)
-	{
-		while(game->cat_arr[i])
-		{
-			mlx_put_image_to_window(m, w, game->cat_arr[i]->cur, game->cat_arr[i]->x, game->cat_arr[i]->y);
-			i++;
-		}
-	}
+	put_img_enemies(map, game, x, y);
 	if (map[y][x] == 'P')
 	{
 		mlx_put_image_to_window(m, w, game->cha->cur, x * 64, y * 64);

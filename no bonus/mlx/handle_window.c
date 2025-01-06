@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 12:48:05 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/06 21:02:13 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	reset_game(t_game *game)
 	game->cha->moves = 0;
 	game->cha->cur = game->cha->down;
 	game->cha->carrots = 0;
-
 	draw_map(game);
 }
+
 int	close_window(t_game	*game)
 {
 	free_everything_exit(game);

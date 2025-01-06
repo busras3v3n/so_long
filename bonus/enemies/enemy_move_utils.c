@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 20:28:33 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 20:34:01 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/06 20:54:54 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,48 @@
 
 void	check_enemy_bump(t_game *game)
 {
-	t_enemy **arr;
-	int i;
+	t_enemy	**arr;
+	int		i;
 
 	i = 0;
 	arr = game->cat_arr;
-
-	while(arr[i])
+	while (arr[i])
 	{
-		if (game->map->map_arr[arr[i]->y/64][arr[i]->x/64] == 'P')
+		if (game->map->map_arr[arr[i]->y / 64][arr[i]->x / 64] == 'P')
 			reset_game(game);
-		else if (game->map->map_arr[arr[i]->y/64 + 1][arr[i]->x/64] == 'P')
+		else if (game->map->map_arr[arr[i]->y / 64 + 1][arr[i]->x / 64] == 'P')
 			reset_game(game);
-		else if (game->map->map_arr[arr[i]->y/64][arr[i]->x/64 + 1] == 'P')
+		else if (game->map->map_arr[arr[i]->y / 64][arr[i]->x / 64 + 1] == 'P')
 			reset_game(game);
 		i++;
 	}
 }
 
-int		rand_range(int min, int max)
+int	rand_range(int min, int max)
 {
-	return((rand() % (max - min + 1)) + min);
+	return ((rand() % (max - min + 1)) + min);
 }
 
-int		rand_range_exclude(int min, int max, int exclude, int exclude2)
+int	rand_range_exclude(int min, int max, int exclude, int exclude2)
 {
-	int rd;
+	int	rd;
 
 	rd = (rand() % (max - min + 1)) + min;
-	if(rd == exclude || rd == exclude2)
+	if (rd == exclude || rd == exclude2)
 	{
-		return(rand_range_exclude(min, max, exclude, exclude2));
+		return (rand_range_exclude(min, max, exclude, exclude2));
 	}
-	return(rd);
+	return (rd);
 }
-int		rand_range_divides_x(int min, int max, int x)
+
+int	rand_range_divides_x(int min, int max, int x)
 {
-	int rd;
+	int	rd;
 
 	rd = rand_range(min, max);
-	if(x % rd != 0)
+	if (x % rd != 0)
 	{
-		return(rand_range_divides_x(min, max, x));
+		return (rand_range_divides_x(min, max, x));
 	}
-	return(rd);
+	return (rd);
 }

@@ -6,13 +6,12 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 09:41:43 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/05 16:22:34 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/06 21:02:33 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "stdio.h"
-#include <time.h>
+
 int	main(int argc, char **argv)
 {
 	t_map	*map;
