@@ -6,13 +6,19 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:51:46 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 12:16:01 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:25:48 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 #include <time.h>
 
+int		is_obstacle(char c)
+{
+	if(c == '1' || c == 'C' || c == 'E')
+		return(1);
+	return(0);
+}
 void	check_begin_pos(t_enemy *cat, char **map, int k)
 {
 	int x;
@@ -120,31 +126,31 @@ void	check_enemy_bump(t_game *game)
 }
 int check_direction_for_wall(t_enemy *cat, char **map_cp)
 {
-	if ((cat->direction == 3 && map_cp[cat->y / 64][(cat->x / 64) + 1] == '1'))
+	if (cat->direction == 3 && is_obstacle(map_cp[cat->y / 64][(cat->x / 64) + 1]))
 		return (1);
-	else if((cat->direction == 1 && map_cp[cat->y / 64][(cat->x / 64)] == '1'))
+	else if(cat->direction == 1 && is_obstacle(map_cp[cat->y / 64][(cat->x / 64)]))
 		return (1);
-	else if(cat->direction == 0 && map_cp[(cat->y / 64)][cat->x / 64] == '1')
+	else if(cat->direction == 0 && is_obstacle(map_cp[(cat->y / 64)][cat->x / 64]))
 		return (1);
-	else if(cat->direction == 2 && map_cp[(cat->y / 64 + 1)][(cat->x / 64)] == '1')
+	else if(cat->direction == 2 && is_obstacle(map_cp[(cat->y / 64 + 1)][(cat->x / 64)]))
 		return (1);
 	return(0);
 }
 void	set_enemy_direction(t_enemy *cat, t_game *game, char **map_cp)
 {
-	if ((cat->direction == 3 && map_cp[cat->y / 64][(cat->x / 64) + 1] == '1'))
+	if (cat->direction == 3 && is_obstacle(map_cp[cat->y / 64][(cat->x / 64) + 1]))
 	{
 		cat->direction = rand_range_exclude(0, 3, 3);
 	}
-	else if((cat->direction == 1 && map_cp[cat->y / 64][(cat->x / 64)] == '1'))
+	else if(cat->direction == 1 && is_obstacle(map_cp[cat->y / 64][(cat->x / 64)]))
 	{
 		cat->direction = rand_range_exclude(0, 3, 1);
 	}
-	else if(cat->direction == 0 && map_cp[(cat->y / 64)][cat->x / 64] == '1')
+	else if(cat->direction == 0 && is_obstacle(map_cp[(cat->y / 64)][cat->x / 64]))
 	{
 		cat->direction = rand_range_exclude(0, 3, 0);
 	}
-	else if(cat->direction == 2 && map_cp[(cat->y / 64 + 1)][(cat->x / 64)] == '1')
+	else if(cat->direction == 2 && is_obstacle(map_cp[(cat->y / 64 + 1)][(cat->x / 64)]))
 	{
 		cat->direction = rand_range_exclude(0, 3, 2);
 	}
