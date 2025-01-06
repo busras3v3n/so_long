@@ -6,19 +6,12 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:51:46 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 12:25:48 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/06 20:38:40 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-#include <time.h>
 
-int		is_obstacle(char c)
-{
-	if(c == '1' || c == 'C' || c == 'E')
-		return(1);
-	return(0);
-}
 void	check_begin_pos(t_enemy *cat, char **map, int k)
 {
 	int x;
@@ -47,32 +40,6 @@ void	check_begin_pos(t_enemy *cat, char **map, int k)
 		y++;
 	}
 }
-int		rand_range(int min, int max)
-{
-	return((rand() % (max - min + 1)) + min);
-}
-int		rand_range_exclude(int min, int max, int exclude)
-{
-	int rd;
-
-	rd = (rand() % (max - min + 1)) + min;
-	if(rd == exclude)
-	{
-		return(rand_range_exclude(min, max, exclude));
-	}
-	return(rd);
-}
-int		rand_range_divides_x(int min, int max, int x)
-{
-	int rd;
-
-	rd = rand_range(min, max);
-	if(x % rd != 0)
-	{
-		return(rand_range_divides_x(min, max, x));
-	}
-	return(rd);
-}
 void	set_enemy_prop(t_enemy *cat, t_game *game)
 {
 	int w;
@@ -82,11 +49,11 @@ void	set_enemy_prop(t_enemy *cat, t_game *game)
 	h = 64;
 
 	cat->direction = rand_range(0, 3);
-	cat->speed = rand_range_divides_x(5, 15, 64);
+	cat->speed = rand_range_divides_x(5, 30, 64);
 	if(cat->direction == 1 || cat->direction == 3)
-		cat->p_len = rand_range(64, (game->map->width - 2) * 64);
+		cat->p_len = rand_range(1, (game->map->width - 2)) * 64;
 	else
-		cat->p_len = rand_range(64, (game->map->height - 2) * 64);
+		cat->p_len = rand_range(1, (game->map->height - 2)) * 64;
 	cat->counter = 0;
 	cat->cur = mlx_xpm_file_to_image(game->mlx, "./enemy_img/placeholder.xpm", &w, &h);
 }
@@ -105,93 +72,7 @@ void	enemy_init(t_game *game)
 		k++;
 	}
 }
-void	check_enemy_bump(t_game *game)
-{
-	t_enemy **arr;
-	int i;
 
-	i = 0;
-	arr = game->cat_arr;
-
-	while(arr[i])
-	{
-		if (game->map->map_arr[arr[i]->y/64][arr[i]->x/64] == 'P')
-			reset_game(game);
-		else if (game->map->map_arr[arr[i]->y/64 + 1][arr[i]->x/64] == 'P')
-			reset_game(game);
-		else if (game->map->map_arr[arr[i]->y/64][arr[i]->x/64 + 1] == 'P')
-			reset_game(game);
-		i++;
-	}
-}
-int check_direction_for_wall(t_enemy *cat, char **map_cp)
-{
-	if (cat->direction == 3 && is_obstacle(map_cp[cat->y / 64][(cat->x / 64) + 1]))
-		return (1);
-	else if(cat->direction == 1 && is_obstacle(map_cp[cat->y / 64][(cat->x / 64)]))
-		return (1);
-	else if(cat->direction == 0 && is_obstacle(map_cp[(cat->y / 64)][cat->x / 64]))
-		return (1);
-	else if(cat->direction == 2 && is_obstacle(map_cp[(cat->y / 64 + 1)][(cat->x / 64)]))
-		return (1);
-	return(0);
-}
-void	set_enemy_direction(t_enemy *cat, t_game *game, char **map_cp)
-{
-	if (cat->direction == 3 && is_obstacle(map_cp[cat->y / 64][(cat->x / 64) + 1]))
-	{
-		cat->direction = rand_range_exclude(0, 3, 3);
-	}
-	else if(cat->direction == 1 && is_obstacle(map_cp[cat->y / 64][(cat->x / 64)]))
-	{
-		cat->direction = rand_range_exclude(0, 3, 1);
-	}
-	else if(cat->direction == 0 && is_obstacle(map_cp[(cat->y / 64)][cat->x / 64]))
-	{
-		cat->direction = rand_range_exclude(0, 3, 0);
-	}
-	else if(cat->direction == 2 && is_obstacle(map_cp[(cat->y / 64 + 1)][(cat->x / 64)]))
-	{
-		cat->direction = rand_range_exclude(0, 3, 2);
-	}
-	if(check_direction_for_wall(cat, map_cp))
-		set_enemy_direction(cat, game, map_cp);
-}
-
-void	move_enemy(t_enemy *cat, t_game *game)
-{
-	set_enemy_direction(cat, game, game->map->map_arr);
-	ft_printf("%d\n", cat->speed);
-	if(cat->direction == 0 && !check_direction_for_wall(cat, game->map->map_arr))
-		cat->y-=cat->speed;
-	if(cat->direction == 1 && !check_direction_for_wall(cat, game->map->map_arr))
-		cat->x-=cat->speed;
-	if(cat->direction == 2 && !check_direction_for_wall(cat, game->map->map_arr))
-		cat->y+=cat->speed;
-	if(cat->direction == 3 && !check_direction_for_wall(cat, game->map->map_arr))
-		cat->x+=cat->speed;
-	cat->counter+=cat->speed;
-	if(cat->counter == cat->p_len || (cat->counter > 2000 && cat->counter % 64 == 0))
-	{
-		cat->counter = 0;
-		cat->direction = rand_range_exclude(0, 3, cat->direction);
-		if(cat->direction == 1 || cat->direction == 3)
-			cat->p_len = rand_range(64, (game->map->width - 2) * 64);
-		else
-			cat->p_len = rand_range(64, (game->map->height - 2) * 64);
-	}
-}
-void	move_all_enemies(t_game *game)
-{
-	int i;
-
-	i = 0;
-	while(game->cat_arr[i])
-	{
-		move_enemy(game->cat_arr[i], game);
-		i++;
-	}
-}
 int	update_game(t_game *game)
 {
 	if (++game->delay % 5000 == 0)

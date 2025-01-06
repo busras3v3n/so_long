@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:14:07 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 12:46:51 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/06 20:25:02 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	you_win(t_game *game)
 
 	game->win_condition = 1;
 	msg = make_map_string("./txt/youwon.txt");
-	ft_printf("\n%s\nYou moved %d times!\n", msg, game->cha->moves);
 	free(msg);
 	draw_end_screen(game, 1);
 }

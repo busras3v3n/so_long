@@ -18,7 +18,6 @@ void	you_win(t_game *game)
 
 	game->win_condition = 1;
 	msg = make_map_string("./txt/youwon.txt");
-	ft_printf("\n%s\nYou moved %d times!\n", msg, game->cha->moves);
 	free(msg);
 	draw_end_screen(game, 1);
 }
