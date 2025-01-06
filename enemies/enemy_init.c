@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:51:46 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 10:47:57 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/06 11:32:55 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,17 @@ int		rand_range_exclude(int min, int max, int exclude)
 	}
 	return(rd);
 }
+int		rand_range_divides_x(int min, int max, int x)
+{
+	int rd;
+
+	rd = rand_range(min, max);
+	if(x % rd != 0)
+	{
+		return(rand_range_divides_x(min, max, x));
+	}
+	return(rd);
+}
 void	set_enemy_prop(t_enemy *cat, t_game *game)
 {
 	int w;
@@ -65,7 +76,7 @@ void	set_enemy_prop(t_enemy *cat, t_game *game)
 	h = 64;
 
 	cat->direction = rand_range(0, 3);
-	cat->speed = rand_range(5, 15);
+	cat->speed = rand_range_divides_x(5, 15, 64);
 	cat->counter = 0;
 	cat->cur = mlx_xpm_file_to_image(game->mlx, "./enemy_img/placeholder.xpm", &w, &h);
 }
@@ -140,6 +151,7 @@ void	set_enemy_direction(t_enemy *cat, t_game *game, char **map_cp)
 void	move_enemy(t_enemy *cat, t_game *game)
 {
 	set_enemy_direction(cat, game, game->map->map_arr);
+	ft_printf("%d\n", cat->speed);
 	if(cat->direction == 0 && !check_direction_for_wall(cat, game->map->map_arr))
 		cat->y-=cat->speed;
 	if(cat->direction == 1 && !check_direction_for_wall(cat, game->map->map_arr))
