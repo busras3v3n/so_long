@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:51:46 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 11:32:55 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:16:01 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,10 @@ void	set_enemy_prop(t_enemy *cat, t_game *game)
 
 	cat->direction = rand_range(0, 3);
 	cat->speed = rand_range_divides_x(5, 15, 64);
+	if(cat->direction == 1 || cat->direction == 3)
+		cat->p_len = rand_range(64, (game->map->width - 2) * 64);
+	else
+		cat->p_len = rand_range(64, (game->map->height - 2) * 64);
 	cat->counter = 0;
 	cat->cur = mlx_xpm_file_to_image(game->mlx, "./enemy_img/placeholder.xpm", &w, &h);
 }
@@ -160,6 +164,16 @@ void	move_enemy(t_enemy *cat, t_game *game)
 		cat->y+=cat->speed;
 	if(cat->direction == 3 && !check_direction_for_wall(cat, game->map->map_arr))
 		cat->x+=cat->speed;
+	cat->counter+=cat->speed;
+	if(cat->counter == cat->p_len || (cat->counter > 2000 && cat->counter % 64 == 0))
+	{
+		cat->counter = 0;
+		cat->direction = rand_range_exclude(0, 3, cat->direction);
+		if(cat->direction == 1 || cat->direction == 3)
+			cat->p_len = rand_range(64, (game->map->width - 2) * 64);
+		else
+			cat->p_len = rand_range(64, (game->map->height - 2) * 64);
+	}
 }
 void	move_all_enemies(t_game *game)
 {

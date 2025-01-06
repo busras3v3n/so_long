@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/05 19:15:47 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:11:41 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_cha
 typedef struct s_enemy
 {
 	int		direction;
+	int		p_len;
 	int		counter;
 	int		speed;
 	void	*cur;
