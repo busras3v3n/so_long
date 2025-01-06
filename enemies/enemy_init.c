@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:51:46 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 09:24:28 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/06 09:40:31 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,17 @@ int		rand_range(int min, int max)
 {
 	return((rand() % (max - min + 1)) + min);
 }
+int		rand_range_exclude(int min, int max, int exclude)
+{
+	int rd;
+
+	rd = (rand() % (max - min + 1)) + min;
+	if(rd == exclude)
+	{
+		return(rand_range_exclude(min, max, exclude));
+	}
+	return(rd);
+}
 void	set_enemy_prop(t_enemy *cat, t_game *game)
 {
 	int w;
@@ -54,7 +65,7 @@ void	set_enemy_prop(t_enemy *cat, t_game *game)
 	h = 64;
 
 	cat->direction = rand_range(0, 3);
-	cat->speed = 5;
+	cat->speed = rand_range(5, 15);
 	cat->counter = 0;
 	cat->cur = mlx_xpm_file_to_image(game->mlx, "./enemy_img/placeholder.xpm", &w, &h);
 }
@@ -92,6 +103,18 @@ void	check_enemy_bump(t_game *game)
 		i++;
 	}
 }
+int check_direction_for_wall(t_enemy *cat, char **map_cp)
+{
+	if ((cat->direction == 3 && map_cp[cat->y / 64][(cat->x / 64) + 1] == '1'))
+		return (1);
+	else if((cat->direction == 1 && map_cp[cat->y / 64][(cat->x / 64)] == '1'))
+		return (1);
+	else if(cat->direction == 0 && map_cp[(cat->y / 64)][cat->x / 64] == '1')
+		return (1);
+	else if(cat->direction == 2 && map_cp[(cat->y / 64 + 1)][(cat->x / 64)] == '1')
+		return (1);
+	return(0);
+}
 void	set_enemy_direction(t_enemy *cat, t_game *game)
 {
 	char **map_cp;
@@ -99,24 +122,22 @@ void	set_enemy_direction(t_enemy *cat, t_game *game)
 	map_cp = ft_split(game->map->map_str, '\n');
 	if ((cat->direction == 3 && map_cp[cat->y / 64][(cat->x / 64) + 1] == '1'))
 	{
-		cat->direction = 1;
-		return ;
+		cat->direction = rand_range_exclude(0, 3, 3);
 	}
 	else if((cat->direction == 1 && map_cp[cat->y / 64][(cat->x / 64)] == '1'))
 	{
-		cat->direction = 3;
-		return ;
+		cat->direction = rand_range_exclude(0, 3, 1);
 	}
 	else if(cat->direction == 0 && map_cp[(cat->y / 64)][cat->x / 64] == '1')
 	{
-		cat->direction = 2;
-		return ;
+		cat->direction = rand_range_exclude(0, 3, 0);
 	}
 	else if(cat->direction == 2 && map_cp[(cat->y / 64 + 1)][(cat->x / 64)] == '1')
 	{
-		cat->direction = 0;
-		return ;
+		cat->direction = rand_range_exclude(0, 3, 2);
 	}
+	if(check_direction_for_wall(cat, map_cp))
+		set_enemy_direction(cat, game);
 }
 
 void	move_enemy(t_enemy *cat, t_game *game)
@@ -147,6 +168,7 @@ int	update_game(t_game *game)
 {
 	if (++game->delay % 5000 == 0)
     {
+		ft_printf("%d", rand_range_exclude(0, 3, 3));
 		move_all_enemies(game);
 		draw_map(game);
 		if(game->win_condition == 0)
