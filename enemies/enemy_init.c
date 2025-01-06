@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:51:46 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/05 21:50:15 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/06 09:24:28 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,10 @@ void	check_enemy_bump(t_game *game)
 	while(arr[i])
 	{
 		if (game->map->map_arr[arr[i]->y/64][arr[i]->x/64] == 'P')
+			reset_game(game);
+		else if (game->map->map_arr[arr[i]->y/64 + 1][arr[i]->x/64] == 'P')
+			reset_game(game);
+		else if (game->map->map_arr[arr[i]->y/64][arr[i]->x/64 + 1] == 'P')
 			reset_game(game);
 		i++;
 	}
