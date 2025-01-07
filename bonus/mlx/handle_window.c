@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 21:00:48 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/07 19:50:10 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	handle_window(t_map	*map)
 	game->mlx = mlx_init();
 	game->window = mlx_new_window(game->mlx, (w * 64), (h * 64), "so_long");
 	game->digit_img = ft_calloc(10, sizeof(void *));
+	game->delay = 0;
 	make_digit_arr(game->digit_img, game);
 	xpm_to_ptr(game);
 	if (game->map->enemy_cnt != 0)

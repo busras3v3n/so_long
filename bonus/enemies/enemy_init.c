@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:51:46 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/07 12:10:33 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/07 19:40:14 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	set_enemy_prop(t_enemy *cat, t_game *game)
 	else
 		cat->p_len = rand_range(1, (game->map->height - 2)) * 64;
 	cat->counter = 0;
+	cat->frame_counter = 0;
 	cat->cur = mlx_xpm_file_to_image(game->mlx, "./enemy_img/ph.xpm", &w, &h);
 }
 
@@ -89,7 +90,6 @@ int	update_game(t_game *game)
 		if (game->win_condition == 0)
 		{
 			check_enemy_bump(game);
-			enemy_bump_each(game->cat_arr);
 		}
 	}
 	return (0);

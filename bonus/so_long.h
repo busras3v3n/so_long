@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/07 12:11:04 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/07 19:52:32 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,11 @@ typedef struct s_enemy
 	int		counter;
 	int		speed;
 	void	*cur;
+	void	*f0;
+	void	*f1;
+	void	*f2;
+	void	*f3;
+	int		frame_counter;
 	int		x;
 	int		y;
 }	t_enemy;
@@ -80,13 +85,8 @@ typedef struct s_game
 	void	*win_img;
 	void	**digit_img;
 	int		win_condition;
+	int		delay;
 	t_enemy	**cat_arr;
-	int		endian;
-	int		bpp;
-	int		sl;
-	int 	delay;
-	int		init;
-	struct timeval last_time;
 }	t_game;
 
 void	check_img(void);
@@ -127,7 +127,7 @@ void	check_begin_pos(t_enemy *cat, char **map, int k);
 int		rand_range(int min, int max);
 int		rand_range_divides_x(int min, int max, int x);
 void	move_all_enemies(t_game *game);
-void	move_enemy(t_enemy *cat, t_game *game);
+void	move_enemy(t_enemy *cat, t_game *game, char **map);
 void	set_enemy_direction(t_enemy *cat, t_game *game, char **map_cp);
 int		check_direction_for_wall(t_enemy *cat, char **map_cp);
 int		rand_range_exclude(int min, int max, int exclude, int exclude2);
