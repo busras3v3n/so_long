@@ -6,11 +6,12 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 20:25:11 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/07 11:04:10 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/07 11:38:20 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
 
 int	check_direction_for_wall(t_enemy *cat, char **map_cp)
 {
@@ -49,6 +50,10 @@ void	set_enemy_direction(t_enemy *cat, t_game *game, char **map_cp)
 		cat->direction = rand_range_exclude(0, 3, 2, 2);
 	if (check_direction_for_wall(cat, map_cp))
 		set_enemy_direction(cat, game, map_cp);
+	if (cat->direction == 1 || cat->direction == 3)
+		cat->p_len = rand_range(1, (game->map->width - 2)) * 64;
+	else
+		cat->p_len = rand_range(1, (game->map->height - 2)) * 64;
 }
 void	set_enemy_direction2(t_enemy *cat, t_game *game, char **map_cp)
 {
@@ -77,14 +82,14 @@ void	move_enemy(t_enemy *cat, t_game *game)
 	if (cat->direction == 3 && !check_direction_for_wall(cat, map_cp))
 		cat->x += cat->speed;
 	cat->counter += cat->speed;
-	if (cat->counter == cat->p_len)
+	if (cat->counter == cat->p_len || (cat->counter > 2000 && (cat->x % 64 == 0 || cat->y % 64 == 0)))
 	{
 		cat->counter = 0;
 		set_enemy_direction2(cat, game, game->map->map_arr);
 		if (cat->direction == 1 || cat->direction == 3)
-			cat->p_len = rand_range(3, (game->map->width - 2)) * 64;
+			cat->p_len = rand_range(1, (game->map->width - 2)) * 64;
 		else
-			cat->p_len = rand_range(3, (game->map->height - 2)) * 64;
+			cat->p_len = rand_range(1, (game->map->height - 2)) * 64;
 	}
 }
 
