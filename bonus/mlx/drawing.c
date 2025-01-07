@@ -6,16 +6,19 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:15:39 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 20:58:49 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/07 11:08:19 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	put_img_enemies(char **map, t_game *game, int x, int y)
+void	put_img_enemies(t_game *game, void *m, void *w)
 {
-	cat	**t_enemy;
+	t_enemy **cat;
 
+	int		i;
+
+	i = 0;
 	cat = game->cat_arr;
 	if (game->map->enemy_cnt != 0)
 	{
@@ -31,20 +34,18 @@ void	put_img(char **map, t_game *game, int x, int y)
 {
 	void	*m;
 	void	*w;
-	int		i;
 
-	i = 0;
 	m = game->mlx;
 	w = game->window;
 	if (map[y][x] == '1')
 		mlx_put_image_to_window(m, w, game->map->wall, x * 64, y * 64);
 	else if (map[y][x] == '0' || map[y][x] == 'X')
 		mlx_put_image_to_window(m, w, game->map->grass, x * 64, y * 64);
-	else if (map[y][x] == 'C')
-		mlx_put_image_to_window(m, w, game->map->carrot, x * 64, y * 64);
 	else if (map[y][x] == 'E')
 		mlx_put_image_to_window(m, w, game->map->house, x * 64, y * 64);
-	put_img_enemies(map, game, x, y);
+	put_img_enemies(game, m, w);
+	if (map[y][x] == 'C')
+		mlx_put_image_to_window(m, w, game->map->carrot, x * 64, y * 64);
 	if (map[y][x] == 'P')
 	{
 		mlx_put_image_to_window(m, w, game->cha->cur, x * 64, y * 64);

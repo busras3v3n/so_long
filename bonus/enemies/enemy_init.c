@@ -6,11 +6,18 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:51:46 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 20:48:07 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/07 11:09:06 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+int	is_obstacle(char c)
+{
+	if (c == '1' || c == 'E')
+		return (1);
+	return (0);
+}
 
 void	check_begin_pos(t_enemy *cat, char **map, int k)
 {
@@ -49,7 +56,7 @@ void	set_enemy_prop(t_enemy *cat, t_game *game)
 	w = 64;
 	h = 64;
 	cat->direction = rand_range(0, 3);
-	cat->speed = rand_range_divides_x(5, 30, 64);
+	cat->speed = rand_range_divides_x(5, 25, 64);
 	if (cat->direction == 1 || cat->direction == 3)
 		cat->p_len = rand_range(1, (game->map->width - 2)) * 64;
 	else

@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 20:28:33 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 20:54:54 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/07 10:50:43 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,18 @@ int	rand_range_exclude(int min, int max, int exclude, int exclude2)
 	if (rd == exclude || rd == exclude2)
 	{
 		return (rand_range_exclude(min, max, exclude, exclude2));
+	}
+	return (rd);
+}
+
+int	rand_max_exclude(int max, int exclude, int exclude2, int exclude3)
+{
+	int	rd;
+
+	rd = (rand() % (max + 1));
+	if (rd == exclude || rd == exclude2 || rd == exclude3)
+	{
+		return (rand_max_exclude(max, exclude, exclude2, exclude3));
 	}
 	return (rd);
 }

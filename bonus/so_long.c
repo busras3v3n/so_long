@@ -6,11 +6,12 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 09:41:43 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 21:03:05 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/07 10:44:09 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <time.h>
 
 int	main(int argc, char **argv)
 {

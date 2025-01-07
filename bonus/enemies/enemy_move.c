@@ -6,18 +6,11 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 20:25:11 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 20:53:07 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/07 11:04:10 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-int	is_obstacle(char c)
-{
-	if (c == '1' || c == 'C' || c == 'E')
-		return (1);
-	return (0);
-}
 
 int	check_direction_for_wall(t_enemy *cat, char **map_cp)
 {
@@ -57,28 +50,37 @@ void	set_enemy_direction(t_enemy *cat, t_game *game, char **map_cp)
 	if (check_direction_for_wall(cat, map_cp))
 		set_enemy_direction(cat, game, map_cp);
 }
+void	set_enemy_direction2(t_enemy *cat, t_game *game, char **map_cp)
+{
+	if (cat->x % 64 == 0 && cat->y % 64 == 0)
+		cat->direction = rand_range_exclude(0, 3, cat->direction, 6);
+	else if (cat->x % 64 != 0)
+		cat->direction = rand_max_exclude(3, 0, 2, cat->direction);
+	else if (cat->y % 64 != 0)
+			cat->direction = rand_max_exclude(3, 1, 3, cat->direction);
+	if (check_direction_for_wall(cat, map_cp))
+		set_enemy_direction2(cat, game, map_cp);
+}
 
 void	move_enemy(t_enemy *cat, t_game *game)
 {
+	char	**map_cp;
+
+	map_cp = game->map->map_arr;
 	set_enemy_direction(cat, game, game->map->map_arr);
-	if (cat->direction == 0)
+	if (cat->direction == 0 && !check_direction_for_wall(cat, map_cp))
 		cat->y -= cat->speed;
-	if (cat->direction == 1)
+	if (cat->direction == 1 && !check_direction_for_wall(cat, map_cp))
 		cat->x -= cat->speed;
-	if (cat->direction == 2)
+	if (cat->direction == 2 && !check_direction_for_wall(cat, map_cp))
 		cat->y += cat->speed;
-	if (cat->direction == 3)
+	if (cat->direction == 3 && !check_direction_for_wall(cat, map_cp))
 		cat->x += cat->speed;
 	cat->counter += cat->speed;
-	if (cat->counter == cat->p_len || (cat->counter > 1000))
+	if (cat->counter == cat->p_len)
 	{
 		cat->counter = 0;
-		if (cat->x % 64 == 0 && cat->y % 64 == 0)
-			cat->direction = rand_range_exclude(0, 3, cat->direction, 6);
-		else if (cat->x % 64 != 0)
-			cat->direction = rand_range_exclude(0, 3, 0, 2);
-		else if (cat->y % 64 != 0)
-			cat->direction = rand_range_exclude(0, 3, 1, 3);
+		set_enemy_direction2(cat, game, game->map->map_arr);
 		if (cat->direction == 1 || cat->direction == 3)
 			cat->p_len = rand_range(3, (game->map->width - 2)) * 64;
 		else
