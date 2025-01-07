@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:51:46 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/07 11:36:54 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/07 12:10:33 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,10 @@ int	update_game(t_game *game)
 		move_all_enemies(game);
 		draw_map(game);
 		if (game->win_condition == 0)
+		{
 			check_enemy_bump(game);
+			enemy_bump_each(game->cat_arr);
+		}
 	}
 	return (0);
 }

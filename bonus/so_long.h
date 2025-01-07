@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/07 11:36:58 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/07 12:11:04 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,5 +135,6 @@ int		is_obstacle(char c);
 void	check_enemy_bump(t_game *game);
 int		rand_max_exclude(int max, int exclude, int exclude2, int exclude3);
 int		is_obstacle(char c);
+void	enemy_bump_each(t_enemy **arr);
 
 #endif
