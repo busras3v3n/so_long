@@ -6,12 +6,12 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 20:25:11 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/07 19:53:15 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/08 20:12:47 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
+#include <stdio.h>
 
 int	check_direction_for_wall(t_enemy *cat, char **map)
 {
@@ -69,6 +69,9 @@ void	set_enemy_direction2(t_enemy *cat, t_game *game, char **map)
 
 void	move_enemy(t_enemy *cat, t_game *game, char **map)
 {
+	char *path;
+	int w = 64;
+	int h = 64;
 	set_enemy_direction(cat, game, game->map->map_arr);
 	if(!check_direction_for_wall(cat, map))
 	{
@@ -82,6 +85,18 @@ void	move_enemy(t_enemy *cat, t_game *game, char **map)
 			cat->x += cat->speed;
 		cat->counter += cat->speed;
 		cat->frame_counter += cat->speed;
+	}
+	if(cat->frame_counter > 32)
+	{
+		path = ft_calloc(22, 1);
+		cat->frame_counter = 0;
+		cat->frame++;
+		if(cat->frame > 3)
+			cat->frame = 0;
+		free(cat->cur);
+		snprintf(path, 22, "./enemy_img/%d/%d/%d.xpm", cat->color, cat->direction, cat->frame);
+		cat->cur = mlx_xpm_file_to_image(game->mlx, path, &w, &h);
+		free(path);
 	}
 	if (cat->counter == cat->p_len || (cat->counter > 2000 && (cat->x % 64 == 0 || cat->y % 64 == 0)))
 	{

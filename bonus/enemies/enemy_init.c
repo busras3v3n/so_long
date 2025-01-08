@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:51:46 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/08 19:05:48 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/08 20:03:18 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	set_enemy_prop(t_enemy *cat, t_game *game)
 		cat->p_len = rand_range(1, (game->map->height - 2)) * 64;
 	cat->counter = 0;
 	cat->frame_counter = 0;
+	cat->frame = 0;
 	cat->color = rand_range(0, 3);
 	snprintf(path, 22, "./enemy_img/%d/%d/0.xpm", cat->color, cat->direction);
 	cat->cur = mlx_xpm_file_to_image(game->mlx, path, &w, &h);

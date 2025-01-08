@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/07 20:03:43 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/08 20:02:56 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,9 @@ typedef struct s_enemy
 	int		counter;
 	int		speed;
 	void	*cur;
-	void	*f0;
-	void	*f1;
-	void	*f2;
-	void	*f3;
 	int		color;
 	int		frame_counter;
+	int		frame;
 	int		x;
 	int		y;
 }	t_enemy;
