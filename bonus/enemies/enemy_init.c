@@ -6,11 +6,12 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:51:46 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/07 20:06:27 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/08 19:05:48 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+#include <stdio.h>
 
 int	is_obstacle(char c)
 {
@@ -52,6 +53,8 @@ void	set_enemy_prop(t_enemy *cat, t_game *game)
 {
 	int	w;
 	int	h;
+	char *path;
+	path = ft_calloc(22, 1);
 
 	w = 64;
 	h = 64;
@@ -63,8 +66,10 @@ void	set_enemy_prop(t_enemy *cat, t_game *game)
 		cat->p_len = rand_range(1, (game->map->height - 2)) * 64;
 	cat->counter = 0;
 	cat->frame_counter = 0;
-	cat->color = rand_range(0, 4);
-	cat->cur = mlx_xpm_file_to_image(game->mlx, "./enemy_img/ph.xpm", &w, &h);
+	cat->color = rand_range(0, 3);
+	snprintf(path, 22, "./enemy_img/%d/%d/0.xpm", cat->color, cat->direction);
+	cat->cur = mlx_xpm_file_to_image(game->mlx, path, &w, &h);
+	free(path);
 }
 
 void	enemy_init(t_game *game)
