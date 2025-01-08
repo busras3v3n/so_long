@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 20:25:11 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/08 20:12:47 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/08 20:39:12 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ int	check_direction_for_wall(t_enemy *cat, char **map)
 {
 	if (cat->direction == 3)
 	{
-		if (is_obstacle(map[cat->y / 64][(cat->x / 64) + 1]))
+		if (is_obstacle(map[cat->y / 64][((cat->x + cat->speed) / 64) + 1]))
 			return (1);
 	}
 	else if (cat->direction == 1)
 	{
-		if (is_obstacle(map[cat->y / 64][(cat->x / 64)]))
+		if (is_obstacle(map[cat->y / 64][((cat->x - cat->speed )/ 64)]))
 			return (1);
 	}
 	else if (cat->direction == 0)
 	{
-		if (is_obstacle(map[(cat->y / 64)][cat->x / 64]))
+		if (is_obstacle(map[((cat->y - cat->speed) / 64)][cat->x / 64]))
 			return (1);
 	}
 	else if (cat->direction == 2)
 	{
-		if (is_obstacle(map[(cat->y / 64 + 1)][(cat->x / 64)]))
+		if (is_obstacle(map[((cat->y + cat->speed) / 64 + 1)][(cat->x / 64)]))
 			return (1);
 	}
 	return (0);
@@ -41,7 +41,10 @@ int	check_direction_for_wall(t_enemy *cat, char **map)
 void	set_enemy_direction(t_enemy *cat, t_game *game, char **map)
 {
 	if (cat->direction == 3 && check_direction_for_wall(cat, map))
-		cat->direction = rand_range_exclude(0, 3, 3, 3);
+	{
+		cat->x+=cat->speed;
+		cat->direction = rand_range_exclude(0, 3, 3, 3);;
+	}
 	else if (cat->direction == 1 && check_direction_for_wall(cat, map))
 		cat->direction = rand_range_exclude(0, 3, 1, 1);
 	else if (cat->direction == 0 && check_direction_for_wall(cat, map))
@@ -67,34 +70,46 @@ void	set_enemy_direction2(t_enemy *cat, t_game *game, char **map)
 		set_enemy_direction2(cat, game, map);
 }
 
-void	move_enemy(t_enemy *cat, t_game *game, char **map)
+void	animate_cat(t_enemy *cat, t_game *game)
+{
+	int w = 64;
+	int h = 64;
+	char *path;
+	path = ft_calloc(22, 1);
+	snprintf(path, 22, "./enemy_img/%d/%d/%d.xpm", cat->color, cat->direction, cat->frame);
+	free(cat->cur);
+	cat->cur = mlx_xpm_file_to_image(game->mlx, path, &w, &h);
+	free(path);
+}
+
+
+void	move_enemy(t_enemy *cat, t_game *game)
 {
 	char *path;
 	int w = 64;
 	int h = 64;
 	set_enemy_direction(cat, game, game->map->map_arr);
-	if(!check_direction_for_wall(cat, map))
-	{
-		if (cat->direction == 0)
-			cat->y -= cat->speed;
-		if (cat->direction == 1)
-			cat->x -= cat->speed;
-		if (cat->direction == 2)
-			cat->y += cat->speed;
-		if (cat->direction == 3)
-			cat->x += cat->speed;
-		cat->counter += cat->speed;
-		cat->frame_counter += cat->speed;
-	}
-	if(cat->frame_counter > 32)
+	animate_cat(cat, game);
+	if (cat->direction == 0)
+		cat->y -= cat->speed;
+	if (cat->direction == 1)
+		cat->x -= cat->speed;
+	if (cat->direction == 2)
+		cat->y += cat->speed;
+	if (cat->direction == 3)
+		cat->x += cat->speed;
+	cat->counter += cat->speed;
+	cat->frame_counter += cat->speed;
+	if(cat->frame_counter > 20)
 	{
 		path = ft_calloc(22, 1);
 		cat->frame_counter = 0;
 		cat->frame++;
 		if(cat->frame > 3)
 			cat->frame = 0;
-		free(cat->cur);
+		path = ft_calloc(22, 1);
 		snprintf(path, 22, "./enemy_img/%d/%d/%d.xpm", cat->color, cat->direction, cat->frame);
+		free(cat->cur);
 		cat->cur = mlx_xpm_file_to_image(game->mlx, path, &w, &h);
 		free(path);
 	}
@@ -116,7 +131,7 @@ void	move_all_enemies(t_game *game)
 	i = 0;
 	while (game->cat_arr[i])
 	{
-		move_enemy(game->cat_arr[i], game, game->map->map_arr);
+		move_enemy(game->cat_arr[i], game);
 		i++;
 	}
 }
