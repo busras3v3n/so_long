@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 20:25:11 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/08 20:39:12 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/10 12:09:02 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,8 @@ int	check_direction_for_wall(t_enemy *cat, char **map)
 void	set_enemy_direction(t_enemy *cat, t_game *game, char **map)
 {
 	if (cat->direction == 3 && check_direction_for_wall(cat, map))
-	{
-		cat->x+=cat->speed;
-		cat->direction = rand_range_exclude(0, 3, 3, 3);;
-	}
-	else if (cat->direction == 1 && check_direction_for_wall(cat, map))
+		cat->direction = rand_range_exclude(0, 3, 3, 3);
+	else if (cat->direction == 1 && check_direction_for_wall(cat, map))	
 		cat->direction = rand_range_exclude(0, 3, 1, 1);
 	else if (cat->direction == 0 && check_direction_for_wall(cat, map))
 		cat->direction = rand_range_exclude(0, 3, 0, 0);
@@ -82,14 +79,8 @@ void	animate_cat(t_enemy *cat, t_game *game)
 	free(path);
 }
 
-
-void	move_enemy(t_enemy *cat, t_game *game)
+void	change_pos(t_enemy *cat)
 {
-	char *path;
-	int w = 64;
-	int h = 64;
-	set_enemy_direction(cat, game, game->map->map_arr);
-	animate_cat(cat, game);
 	if (cat->direction == 0)
 		cat->y -= cat->speed;
 	if (cat->direction == 1)
@@ -98,9 +89,19 @@ void	move_enemy(t_enemy *cat, t_game *game)
 		cat->y += cat->speed;
 	if (cat->direction == 3)
 		cat->x += cat->speed;
+}
+void	move_enemy(t_enemy *cat, t_game *game)
+{
+	char *path;
+	int w = 64;
+	int h = 64;
+	if(cat->x % 64 == 0 && cat->y % 64 == 0)
+		set_enemy_direction(cat, game, game->map->map_arr);
+	animate_cat(cat, game);
+	change_pos(cat);
 	cat->counter += cat->speed;
 	cat->frame_counter += cat->speed;
-	if(cat->frame_counter > 20)
+	if(cat->frame_counter > 15)
 	{
 		path = ft_calloc(22, 1);
 		cat->frame_counter = 0;
@@ -113,7 +114,7 @@ void	move_enemy(t_enemy *cat, t_game *game)
 		cat->cur = mlx_xpm_file_to_image(game->mlx, path, &w, &h);
 		free(path);
 	}
-	if (cat->counter == cat->p_len || (cat->counter > 2000 && (cat->x % 64 == 0 || cat->y % 64 == 0)))
+	if ((cat->counter == cat->p_len || cat->counter > 2000) && (cat->x % 64 == 0 || cat->y % 64 == 0))
 	{
 		cat->counter = 0;
 		set_enemy_direction2(cat, game, game->map->map_arr);
