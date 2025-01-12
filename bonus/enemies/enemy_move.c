@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 20:25:11 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/10 12:09:02 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/12 16:40:09 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,25 @@ int	check_direction_for_wall(t_enemy *cat, char **map)
 	}
 	return (0);
 }
-
+void	set_enemy_direction_help(t_enemy *cat)
+{
+	if(cat->x % 64 == 0 && cat->y % 64 == 0)
+	{
+		cat->direction = rand_range_exclude(0, 3, cat->direction, cat->direction);
+	}
+	else if(cat->x % 64 != 0)
+	{
+		cat->direction = rand_max_exclude(3, cat->direction, 0, 2);
+	}
+	else if(cat->y % 64 != 0)
+	{
+		cat->direction = rand_max_exclude(3, cat->direction, 1, 3);
+	}
+}
 void	set_enemy_direction(t_enemy *cat, t_game *game, char **map)
 {
-	if (cat->direction == 3 && check_direction_for_wall(cat, map))
-		cat->direction = rand_range_exclude(0, 3, 3, 3);
-	else if (cat->direction == 1 && check_direction_for_wall(cat, map))	
-		cat->direction = rand_range_exclude(0, 3, 1, 1);
-	else if (cat->direction == 0 && check_direction_for_wall(cat, map))
-		cat->direction = rand_range_exclude(0, 3, 0, 0);
-	else if (cat->direction == 2 && check_direction_for_wall(cat, map))
-		cat->direction = rand_range_exclude(0, 3, 2, 2);
+	if (check_direction_for_wall(cat, map))
+		set_enemy_direction_help(cat);
 	if (check_direction_for_wall(cat, map))
 		set_enemy_direction(cat, game, map);
 	if (cat->direction == 1 || cat->direction == 3)
@@ -95,8 +103,7 @@ void	move_enemy(t_enemy *cat, t_game *game)
 	char *path;
 	int w = 64;
 	int h = 64;
-	if(cat->x % 64 == 0 && cat->y % 64 == 0)
-		set_enemy_direction(cat, game, game->map->map_arr);
+	set_enemy_direction(cat, game, game->map->map_arr);
 	animate_cat(cat, game);
 	change_pos(cat);
 	cat->counter += cat->speed;
