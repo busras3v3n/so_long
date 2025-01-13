@@ -6,13 +6,23 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:51:46 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/08 20:03:18 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:32:55 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 #include <stdio.h>
 
+void sort_enemies_by_priority(t_enemy **arr)
+{
+	int i = 0;
+	
+	while(arr[i])
+	{
+		arr[i]->priority = i;
+		i++;
+	}
+}
 int	is_obstacle(char c)
 {
 	if (c == '1' || c == 'E')
@@ -70,6 +80,8 @@ void	set_enemy_prop(t_enemy *cat, t_game *game)
 	cat->color = rand_range(0, 3);
 	snprintf(path, 22, "./enemy_img/%d/%d/0.xpm", cat->color, cat->direction);
 	cat->cur = mlx_xpm_file_to_image(game->mlx, path, &w, &h);
+	cat->freeze = 0;
+	sort_enemies_by_priority(game->cat_arr);
 	free(path);
 }
 

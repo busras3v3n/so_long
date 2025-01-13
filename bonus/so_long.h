@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/10 12:02:53 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:31:13 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,12 @@ typedef struct s_enemy
 	int		frame;
 	int		x;
 	int		y;
+	int		freeze;
+	int		a;
+	int		b;
+	int		c;
+	int		d;
+	int		priority;
 }	t_enemy;
 
 typedef struct s_game
@@ -126,7 +132,7 @@ int		rand_range(int min, int max);
 int		rand_range_divides_x(int min, int max, int x);
 void	move_all_enemies(t_game *game);
 void	move_enemy(t_enemy *cat, t_game *game);
-void	set_enemy_direction(t_enemy *cat, t_game *game, char **map_cp);
+void	set_enemy_direction(t_enemy *cat, t_game *game, char **map_cp, int recursion);
 int		check_direction_for_wall(t_enemy *cat, char **map_cp);
 int		rand_range_exclude(int min, int max, int exclude, int exclude2);
 int		is_obstacle(char c);
@@ -135,4 +141,5 @@ int		rand_max_exclude(int max, int exclude, int exclude2, int exclude3);
 int		is_obstacle(char c);
 void	enemy_bump_each(t_enemy **arr);
 void	change_pos(t_enemy *cat);
+void	check_surrounded(t_enemy *cat, char **map);
 #endif
