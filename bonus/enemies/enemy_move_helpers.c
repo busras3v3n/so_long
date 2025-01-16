@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:49:54 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/16 10:11:17 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:23:38 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void	animate_cat(t_enemy *cat, t_game *game)
 		cat->frame = 0;
 	path = ft_calloc(22, 1);
 	snprintf(path, 22, "./enemy_img/%d/%d/%d.xpm", cat->color, d, cat->frame);
-	free(cat->cur);
+	mlx_destroy_image(game->mlx, cat->cur);
 	cat->cur = mlx_xpm_file_to_image(game->mlx, path, &w, &h);
 	free(path);
 }
