@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:36:30 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 18:57:00 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/16 16:45:06 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,5 @@ void	display_moves(t_game *game, int n)
 		mlx_put_image_to_window(game->mlx, win, arr[num[i] - 48], i * 64, 0);
 		i++;
 	}
+	free(num);
 }

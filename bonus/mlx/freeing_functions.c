@@ -6,12 +6,37 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 09:52:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/05 16:06:40 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:02:40 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+void	destroy_cats(t_enemy **arr)
+{
+	int	k;
+
+	k = 0;
+	while(arr[k])
+	{
+		free(arr[k]->cur);
+		free(arr[k]);
+		k++;
+	}
+	free(arr);
+}
+void	destroy_void_arr(void **arr)
+{
+	int	i;
+
+	i = 0;
+	while (i <= 9)
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+}
 char	**ft_free_td(char **arr)
 {
 	int	i;
@@ -36,14 +61,17 @@ void	destroy_img(t_game	*game)
 	mlx_destroy_image(game->mlx, game->cha->down);
 	mlx_destroy_image(game->mlx, game->cha->left);
 	mlx_destroy_image(game->mlx, game->cha->right);
+	destroy_cats(game->cat_arr);
+	destroy_void_arr(game->digit_img);
 }
 
 void	free_wl(t_game	*game)
 {
-	ft_free_td(game->map->map_arr);
 	destroy_img(game);
+	ft_free_td(game->map->map_arr);
+	free(game->map->map_str);
+	free(game->map);
 	free(game->cha);
-	ft_free_td((char **)game->cat_arr);
 }
 
 void	free_everything_exit(t_game	*game)
