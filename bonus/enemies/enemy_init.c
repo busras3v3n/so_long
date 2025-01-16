@@ -6,23 +6,25 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:51:46 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/13 18:32:55 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/16 10:00:35 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 #include <stdio.h>
 
-void sort_enemies_by_priority(t_enemy **arr)
+void	sort_enemies_by_priority(t_enemy **arr)
 {
-	int i = 0;
-	
-	while(arr[i])
+	int	i;
+
+	i = 0;
+	while (arr[i])
 	{
 		arr[i]->priority = i;
 		i++;
 	}
 }
+
 int	is_obstacle(char c)
 {
 	if (c == '1' || c == 'E')
@@ -61,11 +63,11 @@ void	check_begin_pos(t_enemy *cat, char **map, int k)
 
 void	set_enemy_prop(t_enemy *cat, t_game *game)
 {
-	int	w;
-	int	h;
-	char *path;
-	path = ft_calloc(22, 1);
+	int		w;
+	int		h;
+	char	*path;
 
+	path = ft_calloc(22, 1);
 	w = 64;
 	h = 64;
 	cat->direction = rand_range(0, 3);
@@ -98,18 +100,4 @@ void	enemy_init(t_game *game)
 		set_enemy_prop(game->cat_arr[k], game);
 		k++;
 	}
-}
-
-int	update_game(t_game *game)
-{
-	if (++game->delay % 5000 == 0)
-	{
-		move_all_enemies(game);
-		draw_map(game);
-		if (game->win_condition == 0)
-		{
-			check_enemy_bump(game);
-		}
-	}
-	return (0);
 }

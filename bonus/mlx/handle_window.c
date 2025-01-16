@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/07 19:50:10 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/16 10:13:47 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,20 @@ void	reset_game(t_game *game)
 		k++;
 	}
 	draw_map(game);
+}
+
+int	update_game(t_game *game)
+{
+	if (++game->delay % 5000 == 0)
+	{
+		move_all_enemies(game);
+		draw_map(game);
+		if (game->win_condition == 0)
+		{
+			check_enemy_bump(game);
+		}
+	}
+	return (0);
 }
 
 int	close_window(t_game	*game)

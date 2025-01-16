@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:15:39 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/07 11:08:19 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/16 10:13:06 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	put_img_enemies(t_game *game, void *m, void *w)
 {
-	t_enemy **cat;
-
+	t_enemy	**cat;
 	int		i;
 
 	i = 0;
