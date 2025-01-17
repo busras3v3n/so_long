@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:36:30 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/17 17:37:36 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:46:16 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	display_moves(t_game *game, int n)
 	}
 	free(num);
 }
+
 void	draw_map_topy(t_game *game)
 {
 	char	**map;
