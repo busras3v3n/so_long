@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 09:52:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/16 17:37:18 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:24:02 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,16 @@ void	destroy_cats(t_enemy **arr, t_game *game)
 	int	k;
 
 	k = 0;
-	while(arr[k])
+	while (arr[k])
 	{
-		mlx_destroy_image(game->mlx, arr[k]->cur);
+		if (arr[k]->cur)
+			mlx_destroy_image(game->mlx, arr[k]->cur);
 		free(arr[k]);
 		k++;
 	}
 	free(arr);
 }
+
 void	destroy_void_arr(void **arr, t_game *game)
 {
 	int	i;
@@ -32,11 +34,13 @@ void	destroy_void_arr(void **arr, t_game *game)
 	i = 0;
 	while (i <= 9)
 	{
-		mlx_destroy_image(game, arr[i]);
+		if (arr[i])
+			mlx_destroy_image(game, arr[i]);
 		i++;
 	}
 	free(arr);
 }
+
 char	**ft_free_td(char **arr)
 {
 	int	i;
@@ -51,7 +55,7 @@ char	**ft_free_td(char **arr)
 	return (NULL);
 }
 
-void	destroy_img(t_game	*game)
+void	free_wl(t_game	*game)
 {
 	int	i;
 
@@ -64,19 +68,15 @@ void	destroy_img(t_game	*game)
 	mlx_destroy_image(game->mlx, game->cha->down);
 	mlx_destroy_image(game->mlx, game->cha->left);
 	mlx_destroy_image(game->mlx, game->cha->right);
-	mlx_destroy_image(game->mlx, game->win_img);
-	while(i <= 9)
+	while (i <= 9)
 	{
-		mlx_destroy_image(game->mlx, game->digit_img[i]);
+		if (game->digit_img && game->digit_img[i])
+			mlx_destroy_image(game->mlx, game->digit_img[i]);
 		i++;
 	}
-	free(game->digit_img);
+	if (game->digit_img)
+		free(game->digit_img);
 	destroy_cats(game->cat_arr, game);
-}
-
-void	free_wl(t_game	*game)
-{
-	destroy_img(game);
 	ft_free_td(game->map->map_arr);
 	free(game->map->map_str);
 	free(game->map);

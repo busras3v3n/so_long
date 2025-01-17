@@ -6,7 +6,7 @@
 #    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 12:46:54 by busseven          #+#    #+#              #
-#    Updated: 2025/01/06 12:44:25 by busseven         ###   ########.fr        #
+#    Updated: 2025/01/17 16:18:03 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,5 +42,8 @@ re: fclean all
 
 compile:
 	cc -Wall -Wextra -Werror so_long.c so_long.a -L./minilibx-linux -lmlx -lX11 -lXext -lm -o so_long
+	
+norminette:
+	norminette so_long.c so_long.h ./map_checks ./mlx ./ft_printf
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re compile norminette

@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 21:02:13 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:21:05 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@ void	reset_game(t_game *game)
 {
 	game->map->exit_x = game->map->exit_xs;
 	game->map->exit_y = game->map->exit_ys;
+	if (game->map->map_arr)
+		ft_free_td(game->map->map_arr);
 	game->map->map_arr = ft_split(game->map->map_str, '\n');
 	game->win_condition = 0;
 	game->cha->moves = 0;
 	game->cha->cur = game->cha->down;
 	game->cha->carrots = 0;
+	ft_printf("\n");
 	draw_map(game);
 }
 
@@ -60,10 +63,6 @@ void	handle_window(t_map	*map)
 	game->map = map;
 	game->mlx = mlx_init();
 	game->window = mlx_new_window(game->mlx, (w * 64), (h * 64), "so_long");
-	game->digit_img = ft_calloc(10, sizeof(void *));
-	game->endian = 0;
-	game->bpp = 8;
-	game->sl = 256;
 	game->delay = 20;
 	xpm_to_ptr(game);
 	draw_map(game);

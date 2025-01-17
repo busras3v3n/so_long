@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:14:07 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/16 16:38:27 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:19:45 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	you_win(t_game *game)
 	ft_printf("\n");
 	msg = make_map_string("./txt/youwon.txt");
 	msg2 = ft_split(msg, '\n');
-	while(msg2[y])
+	while (msg2[y])
 	{
 		x = 0;
-		while(msg2[y][x])
+		while (msg2[y][x])
 		{
 			ft_printf("%c", msg2[y][x]);
 			x++;

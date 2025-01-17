@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/16 10:13:47 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:19:25 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	reset_game(t_game *game)
 	k = 0;
 	game->map->exit_x = game->map->exit_xs;
 	game->map->exit_y = game->map->exit_ys;
+	if (game->map->map_arr)
+		ft_free_td(game->map->map_arr);
 	game->map->map_arr = ft_split(game->map->map_str, '\n');
 	game->win_condition = 0;
 	game->cha->moves = 0;
@@ -29,6 +31,7 @@ void	reset_game(t_game *game)
 		check_begin_pos(game->cat_arr[k], game->map->map_arr, k);
 		k++;
 	}
+	ft_printf("\n");
 	draw_map(game);
 }
 

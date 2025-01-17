@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/16 16:40:30 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/17 15:02:50 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "./ft_printf/ft_printf.h"
 # include "./minilibx-linux/mlx.h"
 # include <fcntl.h>
-#include <stdio.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/time.h>
@@ -74,10 +74,6 @@ typedef struct s_enemy
 	int		x;
 	int		y;
 	int		freeze;
-	int		a;
-	int		b;
-	int		c;
-	int		d;
 	int		priority;
 }	t_enemy;
 
@@ -121,4 +117,15 @@ void	check_surrounded(t_enemy *cat, t_game *game);
 void	animate_cat(t_enemy *cat, t_game *game);
 int		is_obstacle(char c);
 void	check_enemy_bump(t_game *game);
+void	check_begin_pos(t_enemy *cat, char **map, int k);
+void	move_all_enemies(t_game *game);
+void	enemy_init(t_game *game);
+void	make_digit_arr(void	**arr, t_game *game);
+void	check_img(void);
+void	check_img2(void);
+void	check_img3(void);
+void	free_map_exit(t_map	*map);
+void	display_moves(t_game *game, int n);
+int		rand_range_divides_x(int min, int max, int x);
+void	reset_game(t_game *game);
 #endif

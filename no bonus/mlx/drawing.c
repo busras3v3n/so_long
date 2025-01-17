@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:15:39 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 12:46:36 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/17 15:58:42 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,6 @@ void	draw_end_screen(t_game *game, int res)
 		game->map->exit_y = -1;
 		game->win_img = mlx_xpm_file_to_image(mlx, "./img/ywr.xpm", &w, &h);
 		mlx_put_image_to_window(mlx, win, game->win_img, 0, 0);
+		mlx_destroy_image(game->mlx, game->win_img);
 	}
 }
