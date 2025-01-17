@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 09:52:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/17 13:24:02 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:19:28 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void	free_wl(t_game	*game)
 	}
 	if (game->digit_img)
 		free(game->digit_img);
-	destroy_cats(game->cat_arr, game);
+	if(game->cat_arr)
+		destroy_cats(game->cat_arr, game);
 	ft_free_td(game->map->map_arr);
 	free(game->map->map_str);
 	free(game->map);

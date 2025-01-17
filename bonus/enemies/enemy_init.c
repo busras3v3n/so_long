@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:51:46 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/16 10:00:35 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:39:45 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ void	enemy_init(t_game *game)
 {
 	int	k;
 
+	if (game->map->enemy_cnt == 0)
+		return ;
 	game->cat_arr = ft_calloc(game->map->enemy_cnt, sizeof(t_enemy));
 	k = 0;
 	while (k < game->map->enemy_cnt)

@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/17 16:19:25 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:41:10 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	reset_game(t_game *game)
 	}
 	ft_printf("\n");
 	draw_map(game);
+	draw_map_topy(game);
 }
 
 int	update_game(t_game *game)
@@ -89,8 +90,8 @@ void	handle_window(t_map	*map)
 	game->delay = 0;
 	make_digit_arr(game->digit_img, game);
 	xpm_to_ptr(game);
-	if (game->map->enemy_cnt != 0)
-		enemy_init(game);
+	enemy_init(game);
+	draw_map_topy(game);
 	draw_map(game);
 	if (game->map->enemy_cnt != 0)
 		mlx_loop_hook(game->mlx, update_game, game);

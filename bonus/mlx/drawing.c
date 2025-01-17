@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:15:39 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/17 15:05:56 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:35:56 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	draw_map(t_game *game)
 	if (game->win_condition == 1)
 		return ;
 	map = game->map->map_arr;
-	y = 0;
+	y = 1;
 	while (map[y])
 	{
 		x = 0;
@@ -74,7 +74,6 @@ void	draw_map(t_game *game)
 		y++;
 	}
 	ft_printf("\r%d", game->cha->moves);
-	display_moves(game, game->cha->moves);
 }
 
 void	xpm_to_ptr(t_game *game)

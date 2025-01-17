@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/17 15:02:50 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:37:03 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,4 +128,6 @@ void	free_map_exit(t_map	*map);
 void	display_moves(t_game *game, int n);
 int		rand_range_divides_x(int min, int max, int x);
 void	reset_game(t_game *game);
+void	put_img(char **map, t_game *game, int x, int y);
+void	draw_map_topy(t_game *game);
 #endif
