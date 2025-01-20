@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 09:52:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/17 13:24:37 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:35:33 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ void	free_everything_exit(t_game	*game)
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
 	free(game);
+	ft_printf("\n");
 	exit (0);
 }
