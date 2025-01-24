@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:09:26 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/21 17:22:24 by busseven         ###   ########.fr       */
+/*   Updated: 2025/01/24 14:30:51 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	free_map_exit(t_map	*map)
 		ft_free_td(map->map_arr);
 	if (map->map_arr_copy)
 		ft_free_td(map->map_arr_copy);
-	if(map->map_str)
+	if (map->map_str)
 		free(map->map_str);
 	if (map)
 		free(map);
