@@ -7,7 +7,7 @@ As someone who loves games and art, it was a really fun project to work on.<br>
 I've drawn all the assets except for [these](./bonus/counter_img) which I got as a font from [this site](https://fontmeme.com/pixel-fonts/).<br>
 You can use my assets in your own so_long project as long as you give credit and a link to my repository.<br>
 
-## ![greycat](https://github.com/user-attachments/assets/0fe5ffc1-59d2-4c4a-90ac-cf36179746fd) Bonus
+## ![browncatright](https://github.com/user-attachments/assets/6177aecf-4905-4eae-b3be-8b725d97ac7c) Bonus
 
 The bonus version, in addition to all the mandatory features has:<br>
 - Movement count on the left corner of the screen,<br>
