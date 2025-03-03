@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemy_move_helpers.c                               :+:      :+:    :+:   */
+/*   enemy_move_helpers_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:49:54 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/16 17:23:38 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/03 12:33:10 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 int	check_bump_two(t_enemy *cat, t_enemy *cat2)
 {

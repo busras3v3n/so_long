@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valid_path.c                                 :+:      :+:    :+:   */
+/*   check_valid_path_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 19:19:08 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/02 18:30:02 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/03 12:32:46 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 void	find_player_start(t_map *map, char **map_cp)
 {

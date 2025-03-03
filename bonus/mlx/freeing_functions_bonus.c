@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   freeing_functions.c                                :+:      :+:    :+:   */
+/*   freeing_functions_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 09:52:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/20 14:36:35 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/03 12:32:22 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 void	destroy_cats(t_enemy **arr, t_game *game)
 {

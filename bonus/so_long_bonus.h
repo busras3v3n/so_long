@@ -6,17 +6,16 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/17 17:37:03 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/03 12:31:16 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
-# include "./minilibx-linux/mlx.h"
-# include "./ft_printf/libft/libft.h"
-# include "./ft_printf/ft_printf.h"
-# include "./minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx.h"
+# include "../ft_printf/libft/libft.h"
+# include "../ft_printf/ft_printf.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>

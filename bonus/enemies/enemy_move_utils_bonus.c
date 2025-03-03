@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemy_move_utils.c                                 :+:      :+:    :+:   */
+/*   enemy_move_utils_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 20:28:33 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/07 10:50:43 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/03 12:33:12 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 void	check_enemy_bump(t_game *game)
 {
