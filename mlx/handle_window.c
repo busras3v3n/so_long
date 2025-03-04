@@ -6,12 +6,20 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 11:36:29 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:29:30 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+void	check_if_won(t_game *game)
+{
+	if (game->cha->y == game->map->exit_y && game->cha->x == game->map->exit_x)
+	{
+		if (game->map->carrot_cnt == game->cha->carrots)
+			you_win(game);
+	}
+}
 void	reset_game(t_game *game)
 {
 	game->map->exit_x = game->map->exit_xs;
@@ -38,7 +46,11 @@ int	key_hook(int keycode, t_game *game)
 	if (keycode == 65307)
 		free_everything_exit(game);
 	if (keycode == 119 || keycode == 97 || keycode == 115 || keycode == 100)
+	{
 		move_player(game, keycode);
+		draw_map(game);
+		check_if_won(game);
+	}
 	if (keycode == 114)
 		reset_game(game);
 	return (0);

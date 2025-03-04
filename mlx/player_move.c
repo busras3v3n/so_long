@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:14:07 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 11:35:45 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:30:26 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	move_count(char	**map, t_game *game, int keycode)
 	}
 }
 
-void	place_exit_and_blank(t_game *game)
+void	place_tile_player_left(t_game *game)
 {
 	char	**map;
 	int		x;
@@ -89,7 +89,7 @@ void	move_player(t_game *game, int keycode)
 	char	**map;
 
 	map = game->map->map_arr;
-	place_exit_and_blank(game);
+	place_tile_player_left(game);
 	move_count(map, game, keycode);
 	if (keycode == 119 && map[game->cha->y - 1][game->cha->x] != '1')
 		game->cha->y--;
@@ -102,10 +102,4 @@ void	move_player(t_game *game, int keycode)
 	if (map[game->cha->y][game->cha->x] == 'C')
 		game->cha->carrots++;
 	map[game->cha->y][game->cha->x] = 'P';
-	draw_map(game);
-	if (game->cha->y == game->map->exit_y && game->cha->x == game->map->exit_x)
-	{
-		if (game->map->carrot_cnt == game->cha->carrots)
-			you_win(game);
-	}
 }

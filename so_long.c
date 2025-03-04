@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 09:41:43 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/17 15:13:53 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:24:22 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		check_xpm();
-		ber_file_check(argv[1]);
+		ber_extension_check(argv[1]);
+		map_file_open_check(argv[1]);
 		map = ft_calloc(1, sizeof(t_map));
 		handle_map(argv[1], map);
 		handle_window(map);
