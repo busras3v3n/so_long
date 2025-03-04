@@ -6,12 +6,23 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 10:27:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/03 12:32:41 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:21:21 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
 
+void	close_fds_arr(int	*fds)
+{
+	int	i;
+
+	i = 0;
+	while(fds[i])
+	{
+		close(fds[i]);
+		i++;
+	}
+}
 void	extension_check(char *path)
 {
 	int	len;
@@ -56,7 +67,29 @@ void	ber_file_check(char *path)
 
 void	check_xpm(void)
 {
-	check_img();
-	check_img2();
-	check_img3();
+	int	*file_descriptors;
+	int	i;
+
+	file_descriptors = ft_calloc(84, sizeof(int));
+	open_xpm_and_txt_files(file_descriptors);
+	open_bonus_number_assets(file_descriptors);
+	open_bonus_enemy_assets_whitecat(file_descriptors);
+	open_bonus_enemy_assets_greycat(file_descriptors);
+	open_bonus_enemy_assets_gingercat(file_descriptors);
+	open_bonus_enemy_assets_browncat(file_descriptors);
+	i = 0;
+	while(file_descriptors[i])
+	{
+		if(file_descriptors[i] < 0)
+		{
+			i = 0;
+			close_fds_arr(file_descriptors);
+			free(file_descriptors);
+			write(1, "Error\nmissing xpm file\n", 23);
+			exit(1);
+		}
+		i++;
+	}
+	close_fds_arr(file_descriptors);
+	free(file_descriptors);
 }

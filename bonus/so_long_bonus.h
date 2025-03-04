@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/03 12:31:16 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:09:34 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,4 +129,10 @@ int		rand_range_divides_x(int min, int max, int x);
 void	reset_game(t_game *game);
 void	put_img(char **map, t_game *game, int x, int y);
 void	draw_map_topy(t_game *game);
+void	open_bonus_enemy_assets_browncat(int *fds);
+void	open_bonus_enemy_assets_gingercat(int *fds);
+void	open_bonus_enemy_assets_greycat(int *fds);
+void	open_bonus_enemy_assets_whitecat(int *fds);
+void	open_bonus_number_assets(int *fds);
+void	open_xpm_and_txt_files(int *fds);
 #endif

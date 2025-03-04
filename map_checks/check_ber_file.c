@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 10:27:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 16:40:04 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 10:51:59 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,21 @@ void	ber_file_check(char *path)
 
 void	check_xpm(void)
 {
-	check_img();
-	check_img2();
-	check_img3();
+	int	*file_descriptors;
+	int	i;
+
+	file_descriptors = ft_calloc(10, sizeof(int));
+	open_xpm_and_txt_files(file_descriptors);
+	i = 0;
+	while(file_descriptors[i])
+	{
+		if(file_descriptors[i] < 0)
+		{
+			free(file_descriptors);
+			write(1, "Error\nmissing xpm file\n", 23);
+			exit(1);
+		}
+		i++;
+	}
+	free(file_descriptors);
 }

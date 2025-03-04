@@ -6,7 +6,7 @@
 #    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 12:46:54 by busseven          #+#    #+#              #
-#    Updated: 2025/03/03 12:29:48 by busseven         ###   ########.fr        #
+#    Updated: 2025/03/04 11:11:27 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ SRC 		= 	./so_long.c ./map_checks/check_ber_file.c ./map_checks/check_img.c ./ma
 				./mlx/freeing_functions.c
 BONUS_SRC	=	./bonus/so_long_bonus.c ./bonus/enemies/enemy_init_bonus.c ./bonus/enemies/enemy_move_bonus.c ./bonus/enemies/enemy_move_helpers_bonus.c \
 				./bonus/enemies/enemy_move_utils_bonus.c ./bonus/map_checks/check_ber_file_bonus.c ./bonus/map_checks/check_img_bonus.c ./bonus/map_checks/handle_map_bonus.c \
-				./bonus/map_checks/mapcheck_utils_bonus.c ./bonus/map_checks/mapcheck_utils2_bonus.c ./bonus/map_checks/check_valid_path_bonus.c ./bonus/mlx/handle_window_bonus.c ./bonus/mlx/player_move_bonus.c ./bonus/mlx/drawing_bonus.c ./bonus/mlx/freeing_functions_bonus.c ./bonus/mlx/counter_bonus.c
+				./bonus/map_checks/mapcheck_utils_bonus.c ./bonus/map_checks/mapcheck_utils2_bonus.c ./bonus/map_checks/check_valid_path_bonus.c ./bonus/mlx/handle_window_bonus.c \
+				./bonus/mlx/player_move_bonus.c ./bonus/mlx/drawing_bonus.c ./bonus/mlx/freeing_functions_bonus.c ./bonus/mlx/counter_bonus.c \
+				./bonus/map_checks/check_enemy_img_bonus.c
 OBJS 		= $(SRC:.c=.o)
 BONUS_OBJS	= $(BONUS_SRC:.c=.o)
 NAME 		= so_long
