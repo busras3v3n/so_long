@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:09:26 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 16:18:04 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:20:50 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	check_map_validity(t_map	*map)
 	int		rectangular;
 
 	map_cp = map->map_arr_copy;
-	rectangular = check_rectangular(map_cp, map);
+	rectangular = is_rectangular(map_cp, map);
 	wall = check_walls(map_cp, map);
-	chars = look_for_invalid_chars(map_cp);
+	chars = has_valid_chars(map_cp);
 	if(!rectangular || !wall || !chars)
 	{
 		ft_printf("Error\n");

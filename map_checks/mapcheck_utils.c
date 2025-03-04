@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 11:59:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 16:17:18 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:21:04 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	count_chars(char **map_arr, t_map *map)
 	if(map->carrot_cnt < 1 || map->end_cnt != 1 || map->start_cnt != 1)
 		char_count_error(map);
 }
-int	check_valid_char(char c)
+int	is_valid_char(char c)
 {
 	if (c == 'C')
 		return (1);
@@ -50,7 +50,7 @@ int	check_valid_char(char c)
 	return (1);
 }
 
-int	look_for_invalid_chars(char **map_arr)
+int	has_valid_chars(char **map_arr)
 {
 	int	x;
 	int	y;
@@ -62,7 +62,7 @@ int	look_for_invalid_chars(char **map_arr)
 		x = 0;
 		while(map_arr[y][x])
 		{
-			if(!check_valid_char(map_arr[y][x]))
+			if(!is_valid_char(map_arr[y][x]))
 				return (0);
 			x++;
 		}
@@ -71,7 +71,7 @@ int	look_for_invalid_chars(char **map_arr)
 	return (1);
 }
 
-int	check_rectangular(char **map_arr, t_map	*map)
+int	is_rectangular(char **map_arr, t_map	*map)
 {
 	int	x;
 	int	y;
