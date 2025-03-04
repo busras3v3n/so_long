@@ -6,13 +6,31 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:09:26 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 14:02:55 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:18:04 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 #include	<stdio.h>
 
+void	set_map_dimensions(char **map_arr, t_map *map)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while(map_arr[y])
+	{
+		x = 0;
+		while(map_arr[y][x])
+			x++;
+		if(y == 0)
+			map->width = x;
+		y++;
+	}
+	map->height = y;
+}
 void	check_map_validity(t_map	*map)
 {
 	char	**map_cp;
@@ -22,7 +40,7 @@ void	check_map_validity(t_map	*map)
 
 	map_cp = map->map_arr_copy;
 	rectangular = check_rectangular(map_cp, map);
-	wall = check_walls(map_cp);
+	wall = check_walls(map_cp, map);
 	chars = look_for_invalid_chars(map_cp);
 	if(!rectangular || !wall || !chars)
 	{
@@ -65,6 +83,7 @@ void	handle_map(char	*path, t_map *map)
 	map_string = map->map_str;
 	map->map_arr = ft_split(map_string, '\n');
 	map->map_arr_copy = ft_split(map_string, '\n');
+	set_map_dimensions(map->map_arr, map);
 	check_map_validity(map);
 	count_chars(map->map_arr_copy, map);
 	check_valid_path(map);

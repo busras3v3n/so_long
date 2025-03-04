@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 11:59:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 14:12:08 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:17:18 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,20 +78,15 @@ int	check_rectangular(char **map_arr, t_map	*map)
 	
 	x = 0;
 	y = 0;
-	while(map_arr[0][x])
-		x++;
-	map->width = x + 1;
-	x = 0;
 	while(map_arr[y])
 	{
 		x = 0;
 		while(map_arr[y][x])
 			x++;
-		if(x != map->width - 1)
+		if(x != map->width)
 			return (0);
 		y++;
 	}
-	map->height = y + 1;
 	return (1);
 }
 
