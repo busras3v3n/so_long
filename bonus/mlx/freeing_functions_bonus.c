@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 09:52:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/03 12:32:22 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:45:30 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	**ft_free_td(char **arr)
 	return (NULL);
 }
 
-void	free_wl(t_game	*game)
+void	free_game_contents(t_game	*game)
 {
 	int	i;
 
@@ -86,7 +86,7 @@ void	free_wl(t_game	*game)
 
 void	free_everything_exit(t_game	*game)
 {
-	free_wl(game);
+	free_game_contents(game);
 	mlx_destroy_window(game->mlx, game->window);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);

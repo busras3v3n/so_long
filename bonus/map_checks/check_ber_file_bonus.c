@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 10:27:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 11:29:19 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:56:01 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	close_fds_arr(int	*fds)
 		i++;
 	}
 }
-void	extension_check(char *path)
+void	ber_extension_check(char *path)
 {
 	int	len;
 
@@ -45,7 +45,7 @@ void	extension_check(char *path)
 	}
 }
 
-void	open_check(char *path)
+void	map_file_open_check(char *path)
 {
 	int	fd;
 
@@ -57,12 +57,6 @@ void	open_check(char *path)
 		exit(1);
 	}
 	close(fd);
-}
-
-void	ber_file_check(char *path)
-{
-	extension_check(path);
-	open_check(path);
 }
 
 void	check_xpm(void)
