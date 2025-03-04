@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 10:27:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 11:21:21 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:29:19 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	close_fds_arr(int	*fds)
 	int	i;
 
 	i = 0;
-	while(fds[i])
+	while(i < 84)
 	{
 		close(fds[i]);
 		i++;
@@ -78,7 +78,7 @@ void	check_xpm(void)
 	open_bonus_enemy_assets_gingercat(file_descriptors);
 	open_bonus_enemy_assets_browncat(file_descriptors);
 	i = 0;
-	while(file_descriptors[i])
+	while(i < 84)
 	{
 		if(file_descriptors[i] < 0)
 		{

@@ -6,11 +6,23 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 10:27:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 10:51:59 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:28:42 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	close_fds_arr(int	*fds)
+{
+	int	i;
+
+	i = 0;
+	while(i < 10)
+	{
+		close(fds[i]);
+		i++;
+	}
+}
 
 void	extension_check(char *path)
 {
@@ -62,15 +74,17 @@ void	check_xpm(void)
 	file_descriptors = ft_calloc(10, sizeof(int));
 	open_xpm_and_txt_files(file_descriptors);
 	i = 0;
-	while(file_descriptors[i])
+	while(i < 10)
 	{
 		if(file_descriptors[i] < 0)
 		{
+			close_fds_arr(file_descriptors);
 			free(file_descriptors);
 			write(1, "Error\nmissing xpm file\n", 23);
 			exit(1);
 		}
 		i++;
 	}
+	close_fds_arr(file_descriptors);
 	free(file_descriptors);
 }
