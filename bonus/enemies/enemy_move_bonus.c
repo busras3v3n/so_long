@@ -6,13 +6,13 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 20:25:11 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/03 12:33:06 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:37:17 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
 
-void	set_enemy_direction_help(t_enemy *cat)
+void	change_direction(t_enemy *cat)
 {
 	if (cat->x % 64 == 0 && cat->y % 64 == 0)
 		cat->direction = rand_range_exclude(0, 3, cat->direction, 6);
@@ -35,7 +35,7 @@ void	set_enemy_direction(t_enemy *cat, t_game *game, char **map)
 	{
 		if (i >= 20)
 			break ;
-		set_enemy_direction_help(cat);
+		change_direction(cat);
 		if (cat->freeze == 1)
 			return ;
 		i++;
@@ -77,7 +77,7 @@ void	move_enemy(t_enemy *cat, t_game *game)
 			check_surrounded(cat, game);
 			if (cat->freeze == 1)
 				return ;
-			set_enemy_direction_help(cat);
+			change_direction(cat);
 			set_enemy_direction(cat, game, game->map->map_arr);
 		}
 	}

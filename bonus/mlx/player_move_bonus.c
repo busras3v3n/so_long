@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:14:07 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/03 12:32:31 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:41:11 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,6 @@ void	move_player(t_game *game, int keycode)
 			you_win(game);
 	}
 	if (game->win_condition == 0 && game->map->enemy_cnt != 0)
-		check_enemy_bump(game);
+		check_lose(game);
 	draw_map_topy(game);
 }
