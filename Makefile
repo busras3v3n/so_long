@@ -6,12 +6,12 @@
 #    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 12:46:54 by busseven          #+#    #+#              #
-#    Updated: 2025/03/04 11:11:27 by busseven         ###   ########.fr        #
+#    Updated: 2025/03/04 14:04:15 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC 		= 	./so_long.c ./map_checks/check_ber_file.c ./map_checks/check_img.c ./map_checks/handle_map.c ./map_checks/mapcheck_utils.c \
-				./map_checks/mapcheck_utils2.c ./map_checks/check_valid_path.c ./mlx/handle_window.c ./mlx/player_move.c ./mlx/drawing.c \
+				./map_checks/mapcheck_errors.c ./map_checks/check_valid_path.c ./mlx/handle_window.c ./mlx/player_move.c ./mlx/drawing.c \
 				./mlx/freeing_functions.c
 BONUS_SRC	=	./bonus/so_long_bonus.c ./bonus/enemies/enemy_init_bonus.c ./bonus/enemies/enemy_move_bonus.c ./bonus/enemies/enemy_move_helpers_bonus.c \
 				./bonus/enemies/enemy_move_utils_bonus.c ./bonus/map_checks/check_ber_file_bonus.c ./bonus/map_checks/check_img_bonus.c ./bonus/map_checks/handle_map_bonus.c \

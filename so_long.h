@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 11:43:47 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 14:09:51 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*make_map_string(char	*path);
 void	draw_end_screen(t_game *game, int res);
 char	**ft_free_td(char **arr);
 int		check_rectangular(char **map_arr, t_map	*map);
-int		check_walls(char	**map_arr);
+int		check_walls(char	**map_arr, t_map *map);
 int		check_rectangular(char **map_arr, t_map	*map);
 void	error_msg(int	*error_displayed);
 int		check_items(t_map	*map, int	*error_displayed);
@@ -90,4 +90,7 @@ void	check_valid_path(t_map	*map);
 void	open_xpm_and_txt_files(int *fds);
 void	free_map_exit(t_map	*map);
 void	reset_game(t_game *game);
+int		look_for_invalid_chars(char **map_arr);
+void	count_chars(char **map_arr, t_map *map);
+void	char_count_error(t_map *map);
 #endif
