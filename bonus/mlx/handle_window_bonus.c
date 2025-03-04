@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/03 12:32:27 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:20:59 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	key_hook(int keycode, t_game *game)
 	if (keycode == 119 || keycode == 97 || keycode == 115 || keycode == 100)
 	{
 		move_player(game, keycode);
+		draw_map(game);
+		check_if_won(game);
 	}
 	if (keycode == 114)
 	{

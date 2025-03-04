@@ -6,106 +6,118 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 11:59:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/03 12:32:52 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:26:28 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
 
-void	count_chars(char c, t_map *map)
+void	count_chars(char **map_arr, t_map *map)
 {
-	if (c == 'C')
-		map->carrot_cnt++;
-	else if (c == 'E')
-		map->end_cnt++;
-	else if (c == 'P')
-		map->start_cnt++;
-	else if (c == 'X')
-		map->enemy_cnt++;
-	else if (c != '1' && c != '0' && c != 'X')
-	{
-		write(1, "Error\nInvalid characters in .ber file\n", 38);
-		free_map_exit(map);
-	}
-}
-
-int	check_rectangular_help(int	*k, int	*y, int *x, t_map *map)
-{
-	char	**map_arr;
-
-	map_arr = map->map_arr_copy;
-	while (map_arr[*y])
-	{
-		*k = 0;
-		while (map_arr[*y][*k])
-		{
-			count_chars(map_arr[*y][*k], map);
-			(*k)++;
-		}
-		if (*k != *x)
-			return (0);
-		(*y)++;
-	}
-	return (1);
-}
-
-int	check_rectangular(char **map_arr, t_map	*map)
-{
-	int	x;
 	int	y;
-	int	k;
+	int	x;
 
-	x = 0;
 	y = 0;
-	k = 0;
-	if (map_arr[y])
+	x = 0;
+	while (map_arr[y])
 	{
+		x = 0;
 		while (map_arr[y][x])
 		{
-			count_chars(map_arr[y][x], map);
+			if (map_arr[y][x] == 'C')
+				map->carrot_cnt++;
+			else if (map_arr[y][x] == 'E')
+				map->end_cnt++;
+			else if (map_arr[y][x] == 'P')
+				map->start_cnt++;
+			else if (map_arr[y][x] == 'X')
+				map->enemy_cnt++;
 			x++;
 		}
+		y++;
 	}
-	y++;
-	if (!check_rectangular_help(&k, &y, &x, map))
-		return (0);
-	map->width = x;
-	map->height = y;
-	return (1);
+	if (map->carrot_cnt < 1 || map->end_cnt != 1 || map->start_cnt != 1)
+		char_count_error(map);
 }
 
-int	check_walls_help(int	*x, int	*y, char **map_arr)
+int	is_valid_char(char c)
 {
-	if (map_arr[*y])
-	{
-		while (map_arr[*y][*x])
-		{
-			if (map_arr[*y][*x] != '1')
-				return (0);
-			(*x)++;
-		}
-		(*y)++;
-	}
+	if (c == 'C')
+		return (1);
+	else if (c == 'E')
+		return (1);
+	else if (c == 'P')
+		return (1);
+	else if (c != '1' && c != '0' && c != 'X')
+		return (0);
 	return (1);
 }
 
-int	check_walls(char	**map_arr)
+int	has_valid_chars(char **map_arr)
 {
 	int	x;
 	int	y;
 
 	x = 0;
 	y = 0;
-	if (!check_walls_help(&x, &y, map_arr))
-		return (0);
-	while (map_arr[y + 1])
+	while (map_arr[y])
 	{
-		if (map_arr[y][0] != '1' || map_arr[y][x - 1] != '1')
+		x = 0;
+		while(map_arr[y][x])
+		{
+			if(!is_valid_char(map_arr[y][x]))
+				return (0);
+			x++;
+		}
+		y++;
+	}
+	return (1);
+}
+
+int	is_rectangular(char **map_arr, t_map	*map)
+{
+	int	x;
+	int	y;
+	
+	x = 0;
+	y = 0;
+	while(map_arr[y])
+	{
+		x = 0;
+		while (map_arr[y][x])
+			x++;
+		if(x != map->width)
 			return (0);
 		y++;
 	}
+	return (1);
+}
+
+int	check_walls(char **map_arr, t_map *map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
 	x = 0;
-	if (!check_walls_help(&x, &y, map_arr))
-		return (0);
+	while (map_arr[y])
+	{
+		x = 0;
+		while (map_arr[x])
+		{
+			if (y == 0 || y == map->height - 1)
+			{
+				if (map_arr[y][x] != '1')
+					return (0);
+			}
+			else if (x == 0 || x == map->width - 1)
+			{
+				if (map_arr[y][x] != '1')
+					return (0);
+			}
+			x++;
+		}
+		y++;
+	}
 	return (1);
 }

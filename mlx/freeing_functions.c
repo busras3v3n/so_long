@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 09:52:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 10:45:57 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:37:17 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	destroy_img(t_game	*game)
 	mlx_destroy_image(game->mlx, game->cha->right);
 }
 
-void	free_other_structs(t_game	*game)
+void	free_map_char(t_game	*game)
 {
 	destroy_img(game);
 	ft_free_td(game->map->map_arr);
@@ -49,7 +49,7 @@ void	free_other_structs(t_game	*game)
 
 void	free_everything_exit(t_game	*game)
 {
-	free_other_structs(game);
+	free_map_char(game);
 	mlx_destroy_window(game->mlx, game->window);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);

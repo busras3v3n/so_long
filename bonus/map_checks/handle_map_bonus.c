@@ -6,51 +6,53 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:09:26 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/03 12:32:49 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:27:44 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
 #include	<stdio.h>
 
-void	free_map_exit(t_map	*map)
+void	set_map_dimensions(char **map_arr, t_map *map)
 {
-	if (map->map_arr)
-		ft_free_td(map->map_arr);
-	if (map->map_arr_copy)
-		ft_free_td(map->map_arr_copy);
-	if (map->map_str)
-		free(map->map_str);
-	if (map)
-		free(map);
-	exit(1);
-}
+	int	x;
+	int	y;
 
+	x = 0;
+	y = 0;
+	while(map_arr[y])
+	{
+		x = 0;
+		while(map_arr[y][x])
+			x++;
+		if(y == 0)
+			map->width = x;
+		y++;
+	}
+	map->height = y;
+}
 void	check_map_validity(t_map	*map)
 {
 	char	**map_cp;
 	int		wall;
-	int		items;
+	int		chars;
 	int		rectangular;
-	int		error_displayed;
 
-	error_displayed = 0;
 	map_cp = map->map_arr_copy;
-	rectangular = check_rectangular(map_cp, map);
-	wall = check_walls(map_cp);
-	if (!rectangular)
+	rectangular = is_rectangular(map_cp, map);
+	wall = check_walls(map_cp, map);
+	chars = has_valid_chars(map_cp);
+	if(!rectangular || !wall || !chars)
 	{
-		error_msg(&error_displayed);
-		write(1, "The map isn't rectangular\n", 26);
-	}
-	if (!wall)
-	{
-		error_msg(&error_displayed);
-		write(1, "The map isn't surrounded by walls\n", 34);
-	}
-	items = check_items(map, &error_displayed);
-	if (!rectangular || !wall || !items)
+		ft_printf("Error\n");
+		if(!rectangular)
+			ft_printf("map must be rectangular\n");
+		if(!wall)
+			ft_printf("map must be surrounded by walls\n");
+		if(!chars)
+			ft_printf("invalid characters in map\n");
 		free_map_exit(map);
+	}
 }
 
 char	*make_map_string(char	*path)
@@ -81,7 +83,9 @@ void	handle_map(char	*path, t_map *map)
 	map_string = map->map_str;
 	map->map_arr = ft_split(map_string, '\n');
 	map->map_arr_copy = ft_split(map_string, '\n');
+	set_map_dimensions(map->map_arr, map);
 	check_map_validity(map);
+	count_chars(map->map_arr_copy, map);
 	check_valid_path(map);
 	ft_free_td(map->map_arr_copy);
 }
