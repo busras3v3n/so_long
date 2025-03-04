@@ -6,13 +6,13 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 11:59:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/06 12:43:05 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:50:50 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../so_long.h"
 
-void	count_chars(char c, t_map *map)
+void	check_valid_char(char c, t_map *map)
 {
 	if (c == 'C')
 		map->carrot_cnt++;
@@ -27,83 +27,56 @@ void	count_chars(char c, t_map *map)
 	}
 }
 
-int	check_rectangular_help(int	*k, int	*y, int *x, t_map *map)
-{
-	char	**map_arr;
-
-	map_arr = map->map_arr_copy;
-	while (map_arr[*y])
-	{
-		*k = 0;
-		while (map_arr[*y][*k])
-		{
-			count_chars(map_arr[*y][*k], map);
-			(*k)++;
-		}
-		if (*k != *x)
-			return (0);
-		(*y)++;
-	}
-	return (1);
-}
+int	look_for_invalid_chars()
 
 int	check_rectangular(char **map_arr, t_map	*map)
 {
 	int	x;
 	int	y;
-	int	k;
-
+	
 	x = 0;
 	y = 0;
-	k = 0;
-	if (map_arr[y])
+	while(map_arr[0][x])
+		x++;
+	map->width = x + 1;
+	x = 0;
+	while(map_arr[y])
 	{
-		while (map_arr[y][x])
-		{
-			count_chars(map_arr[y][x], map);
+		x = 0;
+		while(map_arr[y][x])
 			x++;
-		}
+		if(x != map->width - 1)
+			return (0);
+		y++;
 	}
-	y++;
-	if (!check_rectangular_help(&k, &y, &x, map))
-		return (0);
-	map->width = x;
-	map->height = y;
+	map->height = y + 1;
 	return (1);
 }
 
-int	check_walls_help(int	*x, int	*y, char **map_arr)
-{
-	if (map_arr[*y])
-	{
-		while (map_arr[*y][*x])
-		{
-			if (map_arr[*y][*x] != '1')
-				return (0);
-			(*x)++;
-		}
-		(*y)++;
-	}
-	return (1);
-}
-
-int	check_walls(char	**map_arr)
+int	check_walls(char	**map_arr, t_map *map)
 {
 	int	x;
 	int	y;
 
-	x = 0;
 	y = 0;
-	if (!check_walls_help(&x, &y, map_arr))
-		return (0);
-	while (map_arr[y + 1])
+	x = 0;
+	while(map_arr[y])
 	{
-		if (map_arr[y][0] != '1' || map_arr[y][x - 1] != '1')
-			return (0);
+		x = 0;
+		while(map_arr[x])
+		{
+			if (y == 0 || y == map->height - 1)
+			{
+				if (x != 1)
+					return (0);
+			}
+			else if (x == 0 || x == map->width - 1)
+			{
+				if(x != 1)
+					return (0);
+			}
+			x++;
+		}
 		y++;
 	}
-	x = 0;
-	if (!check_walls_help(&x, &y, map_arr))
-		return (0);
-	return (1);
 }

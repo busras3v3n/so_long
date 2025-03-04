@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:14:07 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/17 16:21:25 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:35:45 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	move_count(char	**map, t_game *game, int keycode)
 	}
 }
 
-void	move_player_help(t_game *game)
+void	place_exit_and_blank(t_game *game)
 {
 	char	**map;
 	int		x;
@@ -89,7 +89,7 @@ void	move_player(t_game *game, int keycode)
 	char	**map;
 
 	map = game->map->map_arr;
-	move_player_help(game);
+	place_exit_and_blank(game);
 	move_count(map, game, keycode);
 	if (keycode == 119 && map[game->cha->y - 1][game->cha->x] != '1')
 		game->cha->y--;

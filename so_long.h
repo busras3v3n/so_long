@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 10:48:01 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:43:47 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_map
 	int		exit_ys;
 	int		carrot_check;
 	int		end_check;
+	int		error;
 	void	*wall;
 	void	*grass;
 	void	*house;

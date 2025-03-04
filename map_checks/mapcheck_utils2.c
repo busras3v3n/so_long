@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:06:54 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/01 16:40:11 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:37:37 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	error_msg(int	*error_displayed)
 	}
 }
 
-void	check_items_help(t_map *map, int	*error_displayed)
+void	check_end(t_map *map, int	*error_displayed)
 {
 	if (map->end_cnt < 1)
 	{
@@ -52,7 +52,7 @@ int	check_items(t_map	*map, int	*error_displayed)
 		error_msg(error_displayed);
 		write(1, "No collectible(s) (C) on map\n", 30);
 	}
-	check_items_help(map, error_displayed);
+	check_end(map, error_displayed);
 	if (map->start_cnt == 1 && map->end_cnt == 1 && map->carrot_cnt > 0)
 		return (1);
 	return (0);

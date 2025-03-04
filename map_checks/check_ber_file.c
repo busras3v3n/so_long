@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 10:27:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 11:28:42 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:32:45 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	close_fds_arr(int	*fds)
 	int	i;
 
 	i = 0;
-	while(i < 10)
+	while (i < 10)
 	{
 		close(fds[i]);
 		i++;

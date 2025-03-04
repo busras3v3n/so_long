@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:09:26 by busseven          #+#    #+#             */
-/*   Updated: 2025/01/24 14:30:51 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:52:18 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,14 @@ void	check_map_validity(t_map	*map)
 {
 	char	**map_cp;
 	int		wall;
-	int		items;
+	int		chars;
 	int		rectangular;
-	int		error_displayed;
 
-	error_displayed = 0;
 	map_cp = map->map_arr_copy;
 	rectangular = check_rectangular(map_cp, map);
-	wall = check_walls(map_cp);
-	if (!rectangular)
-	{
-		error_msg(&error_displayed);
-		write(1, "The map isn't rectangular\n", 26);
-	}
-	if (!wall)
-	{
-		error_msg(&error_displayed);
-		write(1, "The map isn't surrounded by walls\n", 34);
-	}
-	items = check_items(map, &error_displayed);
-	if (!rectangular || !wall || !items)
-		free_map_exit(map);
+	wall = check_walls(map_cp, map);
+	chars = look_for_invalid_chars(map_cp, map);
+	count_characters()
 }
 
 char	*make_map_string(char	*path)
