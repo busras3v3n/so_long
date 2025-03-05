@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+         #
+#    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 10:55:22 by busseven          #+#    #+#              #
-#    Updated: 2024/11/09 17:14:07 by busseven         ###   ########.fr        #
+#    Updated: 2025/03/05 11:50:33 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,27 +14,27 @@ SRC 		= ft_printf.c ft_print_char.c ft_print_str.c ft_print_nbr.c ft_print_hex.c
 OBJS 		= $(SRC:.c=.o)
 
 NAME 		= libftprintf.a
-LIBFT 		= ./libft/libft.a
+LIBFT 		= ../libft/libft.a
 
 all: $(LIBFT) $(NAME)
 
 $(NAME): $(OBJS)
-	cp libft/libft.a $(NAME)
+	cp ../libft/libft.a $(NAME)
 	ar -rcs $(NAME) $(OBJS)
 
 $(LIBFT):
-	make -C ./libft all 
+	make -C ../libft all 
 
 %.o: %.c
 	cc -c -Wall -Wextra -Werror $< -o $@ 
 
 fclean: clean
-	make -C ./libft fclean
+	make -C ../libft fclean
 	rm -rf $(NAME)	
 
 clean:
 	rm -f $(OBJS)
-	make -C ./libft clean
+	make -C ../libft clean
 
 re: fclean all
 

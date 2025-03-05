@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_percent.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
+/*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:52:20 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/09 17:22:19 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 11:49:16 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_printf.h"
 
 int	ft_print_percent(void)
 {

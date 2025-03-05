@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
+/*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:12:14 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/09 17:14:43 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 11:49:26 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
+#include "ft_printf.h"
 
 int	ft_print_char(char c)
 {

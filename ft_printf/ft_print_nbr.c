@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_nbr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
+/*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:42:07 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/09 17:20:01 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 11:49:19 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
+#include "ft_printf.h"
 
 static int	ft_intlen(int i)
 {

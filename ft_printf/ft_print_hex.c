@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
+/*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 09:41:52 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/09 17:19:14 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 11:50:04 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_printf.h"
 
 static int	ft_putnbr_hex_fd(unsigned int n, int fd)
 {

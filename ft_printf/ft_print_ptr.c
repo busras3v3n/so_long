@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
+/*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:01:23 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/09 17:21:50 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 11:49:13 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <unistd.h>
 
 static int	ft_print_hex_ptr(unsigned long long n, int fd)
 {
