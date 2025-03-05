@@ -6,7 +6,7 @@
 #    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 12:46:54 by busseven          #+#    #+#              #
-#    Updated: 2025/03/05 11:59:27 by busseven         ###   ########.fr        #
+#    Updated: 2025/03/05 12:55:32 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,6 @@ clean:
 re: fclean all
 	
 norminette:
-	norminette so_long.c so_long.h ./map_checks ./mlx ./ft_printf
+	norminette so_long.c so_long.h ./map_checks ./bonus ./mlx ./ft_printf
 
 .PHONY: all clean fclean re compile norminette

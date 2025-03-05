@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:09:26 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 17:27:44 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:50:34 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,18 @@ void	set_map_dimensions(char **map_arr, t_map *map)
 
 	x = 0;
 	y = 0;
-	while(map_arr[y])
+	while (map_arr[y])
 	{
 		x = 0;
-		while(map_arr[y][x])
+		while (map_arr[y][x])
 			x++;
-		if(y == 0)
+		if (y == 0)
 			map->width = x;
 		y++;
 	}
 	map->height = y;
 }
+
 void	check_map_validity(t_map	*map)
 {
 	char	**map_cp;
@@ -42,14 +43,14 @@ void	check_map_validity(t_map	*map)
 	rectangular = is_rectangular(map_cp, map);
 	wall = check_walls(map_cp, map);
 	chars = has_valid_chars(map_cp);
-	if(!rectangular || !wall || !chars)
+	if (!rectangular || !wall || !chars)
 	{
 		ft_printf("Error\n");
-		if(!rectangular)
+		if (!rectangular)
 			ft_printf("map must be rectangular\n");
-		if(!wall)
+		if (!wall)
 			ft_printf("map must be surrounded by walls\n");
-		if(!chars)
+		if (!chars)
 			ft_printf("invalid characters in map\n");
 		free_map_exit(map);
 	}

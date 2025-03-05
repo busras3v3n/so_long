@@ -6,11 +6,20 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:14:07 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 17:20:09 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:52:07 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
+
+void	check_if_won(t_game *game)
+{
+	if (game->cha->y == game->map->exit_y && game->cha->x == game->map->exit_x)
+	{
+		if (game->map->carrot_cnt == game->cha->carrots)
+			you_win(game);
+	}
+}
 
 void	you_win(t_game *game)
 {

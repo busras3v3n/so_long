@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 10:27:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/05 12:21:09 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:50:27 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ void	close_fds_arr(int	*fds)
 	int	i;
 
 	i = 0;
-	while(i < 84)
+	while (i < 84)
 	{
 		close(fds[i]);
 		i++;
 	}
 }
+
 void	ber_extension_check(char *path)
 {
 	int	len;
@@ -72,9 +73,9 @@ void	check_xpm(void)
 	open_bonus_enemy_assets_gingercat(file_descriptors);
 	open_bonus_enemy_assets_browncat(file_descriptors);
 	i = 0;
-	while(i < 84)
+	while (i < 84)
 	{
-		if(file_descriptors[i] < 0)
+		if (file_descriptors[i] < 0)
 		{
 			i = 0;
 			close_fds_arr(file_descriptors);

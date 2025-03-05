@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 10:27:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/05 12:18:44 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:53:45 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ void	check_xpm(void)
 	file_descriptors = ft_calloc(10, sizeof(int));
 	open_xpm_and_txt_files(file_descriptors);
 	i = 0;
-	while(i < 10)
+	while (i < 10)
 	{
-		if(file_descriptors[i] < 0)
+		if (file_descriptors[i] < 0)
 		{
 			close_fds_arr(file_descriptors);
 			free(file_descriptors);

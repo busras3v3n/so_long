@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 11:05:15 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 11:19:39 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:51:13 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	open_bonus_enemy_assets_greycat(int *fds)
 	fds[51] = open("./enemy_img/1/3/2.xpm", O_RDONLY);
 	fds[52] = open("./enemy_img/1/3/3.xpm", O_RDONLY);
 }
+
 void	open_bonus_enemy_assets_gingercat(int *fds)
 {
 	fds[53] = open("./enemy_img/2/0/0.xpm", O_RDONLY);
@@ -70,6 +71,7 @@ void	open_bonus_enemy_assets_gingercat(int *fds)
 	fds[67] = open("./enemy_img/2/3/2.xpm", O_RDONLY);
 	fds[68] = open("./enemy_img/2/3/3.xpm", O_RDONLY);
 }
+
 void	open_bonus_enemy_assets_browncat(int *fds)
 {
 	fds[69] = open("./enemy_img/3/0/0.xpm", O_RDONLY);

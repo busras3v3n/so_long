@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 17:40:14 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:55:48 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	check_if_won(t_game *game)
 			you_win(game);
 	}
 }
+
 void	reset_game(t_game *game)
 {
 	game->map->exit_x = game->map->exit_xs;

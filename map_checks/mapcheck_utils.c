@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 11:59:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 16:25:22 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:54:12 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ int	has_valid_chars(char **map_arr)
 	while (map_arr[y])
 	{
 		x = 0;
-		while(map_arr[y][x])
+		while (map_arr[y][x])
 		{
-			if(!is_valid_char(map_arr[y][x]))
+			if (!is_valid_char(map_arr[y][x]))
 				return (0);
 			x++;
 		}
@@ -76,15 +76,15 @@ int	is_rectangular(char **map_arr, t_map	*map)
 {
 	int	x;
 	int	y;
-	
+
 	x = 0;
 	y = 0;
-	while(map_arr[y])
+	while (map_arr[y])
 	{
 		x = 0;
 		while (map_arr[y][x])
 			x++;
-		if(x != map->width)
+		if (x != map->width)
 			return (0);
 		y++;
 	}
