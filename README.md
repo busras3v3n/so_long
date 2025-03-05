@@ -15,8 +15,10 @@ The bonus version, in addition to all the mandatory features has:<br>
 - And sprite animation for enemies.<br>
 
 ### ![whitecat](https://github.com/user-attachments/assets/ccc8cdbd-36a1-42fa-86c6-069e47ae2c05) Execution
+first you need to clone the minilibx-linux library in the project repository.<br>
+`git clone https://github.com/42paris/minilibx-linux.git minilibx-linux`<br><br>
 `make` to compile mandatory<br>
-`make bonus` to compile bonus<br>
+`make bonus` to compile bonus<br><br>
 execute `./so_long ./maps/test.ber` for the default map.<br>
 execute `./so_long ./bonus/maps/test.ber` for the default bonus map.<br>
 you can replace the default map with any .ber file of your choice.<br><br>
