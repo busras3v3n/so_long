@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 10:27:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 16:31:17 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:18:44 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,17 @@ void	ber_extension_check(char *path)
 	len = ft_strlen(path);
 	if (len < 4)
 	{
-		write(1, "Error\nInvalid file extension\n", 29);
+		ft_printf("Error\nBad file extension\n");
 		exit(1);
 	}
 	if (path[len - 1] != 'r' || path[len - 2] != 'e')
 	{
-		write(1, "Error\nInvalid file extension\n", 29);
+		ft_printf("Error\nBad file extension\n");
 		exit(1);
 	}
 	else if (path[len - 3] != 'b' || path[len - 4] != '.')
 	{
-		write(1, "Error\nInvalid file extension\n", 29);
+		ft_printf("Error\nBad file extension\n");
 		exit(1);
 	}
 }
@@ -53,7 +53,7 @@ void	map_file_open_check(char *path)
 	fd = open(path, O_RDWR, 0777);
 	if (fd <= 0)
 	{
-		write(1, "Error\nFile does not exist\n", 27);
+		ft_printf("Error\nInvalid map file\n");
 		close(fd);
 		exit(1);
 	}
@@ -74,7 +74,7 @@ void	check_xpm(void)
 		{
 			close_fds_arr(file_descriptors);
 			free(file_descriptors);
-			write(1, "Error\nmissing xpm file\n", 23);
+			ft_printf("Error\nmissing xpm file\n");
 			exit(1);
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 19:19:08 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/03 12:32:46 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:21:56 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ void	check_valid_path(t_map	*map)
 	find_path(map->start_x, map->start_y, map->map_arr_copy, map);
 	if ((map->carrot_cnt != map->carrot_check))
 	{
-		write(1, "Error\nNo valid path\n", 20);
+		ft_printf("Error\nNo valid path\n");
 		free_map_exit(map);
 	}
 	else if ((map->end_cnt != map->end_check))
 	{
-		write(1, "Error\nNo valid path\n", 20);
+		ft_printf("Error\nNo valid path\n");
 		free_map_exit(map);
 	}
 }

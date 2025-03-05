@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/05 11:51:58 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 11:54:00 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 # define SO_LONG_H
 
 # include "./minilibx-linux/mlx.h"
-# include "./libft/libft.h"
 # include "./ft_printf/ft_printf.h"
 # include "./minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <stdlib.h>
-# include <unistd.h>
 
 typedef struct s_map
 {

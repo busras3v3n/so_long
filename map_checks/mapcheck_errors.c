@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:06:54 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 14:10:33 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:23:58 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ void	char_count_error(t_map *map)
 {
 	ft_printf("Error\n");
 	if(map->end_cnt > 1)
-		ft_printf("more than 1 'E' on map\n");
+		ft_printf("Duplicate exit\n");
 	else if(map->end_cnt < 1)
-		ft_printf("no 'E' on map\n");
+		ft_printf("No exit\n");
 	if(map->start_cnt < 1)
-		ft_printf("no collectibles (C) on map");
+		ft_printf("No collectibles\n");
 	if(map->start_cnt > 1)
-		ft_printf("more than 1 'P' on map\n");
+		ft_printf("Duplicate player\n");
 	if(map->start_cnt < 1)
-		ft_printf("no 'P' on map\n");
+		ft_printf("No player\n");
 	free_map_exit(map);
 }

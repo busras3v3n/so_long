@@ -6,7 +6,7 @@
 #    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 12:46:54 by busseven          #+#    #+#              #
-#    Updated: 2025/03/04 17:28:31 by busseven         ###   ########.fr        #
+#    Updated: 2025/03/05 11:59:27 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ bonus: $(BONUS_OBJS) $(LIBFTPRINTF) $(MLX)
 
 fclean: clean
 	make -C ./ft_printf fclean
-	rm -rf $(NAME)	
+	rm -rf $(NAME)
 
 clean:
 	rm -f $(OBJS)
