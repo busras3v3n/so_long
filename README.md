@@ -10,14 +10,16 @@ You can use my assets in your own so_long project as long as you give credit and
 ## ![browncatright](https://github.com/user-attachments/assets/6177aecf-4905-4eae-b3be-8b725d97ac7c) Bonus
 
 The bonus version, in addition to all the mandatory features has:<br>
-- Movement count on the left corner of the screen,<br>
+- Movement count on the top left corner of the screen,<br>
 - Enemy patrols which will reset the level if you happen to bump into them,<br>
 - And sprite animation for enemies.<br>
 
 ### ![whitecat](https://github.com/user-attachments/assets/ccc8cdbd-36a1-42fa-86c6-069e47ae2c05) Execution
-`make` in no bonus folder to compile mandatory<br>
-`make` in bonus folder to compile bonus<br>
-execute `./so_long ./no\ bonus/maps/test.ber` for the default map.<br>
+first you need to clone the minilibx-linux library in the project repository.<br>
+`git clone https://github.com/42paris/minilibx-linux.git minilibx-linux`<br><br>
+`make` to compile mandatory<br>
+`make bonus` to compile bonus<br><br>
+execute `./so_long ./maps/test.ber` for the default map.<br>
 execute `./so_long ./bonus/maps/test.ber` for the default bonus map.<br>
 you can replace the default map with any .ber file of your choice.<br><br>
 
