@@ -6,12 +6,11 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:51:46 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/03 12:33:03 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:06:43 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
-#include <stdio.h>
 
 void	sort_enemies_by_priority(t_enemy **arr)
 {

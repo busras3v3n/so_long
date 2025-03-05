@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 11:59:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/05 12:50:53 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:06:32 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	check_walls(char **map_arr, t_map *map)
 	while (map_arr[y])
 	{
 		x = 0;
-		while (map_arr[x])
+		while (map_arr[y][x])
 		{
 			if (y == 0 || y == map->height - 1)
 			{

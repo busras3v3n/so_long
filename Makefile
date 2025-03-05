@@ -6,7 +6,7 @@
 #    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 12:46:54 by busseven          #+#    #+#              #
-#    Updated: 2025/03/05 12:55:32 by busseven         ###   ########.fr        #
+#    Updated: 2025/03/05 16:05:35 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,13 +46,13 @@ bonus: $(BONUS_OBJS) $(LIBFTPRINTF) $(MLX)
 
 fclean: clean
 	make -C ./ft_printf fclean
+	make -C ./libft fclean
 	rm -rf $(NAME)
 
 clean:
 	rm -f $(OBJS)
 	rm -f $(BONUS_OBJS)
 	make -C ./ft_printf clean
-	make -C ./minilibx-linux clean
 
 re: fclean all
 	
