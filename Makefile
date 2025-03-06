@@ -6,7 +6,7 @@
 #    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 12:46:54 by busseven          #+#    #+#              #
-#    Updated: 2025/03/05 16:05:35 by busseven         ###   ########.fr        #
+#    Updated: 2025/03/06 15:02:49 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ BONUS_SRC	=	./bonus/so_long_bonus.c ./bonus/enemies/enemy_init_bonus.c ./bonus/e
 OBJS 		= $(SRC:.c=.o)
 BONUS_OBJS	= $(BONUS_SRC:.c=.o)
 NAME 		= so_long
-BONUS_NAME	= ./bonus/so_long_bonus
+BONUS_NAME	= ./bonus/so_long
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 LFLAGS		= -Lminilibx-linux -Lft_printf
@@ -35,19 +35,22 @@ all: $(LIBFTPRINTF) $(MLX) $(NAME)
 $(NAME): $(OBJS) $(LIBFTPRINTF) $(MLX)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LFLAGS) $(LIBS)
 
+$(BONUS_NAME): $(BONUS_OBJS) $(LIBFTPRINTF) $(MLX)
+	$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS_NAME) $(LFLAGS) $(LIBS)
+
 $(LIBFTPRINTF):
 	$(MAKE) -C ./ft_printf all 
 
 $(MLX):
 	$(MAKE) -C minilibx-linux
 
-bonus: $(BONUS_OBJS) $(LIBFTPRINTF) $(MLX)
-	$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(NAME) $(LFLAGS) $(LIBS)
+bonus: $(BONUS_NAME)
 
 fclean: clean
 	make -C ./ft_printf fclean
 	make -C ./libft fclean
 	rm -rf $(NAME)
+	rm -rf $(BONUS_NAME)
 
 clean:
 	rm -f $(OBJS)
