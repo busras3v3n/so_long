@@ -19,7 +19,7 @@ first you need to clone the minilibx-linux library in the project repository.<br
 `git clone https://github.com/42paris/minilibx-linux.git minilibx-linux`<br><br>
 `make` to compile mandatory<br>
 `make bonus` to compile bonus<br><br>
-execute `./so_long ./maps/test.ber` for the default map.<br>
+execute `./bonus/so_long ./maps/test.ber` for the default map.<br>
 execute `./so_long ./bonus/maps/test.ber` for the default bonus map.<br>
 you can replace the default map with any .ber file of your choice.<br><br>
 
