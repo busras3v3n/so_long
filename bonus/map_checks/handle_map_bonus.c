@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:09:26 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/05 12:50:34 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/12 14:57:16 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,16 @@ char	*make_map_string(char	*path)
 	ret = ft_calloc(1, 1);
 	while (1)
 	{
-		line = get_next_line(fd);
+		line = get_next_line(fd, 1);
 		if (!line)
 			break ;
+		if (!ft_strncmp(line, "\n", ft_strlen(line)))
+		{
+			free(line);
+			free(ret);
+			get_next_line(fd, 0);
+			return (NULL);
+		}
 		ret = ft_join(ret, line);
 		free(line);
 	}
@@ -81,6 +88,11 @@ void	handle_map(char	*path, t_map *map)
 	char	*map_string;
 
 	map->map_str = make_map_string(path);
+	if (!map->map_str)
+	{
+		ft_printf("Error\nMap disconnected\n");
+		free_map_exit(map);
+	}
 	map_string = map->map_str;
 	map->map_arr = ft_split(map_string, '\n');
 	map->map_arr_copy = ft_split(map_string, '\n');
