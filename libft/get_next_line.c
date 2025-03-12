@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:02:46 by busseven          #+#    #+#             */
-/*   Updated: 2024/12/23 09:55:56 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/12 14:49:05 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,15 @@ char	*new_buffer(char	*buffer)
 	}
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int i)
 {
 	static char	*buffer[1024];
 	char		*next_line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
+	if(free_static_buffer(buffer[fd], i))
+		return (0);
 	buffer[fd] = ft_read_file(fd, buffer[fd]);
 	if (!buffer[fd])
 		return (NULL);
