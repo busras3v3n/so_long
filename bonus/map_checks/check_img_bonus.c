@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 10:03:26 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 11:05:24 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/17 17:57:13 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void	open_xpm_and_txt_files(int *fds)
 	fds[7] = open("./img/rs.xpm", O_RDONLY);
 	fds[8] = open("./img/ru.xpm", O_RDONLY);
 	fds[9] = open("./txt/youwon.txt", O_RDONLY);
+	fds[85] = open("./img/gru.xpm", O_RDONLY);
+	fds[86] = open("./img/grr.xpm", O_RDONLY);
+	fds[87] = open("./img/grd.xpm", O_RDONLY);
+	fds[88] = open("./img/grl.xpm", O_RDONLY);
+	fds[89] = open("./img/gcar.xpm", O_RDONLY);
 }
 
 void	open_bonus_number_assets(int *fds)

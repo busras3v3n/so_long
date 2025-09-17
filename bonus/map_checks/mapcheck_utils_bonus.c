@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 11:59:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/05 16:06:32 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/17 17:49:43 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	is_valid_char(char c)
 	else if (c == 'E')
 		return (1);
 	else if (c == 'P')
+		return (1);
+	else if(c == 'G')
 		return (1);
 	else if (c != '1' && c != '0' && c != 'X')
 		return (0);

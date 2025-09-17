@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:14:07 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/05 12:52:07 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/17 17:53:44 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,9 @@ void	move_player(t_game *game, int keycode)
 		game->cha->x++;
 	if (map[game->cha->y][game->cha->x] == 'C')
 		game->cha->carrots++;
+	if(map[game->cha->y][game->cha->x] == 'G')
+	{
+		game->cha->killer = 1;	
+	}
 	map[game->cha->y][game->cha->x] = 'P';
 }

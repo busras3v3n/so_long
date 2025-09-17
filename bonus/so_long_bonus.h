@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/15 19:12:19 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/17 17:50:51 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_map
 	void	*grass;
 	void	*house;
 	void	*carrot;
+	void	*gold_carrot;
 	int		enemy_cnt;
 }	t_map;
 
@@ -51,11 +52,16 @@ typedef struct s_cha
 	void	*down;
 	void	*left;
 	void	*right;
+	void	*gup;
+	void	*gdown;
+	void	*gleft;
+	void	*gright;
 	void	*cur;
 	int		moves;
 	int		carrots;
 	int		x;
 	int		y;
+	int		killer;
 }	t_cha;
 
 typedef struct s_enemy
