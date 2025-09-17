@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 20:25:11 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/04 16:37:17 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/17 12:26:41 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	move_enemy(t_enemy *cat, t_game *game)
 	set_enemy_direction(cat, game, game->map->map_arr);
 	if (cat->frame_counter > 15)
 		animate_cat(cat, game);
+	check_lose(game);
 	change_pos(cat);
 	cat->counter += cat->speed;
 	cat->frame_counter += cat->speed;

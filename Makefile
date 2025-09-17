@@ -6,7 +6,7 @@
 #    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 12:46:54 by busseven          #+#    #+#              #
-#    Updated: 2025/03/13 10:57:56 by busseven         ###   ########.fr        #
+#    Updated: 2025/09/17 12:30:31 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ $(LIBFTPRINTF):
 $(MLX):
 	$(MAKE) -C minilibx-linux
 
-bonus: $(BONUS_NAME)
+bonus: fclean $(BONUS_NAME)
 
 fclean: clean
 	make -C ./ft_printf fclean
