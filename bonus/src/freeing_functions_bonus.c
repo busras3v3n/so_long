@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 09:52:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/17 18:11:47 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/17 18:34:41 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,15 @@ void	free_game_contents(t_game	*game)
 	mlx_destroy_image(game->mlx, game->map->house);
 	mlx_destroy_image(game->mlx, game->map->grass);
 	mlx_destroy_image(game->mlx, game->map->carrot);
+	mlx_destroy_image(game->mlx, game->map->gold_carrot);
 	mlx_destroy_image(game->mlx, game->cha->up);
 	mlx_destroy_image(game->mlx, game->cha->down);
 	mlx_destroy_image(game->mlx, game->cha->left);
 	mlx_destroy_image(game->mlx, game->cha->right);
+	mlx_destroy_image(game->mlx, game->cha->gup);
+	mlx_destroy_image(game->mlx, game->cha->gdown);
+	mlx_destroy_image(game->mlx, game->cha->gleft);
+	mlx_destroy_image(game->mlx, game->cha->gright);
 	while (i <= 9)
 	{
 		if (game->digit_img && game->digit_img[i])
