@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 10:27:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/17 17:59:05 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:10:09 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	check_xpm(void)
 	int	*file_descriptors;
 	int	i;
 
-	file_descriptors = ft_calloc(90, sizeof(int));
+	file_descriptors = ft_calloc(91, sizeof(int));
 	open_xpm_and_txt_files(file_descriptors);
 	open_bonus_number_assets(file_descriptors);
 	open_bonus_enemy_assets_whitecat(file_descriptors);
@@ -73,7 +73,7 @@ void	check_xpm(void)
 	open_bonus_enemy_assets_gingercat(file_descriptors);
 	open_bonus_enemy_assets_browncat(file_descriptors);
 	i = 0;
-	while (i < 89)
+	while (i < 90)
 	{
 		if (file_descriptors[i] < 0)
 		{

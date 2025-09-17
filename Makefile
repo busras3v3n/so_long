@@ -6,7 +6,7 @@
 #    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 12:46:54 by busseven          #+#    #+#              #
-#    Updated: 2025/09/17 12:30:31 by busseven         ###   ########.fr        #
+#    Updated: 2025/09/17 19:18:44 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ BONUS_SRC	=	./bonus/so_long_bonus.c ./bonus/enemies/enemy_init_bonus.c ./bonus/e
 				./bonus/map_checks/handle_map_bonus.c ./bonus/map_checks/mapcheck_utils_bonus.c ./bonus/enemies/random_number_utils_bonus.c \
 				./bonus/map_checks/mapcheck_errors_bonus.c ./bonus/map_checks/check_valid_path_bonus.c ./bonus/src/handle_window_bonus.c \
 				./bonus/src/player_move_bonus.c ./bonus/src/drawing_bonus.c ./bonus/src/freeing_functions_bonus.c ./bonus/src/counter_bonus.c \
-				./bonus/map_checks/check_enemy_img_bonus.c
+				./bonus/map_checks/check_enemy_img_bonus.c ./bonus/src/bullet.c
 OBJS 		= $(SRC:.c=.o)
 BONUS_OBJS	= $(BONUS_SRC:.c=.o)
 NAME 		= so_long

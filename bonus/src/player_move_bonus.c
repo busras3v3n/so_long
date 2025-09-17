@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:14:07 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/17 18:15:08 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:18:26 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,8 @@ void	move_player(t_game *game, int keycode)
 	if(map[game->cha->y][game->cha->x] == 'G')
 	{
 		game->cha->killer = 1;
+		game->cha->bullet_x = game->cha->x * 64;
+		game->cha->bullet_y = game->cha->y * 64;
 		if (game->cha->cur == game->cha->right)
 			game->cha->cur = game->cha->gright;
 		if (game->cha->cur == game->cha->left)
