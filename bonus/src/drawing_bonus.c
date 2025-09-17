@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:15:39 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/05 12:44:13 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/17 18:28:46 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	put_img_enemies(t_game *game, void *m, void *w)
 	{
 		while (game->cat_arr[i])
 		{
-			mlx_put_image_to_window(m, w, cat[i]->cur, cat[i]->x, cat[i]->y);
+			if(game->cat_arr[i]->dead == 0)
+				mlx_put_image_to_window(m, w, cat[i]->cur, cat[i]->x, cat[i]->y);
 			i++;
 		}
 	}
@@ -45,6 +46,8 @@ void	put_img(char **map, t_game *game, int x, int y)
 	put_img_enemies(game, m, w);
 	if (map[y][x] == 'C')
 		mlx_put_image_to_window(m, w, game->map->carrot, x * 64, y * 64);
+	if (map[y][x] == 'G')
+		mlx_put_image_to_window(m, w, game->map->gold_carrot, x * 64, y * 64);
 	if (map[y][x] == 'P')
 	{
 		mlx_put_image_to_window(m, w, game->cha->cur, x * 64, y * 64);
@@ -95,6 +98,11 @@ void	xpm_to_ptr(t_game *game)
 	cha->down = mlx_xpm_file_to_image(game->mlx, "./img/rs.xpm", &w, &h);
 	cha->left = mlx_xpm_file_to_image(game->mlx, "./img/rl.xpm", &w, &h);
 	cha->right = mlx_xpm_file_to_image(game->mlx, "./img/rr.xpm", &w, &h);
+	cha->gup = mlx_xpm_file_to_image(game->mlx, "./img/gru.xpm", &w, &h);
+	cha->gdown = mlx_xpm_file_to_image(game->mlx, "./img/grd.xpm", &w, &h);
+	cha->gleft = mlx_xpm_file_to_image(game->mlx, "./img/grl.xpm", &w, &h);
+	cha->gright = mlx_xpm_file_to_image(game->mlx, "./img/grr.xpm", &w, &h);
+	map->gold_carrot = mlx_xpm_file_to_image(game->mlx, "./img/gcar.xpm", &w, &h);
 	cha->cur = game->cha->down;
 }
 

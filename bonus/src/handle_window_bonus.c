@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/05 12:51:57 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/17 18:24:05 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	reset_game(t_game *game)
 	game->cha->moves = 0;
 	game->cha->cur = game->cha->down;
 	game->cha->carrots = 0;
+	game->cha->killer = 0;
 	while (k < game->map->enemy_cnt)
 	{
 		check_begin_pos(game->cat_arr[k], game->map->map_arr, k);

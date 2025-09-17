@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:40:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/17 12:34:07 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/17 18:27:42 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,12 @@ void	check_lose(t_game *game)
 		int dx = abs(arr[i]->x - n);
 		int dy = abs(arr[i]->y - k);
 		if(dy < 64 && dx < 64)
-			reset_game(game);
+		{
+			if(game->cha->killer == 0)
+				reset_game(game);
+			else
+				arr[i]->dead = 1;
+		}
 		i++;
 	}
 }

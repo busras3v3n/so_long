@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/17 17:50:51 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/17 18:27:53 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_enemy
 	int		y;
 	int		freeze;
 	int		priority;
+	int		dead;
 }	t_enemy;
 
 typedef struct s_game

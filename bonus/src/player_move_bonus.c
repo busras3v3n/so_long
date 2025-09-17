@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:14:07 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/17 17:53:44 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/17 18:15:08 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,25 +56,37 @@ void	move_count(char	**map, t_game *game, int keycode)
 	{
 		if (map[game->cha->y - 1][game->cha->x] != '1')
 			game->cha->moves++;
-		game->cha->cur = game->cha->up;
+		if(game->cha->killer)
+			game->cha->cur = game->cha->gup;
+		else
+			game->cha->cur = game->cha->up;
 	}
 	else if (keycode == 97)
 	{
 		if (map[game->cha->y][game->cha->x - 1] != '1')
 			game->cha->moves++;
-		game->cha->cur = game->cha->left;
+		if(game->cha->killer)
+			game->cha->cur = game->cha->gleft;
+		else
+			game->cha->cur = game->cha->left;
 	}
 	else if (keycode == 115)
 	{
 		if (map[game->cha->y + 1][game->cha->x] != '1')
 			game->cha->moves++;
-		game->cha->cur = game->cha->down;
+		if(game->cha->killer)
+			game->cha->cur = game->cha->gdown;
+		else
+			game->cha->cur = game->cha->down;
 	}
 	else if (keycode == 100)
 	{
 		if (map[game->cha->y][game->cha->x + 1] != '1')
 			game->cha->moves++;
-		game->cha->cur = game->cha->right;
+		if(game->cha->killer)
+			game->cha->cur = game->cha->gright;
+		else
+			game->cha->cur = game->cha->right;
 	}
 }
 
@@ -112,7 +124,15 @@ void	move_player(t_game *game, int keycode)
 		game->cha->carrots++;
 	if(map[game->cha->y][game->cha->x] == 'G')
 	{
-		game->cha->killer = 1;	
+		game->cha->killer = 1;
+		if (game->cha->cur == game->cha->right)
+			game->cha->cur = game->cha->gright;
+		if (game->cha->cur == game->cha->left)
+			game->cha->cur = game->cha->gleft;
+		if (game->cha->cur == game->cha->down)
+			game->cha->cur = game->cha->gdown;	
+		if (game->cha->cur == game->cha->up)
+			game->cha->cur = game->cha->gup;	
 	}
 	map[game->cha->y][game->cha->x] = 'P';
 }
