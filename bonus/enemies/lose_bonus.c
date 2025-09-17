@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:40:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/17 18:27:42 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:24:30 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	check_lose(t_game *game)
 	arr = game->cat_arr;
 	k = game->cha->y * 64;
 	n = game->cha->x * 64;
-	printf("%d\n", k);
-	printf("%d\n", k);
 	while (arr[i])
 	{
 		int dx = abs(arr[i]->x - n);

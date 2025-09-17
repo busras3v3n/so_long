@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:15:39 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/17 19:19:10 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:33:03 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void	put_img(char **map, t_game *game, int x, int y)
 	else if (map[y][x] == 'E')
 		mlx_put_image_to_window(m, w, game->map->house, x * 64, y * 64);
 	put_img_enemies(game, m, w);
-	put_img_bullet(game);
+	if(game->cha->bullet_shot)
+		put_img_bullet(game);
 	if (map[y][x] == 'C')
 		mlx_put_image_to_window(m, w, game->map->carrot, x * 64, y * 64);
 	if (map[y][x] == 'G')

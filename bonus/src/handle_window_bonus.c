@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/17 18:44:53 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:37:54 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void	reset_game(t_game *game)
 	game->cha->cur = game->cha->down;
 	game->cha->carrots = 0;
 	game->cha->killer = 0;
+	game->cha->bullet_shot = 0;
+	game->cha->bullet_x = game->cha->x;
+	game->cha->bullet_y = game->cha->y;
 	while (k < game->map->enemy_cnt)
 	{
 		check_begin_pos(game->cat_arr[k], game->map->map_arr, k);
@@ -43,6 +46,7 @@ int	update_game(t_game *game)
 	if (++game->delay % 5000 == 0)
 	{
 		move_all_enemies(game);
+		move_bullet(game);
 		draw_map(game);
 		if (game->win_condition == 0)
 		{
@@ -72,6 +76,23 @@ int	key_hook(int keycode, t_game *game)
 	if (keycode == 114)
 	{
 		reset_game(game);
+	}
+	if (keycode == 32)
+	{
+		if(game->cha->killer && !game->cha->bullet_shot)
+		{
+			game->cha->bullet_shot = 1;
+			game->cha->bullet_x = game->cha->x * 64;
+			game->cha->bullet_y = game->cha->y * 64;
+			if(game->cha->cur == game->cha->gleft)
+				game->cha->bullet_dir = 1;
+			if(game->cha->cur == game->cha->gup)
+				game->cha->bullet_dir = 2;	
+			if(game->cha->cur == game->cha->gright)
+				game->cha->bullet_dir = 3;	
+			if(game->cha->cur == game->cha->gdown)
+				game->cha->bullet_dir = 4;
+		}
 	}
 	return (0);
 }
