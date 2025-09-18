@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:15:39 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/18 12:49:53 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/18 13:27:12 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ void	put_img(char **map, t_game *game, int x, int y)
 		mlx_put_image_to_window(m, w, game->map->gold_carrot, x * 64, y * 64);
 	if (map[y][x] == 'P')
 	{
-		mlx_put_image_to_window(m, w, game->cha->cur, x * 64, y * 64);
+		if(game->cha->invincible > 0 && game->cha->in_frame >= 20)
+			mlx_put_image_to_window(m, w, game->map->grass, x * 64, y * 64);
+		else
+			mlx_put_image_to_window(m, w, game->cha->cur, x * 64, y * 64);
 		game->cha->x = x;
 		game->cha->y = y;
 	}
@@ -152,9 +155,13 @@ void	draw_map_boty(t_game *game)
 		x++;
 		if(game->cha->lives > 1)
 			mlx_put_image_to_window(game->mlx, game->window, game->cha->life, x * 64, y * 64);
+		else
+			mlx_put_image_to_window(game->mlx, game->window, game->cha->life_empty, x * 64, y * 64);
 		x++;
 		if(game->cha->lives > 2)
 			mlx_put_image_to_window(game->mlx, game->window, game->cha->life, x * 64, y * 64);
+		else
+			mlx_put_image_to_window(game->mlx, game->window, game->cha->life_empty, x * 64, y * 64);
 		x++;
 		while(map[y][x])
 		{

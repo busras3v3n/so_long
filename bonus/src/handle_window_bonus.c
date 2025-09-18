@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/18 12:40:33 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/18 13:29:47 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	reset_game(t_game *game)
 	game->cha->bullet_shot = 0;
 	game->cha->bullet_x = game->cha->x;
 	game->cha->bullet_y = game->cha->y;
+	game->cha->lives = 3;
+	game->cha->invincible = 0;
 	while (k < game->map->enemy_cnt)
 	{
 		check_begin_pos(game->cat_arr[k], game->map->map_arr, k);
@@ -38,6 +40,7 @@ void	reset_game(t_game *game)
 	}
 	ft_printf("\n");
 	draw_map(game);
+	draw_map_boty(game);
 	draw_map_topy(game);
 }
 
@@ -54,6 +57,20 @@ int	update_game(t_game *game)
 		{
 			if (game->map->enemy_cnt != 0)
 				check_lose(game);
+		}
+		if(game->cha->invincible > 0)
+		{
+			game->cha->invincible-= 20;
+			if(game->cha->in_frame < 10)
+			{
+				mlx_put_image_to_window(game->mlx, game->window, game->map->grass, game->cha->x * 64, game->cha->y * 64);
+				game->cha->in_frame+= 2;
+			}
+			else
+			{
+				draw_map(game);
+				game->cha->in_frame = 0;
+			}
 		}
 	}
 	return (0);
@@ -117,7 +134,7 @@ void	handle_window(t_map	*map)
 	game->window = mlx_new_window(game->mlx, (w * 64), (h * 64), "so_long");
 	game->digit_img = ft_calloc(10, sizeof(void *));
 	game->delay = 0;
-	cha->lives = 3;
+	game->cha->lives = 3;
 	make_digit_arr(game->digit_img, game);
 	xpm_to_ptr(game);
 	enemy_init(game);

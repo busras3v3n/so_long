@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:40:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/18 12:52:14 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/18 13:27:53 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,13 @@ void	check_lose(t_game *game)
 		int dy = abs(arr[i]->y - k);
 		if(dy < 64 && dx < 64)
 		{
-			if(!arr[i]->dead)
+			if(!arr[i]->dead && game->cha->invincible == 0)
+			{
+				game->cha->lives--;
+				draw_map_boty(game);
+				game->cha->invincible = 600;	
+			}
+			if(game->cha->lives <= 0)
 				reset_game(game);
 		}
 		if(game->cha->bullet_shot)

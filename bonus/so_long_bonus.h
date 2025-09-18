@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/18 12:32:21 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/18 13:13:52 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,10 @@ typedef struct s_cha
 	int		bullet_shot;
 	int		bullet_dir;
 	int		lives;
+	int		invincible;
+	int		in_frame;
+	int		cur_x;
+	int		cur_y;
 }	t_cha;
 
 typedef struct s_enemy
