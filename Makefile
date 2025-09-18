@@ -6,7 +6,7 @@
 #    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 12:46:54 by busseven          #+#    #+#              #
-#    Updated: 2025/09/17 19:18:44 by busseven         ###   ########.fr        #
+#    Updated: 2025/09/18 14:15:27 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ $(NAME): $(OBJS) $(LIBFTPRINTF) $(MLX)
 
 $(BONUS_NAME): $(BONUS_OBJS) $(LIBFTPRINTF) $(MLX)
 	$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS_NAME) $(LFLAGS) $(LIBS)
+	cp $(BONUS_NAME) ./so_long
 
 $(LIBFTPRINTF):
 	$(MAKE) -C ./ft_printf all 
