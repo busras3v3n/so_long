@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/17 19:36:13 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/18 12:32:21 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ typedef struct s_cha
 	void	*gright;
 	void	*cur;
 	void	*bullet;
+	void	*life;
+	void	*life_empty;
 	int		moves;
 	int		carrots;
 	int		x;
@@ -67,6 +69,7 @@ typedef struct s_cha
 	int		bullet_y;
 	int		bullet_shot;
 	int		bullet_dir;
+	int		lives;
 }	t_cha;
 
 typedef struct s_enemy
@@ -165,5 +168,6 @@ void	open_bonus_enemy_assets_gingercat(int *fds);
 void	open_bonus_enemy_assets_browncat(int *fds);
 void	open_bonus_number_assets(int *fds);
 void	move_bullet(t_game *game);
+void	draw_map_boty(t_game *game);
 
 #endif

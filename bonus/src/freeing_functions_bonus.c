@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 09:52:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/17 18:34:41 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/18 12:23:47 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	free_game_contents(t_game	*game)
 	mlx_destroy_image(game->mlx, game->cha->gdown);
 	mlx_destroy_image(game->mlx, game->cha->gleft);
 	mlx_destroy_image(game->mlx, game->cha->gright);
+	mlx_destroy_image(game->mlx, game->cha->life);
+	mlx_destroy_image(game->mlx, game->cha->life_empty);
 	while (i <= 9)
 	{
 		if (game->digit_img && game->digit_img[i])

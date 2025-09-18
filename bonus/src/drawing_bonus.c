@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:15:39 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/17 19:33:03 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/18 12:49:53 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	draw_map(t_game *game)
 		return ;
 	map = game->map->map_arr;
 	y = 1;
-	while (map[y])
+	while (map[y] && y < game->map->height - 1)
 	{
 		x = 0;
 		while (map[y][x])
@@ -106,6 +106,8 @@ void	xpm_to_ptr(t_game *game)
 	cha->gright = mlx_xpm_file_to_image(game->mlx, "./img/grr.xpm", &w, &h);
 	cha->bullet = mlx_xpm_file_to_image(game->mlx, "./img/bullet.xpm", &w, &h);
 	map->gold_carrot = mlx_xpm_file_to_image(game->mlx, "./img/gcar.xpm", &w, &h);
+	cha->life = mlx_xpm_file_to_image(game->mlx, "./img/life.xpm", &w, &h);
+	cha->life_empty = mlx_xpm_file_to_image(game->mlx, "./img/lostlife.xpm", &w, &h);
 	cha->cur = game->cha->down;
 }
 
@@ -128,5 +130,37 @@ void	draw_end_screen(t_game *game, int res)
 		game->win_img = mlx_xpm_file_to_image(mlx, "./img/ywr.xpm", &w, &h);
 		mlx_put_image_to_window(mlx, win, game->win_img, 0, 0);
 		mlx_destroy_image(game->mlx, game->win_img);
+	}
+}
+
+void	draw_map_boty(t_game *game)
+{
+	char	**map;
+	int		y;
+	int		x;
+
+	if (game->win_condition == 1)
+		return ;
+	map = game->map->map_arr;
+	y = game->map->height - 1;
+	while (map[y])
+	{
+		x = 0;
+		mlx_put_image_to_window(game->mlx, game->window, game->map->wall, x * 64, y * 64);
+		x = 1;
+		mlx_put_image_to_window(game->mlx, game->window, game->cha->life, x * 64, y * 64);
+		x++;
+		if(game->cha->lives > 1)
+			mlx_put_image_to_window(game->mlx, game->window, game->cha->life, x * 64, y * 64);
+		x++;
+		if(game->cha->lives > 2)
+			mlx_put_image_to_window(game->mlx, game->window, game->cha->life, x * 64, y * 64);
+		x++;
+		while(map[y][x])
+		{
+			mlx_put_image_to_window(game->mlx, game->window, game->map->wall, x * 64, y * 64);
+			x++;
+		}
+		y++;
 	}
 }

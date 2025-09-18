@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 19:15:50 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/17 19:57:50 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/18 11:51:40 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,15 @@ void	move_bullet(t_game *game)
 	if(check_for_wall_bullet(game, game->map->map_arr))
 	{
 		game->cha->bullet_shot = 0;
+		game->cha->killer = 0;
+		if (game->cha->cur == game->cha->gright)
+			game->cha->cur = game->cha->right;
+		if (game->cha->cur == game->cha->gleft)
+			game->cha->cur = game->cha->left;
+		if (game->cha->cur == game->cha->gdown)
+			game->cha->cur = game->cha->down;	
+		if (game->cha->cur == game->cha->gup)
+			game->cha->cur = game->cha->up;	
 	}
 	if(game->cha->bullet_shot == 1)
 	{

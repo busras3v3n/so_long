@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:59:05 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/17 19:37:54 by busseven         ###   ########.fr       */
+/*   Updated: 2025/09/18 12:40:33 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,15 @@ int	update_game(t_game *game)
 {
 	if (++game->delay % 5000 == 0)
 	{
-		move_all_enemies(game);
-		move_bullet(game);
+		if (game->map->enemy_cnt != 0)
+			move_all_enemies(game);
+		if (game->cha->bullet_shot)
+			move_bullet(game);
 		draw_map(game);
 		if (game->win_condition == 0)
 		{
-			check_lose(game);
+			if (game->map->enemy_cnt != 0)
+				check_lose(game);
 		}
 	}
 	return (0);
@@ -114,13 +117,14 @@ void	handle_window(t_map	*map)
 	game->window = mlx_new_window(game->mlx, (w * 64), (h * 64), "so_long");
 	game->digit_img = ft_calloc(10, sizeof(void *));
 	game->delay = 0;
+	cha->lives = 3;
 	make_digit_arr(game->digit_img, game);
 	xpm_to_ptr(game);
 	enemy_init(game);
 	draw_map_topy(game);
+	draw_map_boty(game);
 	draw_map(game);
-	if (game->map->enemy_cnt != 0)
-		mlx_loop_hook(game->mlx, update_game, game);
+	mlx_loop_hook(game->mlx, update_game, game);
 	mlx_hook(game->window, 17, 0, close_window, game);
 	mlx_key_hook(game->window, key_hook, game);
 	mlx_loop(game->mlx);
