@@ -6,7 +6,7 @@
 #    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 12:46:54 by busseven          #+#    #+#              #
-#    Updated: 2025/09/18 14:15:27 by busseven         ###   ########.fr        #
+#    Updated: 2025/11/25 15:20:28 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,13 +29,15 @@ LFLAGS		= -Lminilibx-linux -Lft_printf
 LIBFTPRINTF	= ft_printf/libftprintf.a
 MLX			= minilibx-linux/libmlx_Linux.a
 LIBS		= $(LIBFTPRINTF) -lmlx -lX11 -lXext
+CLONE_DIR	= ./minilibx-linux
+REPO_URL 	= https://github.com/42paris/minilibx-linux.git
 
-all: $(LIBFTPRINTF) $(MLX) $(NAME)
+all: clone_repo $(LIBFTPRINTF) $(MLX) $(NAME)
 
 $(NAME): $(OBJS) $(LIBFTPRINTF) $(MLX)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LFLAGS) $(LIBS)
 
-$(BONUS_NAME): $(BONUS_OBJS) $(LIBFTPRINTF) $(MLX)
+$(BONUS_NAME): clone_repo $(BONUS_OBJS) $(LIBFTPRINTF) $(MLX)
 	$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS_NAME) $(LFLAGS) $(LIBS)
 	cp $(BONUS_NAME) ./so_long
 
@@ -45,6 +47,14 @@ $(LIBFTPRINTF):
 $(MLX):
 	$(MAKE) -C minilibx-linux
 
+clone_repo:
+	@echo "Cloning repository..."
+	@if [ ! -d "$(CLONE_DIR)" ]; then \
+		git clone $(REPO_URL) $(CLONE_DIR); \
+	else \
+		echo "Repository already cloned."; \
+	fi
+
 bonus: fclean $(BONUS_NAME)
 
 fclean: clean
@@ -52,6 +62,7 @@ fclean: clean
 	make -C ./libft fclean
 	rm -rf $(NAME)
 	rm -rf $(BONUS_NAME)
+	rm -rf $(CLONE_DIR)
 
 clean:
 	rm -f $(OBJS)

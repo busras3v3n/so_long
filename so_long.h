@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:51:02 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/05 12:56:11 by busseven         ###   ########.fr       */
+/*   Updated: 2025/11/25 15:12:43 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,6 @@ void	xpm_to_ptr(t_game *game);
 void	draw_map(t_game *game);
 void	put_img(char **map, t_game *game, int x, int y);
 int		is_obstacle(char c);
+void	check_lose(t_game *game);
 
 #endif

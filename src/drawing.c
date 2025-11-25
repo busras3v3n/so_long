@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 13:15:39 by busseven          #+#    #+#             */
-/*   Updated: 2025/09/18 12:42:20 by busseven         ###   ########.fr       */
+/*   Updated: 2025/11/25 15:16:15 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,6 @@ void	draw_map(t_game *game)
 		x = 0;
 		while (map[y][x])
 		{
-			if(y == game->map->height - 1 && x > 0 && x < 4)
-				;
-			else
 				put_img(map, game, x, y);
 			x++;
 		}
